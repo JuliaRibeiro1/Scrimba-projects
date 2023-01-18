@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+   
+}
+.converter-display-container h1 {
+    font-weight: 800;
+}
+input {
+    width: 180px;
+    word-wrap:break-word;
+    height: 75px;
+    border-radius: 0.1em;
+    font-size: 4rem;
+    text-align: center;
+    background-color: transparent;
+    border: 2px #B295FF solid;
+    color:white;
+    font-weight: bold;
+    margin-top: 10px
+
+}
+.converter-container {
+    height: 100%;
+    width: 100%;
+}
+.conversion-result {
+    color:#353535;
+    font-size: 14px;
+}
+.converter-display-container  {
+    background-color: #6943FF;
+    height: 70%;
+    padding: 20px;
+    color: white;
+}
+.converter-display-container > * {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px
+}
+
+.converter-display-container h1 {
+    font-size: 28px
+}
+.converter-display-container button {
+    background-color: white;
+    border: none;
+    min-width: 180px;
+    padding: 15px 30px;
+    color:#3D3D3D;
+    width: 25%;
+    max-width: 250px;
+    border-radius: 0.3em;
+    font-weight: 600;
+    color:#B205FF;
+    
+}
+.conversion-result-container h2 {
+    color:#5A537B;
+    font-size: 1.2rem
+}
+.conversion-result h3 {
+    color:#353535;
+    font-weight: 300
+}
+
+.conversion-result-container  {
+    background-color: #F4F4F4;
+   box-sizing: border-box;
+   padding: 50px 25px  
+}
+.result {
+    margin-top: 1em
+}
+.conversion-result-container div div {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 2px;
+    min-height: 60px;
+    max-width: 800px;
+    margin-bottom: 15px
+}
+.inputDiv {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center
+    
+}
+.inputDiv::after {
+    content: attr(content);
+    width:200px;
+    height: 20px;
+    color: red;
+    position: absolute;
+    top:-15px;
+    left:-50px
+    
+}
+.redBorder {
+    border: 2px solid red
+}
