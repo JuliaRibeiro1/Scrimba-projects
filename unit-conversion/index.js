@@ -7,12 +7,34 @@ let inputEl = document.querySelector("input")
 
 window.onload = function() { // Serve para desabilitar todo o teclado exceto os números toda vez que a página carregar
      document.onkeydown = function (event) { 
-         var ASCIICode =  event.keyCode // event.keycode irá identifcar que tecla o usuário apertou
-            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))  {
+        let width = inputEl.offsetWidth
+        console.log(window.innerWidth)
+       
+        /*else {
+           // while(width > 180) {
+           // inputEl.style.cssText = `width:${width - 50}px`
+           // }
+        }*/
+         var ASCIICode =  event.key.charCodeAt() // event.key.charCodeAt() irá identifcar que tecla o usuário apertou
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57) && ASCIICode !== 66)  {
                 error() // irá alertar o erro que o digito é invalido
-                return false
-                                 
+                return false                               
 }
+if(inputEl.value > 1000) {
+        let windowWidth = window.innerWidth
+            if(windowWidth > 600 && width < windowWidth - 100) {
+                inputEl.style.cssText = `width:${width + 50}px` // serve para aumentar o espaço do input para que o usuário veja o número que está diigitando inteiro
+            }
+            if(windowWidth < 600 && width < windowWidth - 100) {
+                inputEl.style.cssText = `width:${width + 30}px`
+            }
+            if(ASCIICode == 66) {
+               if(width > 180) {
+                inputEl.style.cssText = `width:${width - 50}px`
+               }
+            }
+        }
+            
     normalize() // Se o usuário digir um caractere válido essa função irá remover a mensagem de alerta e as borda vermleha
     return true
 }}
