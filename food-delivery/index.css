@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+=======
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    
+} 
+header {
+    background: url(imgs/bgimg.png);
+    background-size: auto;
+    padding: 3em;
+    width:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:50% 50%;
+   
+}
+header span {
+    display:block;
+    color:white;
+    font-family: 'Smythe', cursive,sans-serif;
+    
+}
+.item-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 2em;
+    
+}
+.item {
+    display: flex;
+    border-bottom:#DEDEDE 2px solid;
+    height: 200px;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+
+}
+.item h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.item img {
+    width: 180px;
+    height: 150px;
+}
+.item-ingredients {
+    color:#8b8b8b
+}
+.item-preview {
+    margin-bottom: 5px;
+}
+.item-info { 
+    padding: 0 2em ;
+}
+.item-price {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+.add-item-btn {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 50px;
+
+    height: 50px;
+    border: #DEDEDE 2px solid;
+    color:#3C3C3C;
+    font-size: 2rem;
+   
+   
+    
+    
+}
+>>>>>>> parent of cfa76dc (falta js delivery)
