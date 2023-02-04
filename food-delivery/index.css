@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 * {
     padding:0;
     margin:0;
@@ -74,9 +73,98 @@ header span {
     border: #DEDEDE 2px solid;
     color:#3C3C3C;
     font-size: 2rem;
-   
-   
+ 
+    
+}
+.options-section {
+    position: fixed;
+    width:90%;
+    height: 90%;
+    padding: 1em;
+    overflow: scroll;
+    top:50%;
+    left:50%;
+    display: flex;
+    background-color:#fafafa;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    display: none;
+}
+.options-section h1 {
+    font-size: 1.5rem;
+}
+.option-item {
+    width: 65%;
+}
+.option {
+    display: flex;
+    align-items: center;
+    padding: 2em;
+    position: relative;
+    justify-content: start;
+}
+.option::after {
+    content:"";
+    width: 90%;
+    height: 2px;
+    position: absolute;
+    background-color: #DEDEDE;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,50%); 
+}
+
+input[type="checkbox"] {
+    opacity: 0;
+}
+
+label {
+    position: relative;
+}
+label::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: #DEDEDE;
+    top:0px;
+    left:90px;
+
+    border-radius: 50%;
+}
+
+label::after {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: #c31010;
+    top:0px;
+    left:0px;
+    border-radius: 50%;
+}
+input[type="checkbox"] + label::after {
+    display: none;
+}
+input[type="checkbox"]:checked + label::after {
+    display: flex;
+}
+.note,h1 {
+    margin: 0 auto;
+    display: block;
+    width: 90%;
     
     
 }
->>>>>>> parent of cfa76dc (falta js delivery)
+.note {
+    height: 15%;
+   
+    background-color:transparent;
+    border:none;
+    resize: none;
+    
+    border: #eeecec 2px solid;
+    padding:1em;
+
+}
+
