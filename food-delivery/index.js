@@ -3,26 +3,28 @@ import { menuArray } from "./data.js"
 let menuHtml = ""
 let optionHtml = ""
 
+let quantityHtml = document.querySelector(".quantity")
+let quantity = 0
+
+let sumBtn = document.querySelector(".sum-btn")
+let subBtn = document.querySelector(".sub-btn")
+
 document.querySelector(".menu-container").innerHTML = renderMenu()
 
 function renderMenu() {
     menuArray.forEach(item => {
         menuHtml += `
         <div class="item-container" id="${item.id}">
-        <div class="item">
-            <img src="imgs/bgimg.png">
-            <div class="item-info">
-                <div class="item-preview">
+            
+            <div class="item">
                     <h1 class="item-name">${item.name}</h1>
-                    <h2 class="item-ingredients">${item.ingredients}</h2>
-                    <p class="item-description"></p>
-                </div>
+                    <p class="item-ingredients">${item.ingredients}</p>
+                    
                 <div class="item-price">${item.price}</div>
             </div>
-        </div>
-      <div>
-            <button class="add-item-btn">+</button>
-        </div>
+            <button class="add-item-btn">+</button> 
+      
+   
     </div>
         
         `
@@ -30,15 +32,16 @@ function renderMenu() {
     return menuHtml
 }
 function renderMenuOptions(item) {
-    for(item of item) {
+    for(item of item.options) {
             optionHtml += `
             <div class="option" >
                 <div class="option-item">
                 <h1>${item.optionName}</h1>
                 <p>${item.optionsDescription}</p>
+                <div>$${item.optionPrice}  </div>
                 </div>
             <div>
-                <input type="checkbox">
+                <input type="checkbox" class="option-checkbox">
                 <label for="checkbox"></label>
             </div>
             </div>
@@ -46,8 +49,12 @@ function renderMenuOptions(item) {
          `
     }
         return optionHtml
-
+    
 }
+function calculateTotalOptions() {
+    
+}
+
 
 document.querySelectorAll(".add-item-btn").forEach(btn => btn.addEventListener("click", () => {
     
@@ -56,10 +63,31 @@ document.querySelectorAll(".add-item-btn").forEach(btn => btn.addEventListener("
         if(item.id == id) {
             console.log(item)
             document.querySelector(".options-section").style.display = "inline"
-         /*  item.options.forEach(option => {
-            console.log(option)*/
-                document.querySelector(".options-section").innerHTML += renderMenuOptions(item.options)
-          // })*/
+                document.querySelector(".options").innerHTML = renderMenuOptions(item)
         }
     })
 }))
+
+document.querySelector(".close-options-btn").addEventListener("click",(e) => {
+    document.querySelector(".options-section").style.display = "none"
+})
+
+document.querySelector("input").addEventListener("change",(e) => {
+    console.log(e)
+})
+
+subBtn.addEventListener("click",()=> {
+    if(quantity > 0) {
+        quantity--
+        quantityHtml.textContent = quantity
+    }
+
+})
+
+sumBtn.addEventListener("click",() => {
+    quantity++
+    quantityHtml.textContent = quantity
+    
+    
+})
+

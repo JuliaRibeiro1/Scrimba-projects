@@ -17,6 +17,7 @@ header {
     background-size:cover;
     background-repeat: no-repeat;
     background-position:50% 50%;
+    background-color: red;
    
 }
 header span {
@@ -25,32 +26,53 @@ header span {
     font-family: 'Smythe', cursive,sans-serif;
     
 }
+section {
+    width: 90%;
+}
+.menu-container img {
+    width: 200px;
+    height: 150px;
+}
+.item-container{
+    font-size: 1.2rem;
+    word-wrap: break-word; 
+   
+    width: 100%;
+    background-color: #c31010;
+}
+/*
 .item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+
+/*.item-container {
     margin-top: 10px;
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    padding: 2em;
+    padding: 0em;
+    background-color: red;
     
 }
 .item {
     display: flex;
     border-bottom:#DEDEDE 2px solid;
-    height: 200px;
     display: flex;
     width: 100%;
     gap: 10px;
+    
 
 }
 .item h1 {
     margin-top: 0;
     margin-bottom: 15px;
 }
-.item img {
-    width: 180px;
-    height: 150px;
-}
+
 .item-ingredients {
     color:#8b8b8b
 }
@@ -63,22 +85,22 @@ header span {
 .item-price {
     margin-top: 20px;
     font-size: 1.5em;
-}
+}*/
 .add-item-btn {
     background-color: transparent;
     border-radius: 50%;
     width: 50px;
-
     height: 50px;
+    
     border: #DEDEDE 2px solid;
     color:#3C3C3C;
     font-size: 2rem;
- 
     
 }
 .options-section {
     position: fixed;
     width:90%;
+    
     height: 90%;
     padding: 1em;
     overflow: scroll;
@@ -89,12 +111,17 @@ header span {
     transform: translate(-50%,-50%);
     z-index: 1;
     display: none;
+    max-width: 600px;
 }
+
 .options-section h1 {
     font-size: 1.5rem;
+    margin-left:0;
+    margin-bottom: 0.5em;
 }
 .option-item {
-    width: 65%;
+   word-wrap: break-word;
+   width: 80%
 }
 .option {
     display: flex;
@@ -113,8 +140,20 @@ header span {
     left: 50%;
     transform: translate(-50%,50%); 
 }
-
-input[type="checkbox"] {
+.close-options-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: relative;
+    left: 95%;
+    top:3px;
+    color:#5e5e5e
+}
+.option input {
+    margin: 2em;
+}
+/*input[type="checkbox"] {
     opacity: 0;
 }
 
@@ -148,23 +187,66 @@ input[type="checkbox"] + label::after {
 }
 input[type="checkbox"]:checked + label::after {
     display: flex;
-}
-.note,h1 {
+}*/
+
+.note-container {
+    margin-top: 2em;
     margin: 0 auto;
-    display: block;
     width: 90%;
     
-    
+}
+.note-container h1 {
+    margin-top: 1.5em;
 }
 .note {
+    width: 100%;
     height: 15%;
-   
     background-color:transparent;
     border:none;
     resize: none;
-    
     border: #eeecec 2px solid;
     padding:1em;
+    margin-top: 0.8em;
+   
+
+}
+.finish-option-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+    width: 100%;
+    margin: 0 auto;
+    
+    
+}
+
+.sub-btn,.sum-btn {
+    color:#d00000;
+    border:none;
+    background: transparent;
+    font-size: 1.7rem;
+    margin-top: 0em;
+    
+}
+.quantity-container,.add-option-btn{
+
+    margin-top:1em
+}
+.quantity {
+    font-size: 1.2rem;
+    padding: 1em;
+    
 
 }
 
+.add-option-btn {
+    
+    background-color:#d00000;
+    padding:1em ;
+    border: none;
+    color:white;
+    width: 60%;
+    font-weight: bold;
+    
+}
