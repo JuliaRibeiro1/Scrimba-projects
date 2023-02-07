@@ -241,8 +241,8 @@ input[type="checkbox"]:checked + label::after {
 }
 
 .add-option-btn {
-    
     background-color:#d00000;
+    opacity: 0.3;
     padding:1em ;
     border: none;
     color:white;
