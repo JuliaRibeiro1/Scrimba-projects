@@ -4,7 +4,7 @@ export const menuArray = [
         ingredients: ["pepperoni", "mushrom", "mozarella"],
         id: 0,
         price: 14,
-        emoji: "🍕",
+        image: "./imgs/pizza.jpg",
         options:[
             {
                 optionName: "Greek style",
@@ -44,7 +44,7 @@ export const menuArray = [
         name: "Hamburger",
         ingredients: ["beef", "cheese", "lettuce"],
         price: 12,
-        emoji: "🍔",
+        image: "./imgs/hamburguer.jpg",
         id: 1,
         options:[
             {
@@ -81,11 +81,11 @@ export const menuArray = [
             },
         ],
     },
-      /*  {
+      {
         name: "Beer",
         ingredients: ["grain, hops, yeast, water"],
         price: 12,
-        emoji: "🍺",
+        image:"./imgs/beer.jpg",
         id: 2
-    }*/
+    }
 ]
