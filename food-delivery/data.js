@@ -81,11 +81,11 @@ export const menuArray = [
             },
         ],
     },
-      {
+   /*   {
         name: "Beer",
         ingredients: ["grain, hops, yeast, water"],
         price: 12,
         image:"./imgs/beer.jpg",
         id: 2
-    }
+    }*/
 ]

@@ -1,54 +1,75 @@
 
 import { menuArray } from "./data.js"
+let b = ""
+function RenderHtml(data) {
+    Object.assign(this,data)
+    
+    this.renderMenu = data.map(function (item) {
+            const { name, ingredients, id, price, image } = item
+             return (
+                `<div class="item-container" id="${id}">
+            <img src=${image}>
+                <div class="item">
+                        
+                        <h1 class="item-name">${name}</h1>
+                        <p class="item-ingredients">${ingredients}</p>
+                </div>
+                <button class="add-item-btn">+</button>
+        </div> `
+             )
+        })   
+        this.renderNoteContainer = function() {
+            return (
+                `
+                <aside class="note-container">
+                <h1>Notes</h1>
+                <textarea class="note" placeholder="No onions or garlic."></textarea>
+                <div class="finish-option-container">
+                    <div class="quantity-container">
+                        <button class="sub-btn">-</button>
+                        <span class="quantity">0</span>
+                        <button class="sum-btn">+</button>
+                    </div>
+                    <button class="add-option-btn red-btn">Add <span class="total-option-price"></span></button>
+                </div>
+            </aside>
+                `
+            )
+        }
+    this.renderOptions = function(item) {
+        let result = ""
+    item.options.forEach(function(option)  {
+        console.log(option)
+        const { optionId,optionName,optionPrice,optionsDescription } = option
+       
+        result +=
+           ` <div class="option" id=${optionId}>
+            <div class="option-item" id=option-${optionId}>
+                <h1 id=title-${optionId}>${optionName}</h1>
+                <p id=description-${optionId}>${optionsDescription}</p>
+                <div class="price">$<span id="price-${optionId}">${optionPrice}</span>  
+            </div>
+        </div>
+            <div>
+                <input type="radio" class="option-radio" name="radio" >
+                <label for="radio"></label>
+            </div>
+        </div>
+    `
+    console.log(optionName)
+    })
+    
+    return result
+    }
+    
+}
+let menuRenderFunction = new RenderHtml(menuArray)
 
-
-
-
-let optionHtml = ""
+document.querySelector(".menu").innerHTML = menuRenderFunction.renderMenu
 
 
 let quantity = 0
 
-document.querySelector(".menu").innerHTML += renderMenu()
-function renderMenu() {
-    let menuHtml = ""
-    menuArray.forEach(item => {
-        menuHtml += `
-        <div class="item-container" id="${item.id}">
-        <img src=${item.image}>
-            <div class="item">
-                    
-                    <h1 class="item-name">${item.name}</h1>
-                    <p class="item-ingredients">${item.ingredients}</p>
-                
-            </div>
-            <button class="add-item-btn">+</button>
-    </div>  
-        `
-    })
-    return menuHtml
-}
-function renderMenuOptions(item) {
-    console.log(item.options)
-    optionHtml = ""
-    for(item of item.options) {
-            optionHtml += `
-            <div class="option" id=${item.optionId}>
-                <div class="option-item" id=option-${item.optionId}>
-                    <h1 id=title-${item.optionId}>${item.optionName}</h1>
-                    <p id=description-${item.optionId}>${item.optionsDescription}</p>
-                    <div class="price">$<span id="price-${item.optionId}">${item.optionPrice}</span>  
-                </div>
-            </div>
-                <div>
-                    <input type="radio" class="option-radio" name="radio" >
-                    <label for="radio"></label>
-                </div>
-            </div>
-        `
-   }   
-        return optionHtml
-}
 
 
 document.querySelectorAll(".add-item-btn").forEach(btn => btn.addEventListener("click", (e) => {
@@ -56,25 +77,12 @@ document.querySelectorAll(".add-item-btn").forEach(btn => btn.addEventListener("
     let id = e.target.parentElement.id
 
     menuArray.forEach(option => {
-        
         if(id == option.id) {
-           
+            document.querySelector(".options").innerHTML = menuRenderFunction.renderOptions(option)
             document.querySelector(".options-section").style.display = "inline"
-            document.querySelector(".options").innerHTML = renderMenuOptions(option)
-            document.querySelector(".options").innerHTML += `
-            <aside class="note-container">
-            <h1>Notes</h1>
-            <textarea class="note" placeholder="No onions or garlic."></textarea>
-            <div class="finish-option-container">
-                <div class="quantity-container">
-                    <button class="sub-btn">-</button>
-                    <span class="quantity">0</span>
-                    <button class="sum-btn">+</button>
-                </div>
-                <button class="add-option-btn red-btn">Add <span class="total-option-price"></span></button>
-            </div>
-        </aside>
-            `
+
+           document.querySelector(".options").innerHTML +=  menuRenderFunction.renderNoteContainer()
+
         }
     })
 }))
@@ -87,7 +95,7 @@ let element;
 let parentEl;
 let priceOption;
 let radioSelected;
-let price = 0
+let price = ""
 let radioParent;
 let addOptionBtn;
 let quantityHtml;
@@ -98,6 +106,12 @@ document.querySelector("body").addEventListener("click",(e) => {
     element = e.target
     console.log(e.target)
     if(element.className == "option-radio") {
+        menuArray.forEach(option => {
+            if(element.parentElement.parentElement.id == option.id) {
+                RenderHtml.renderOptions(option)
+            }
+        })
+        console.log(element.parentElement.parentElement)
         addOptionBtn = document.querySelector(".add-option-btn")
         radioSelected = e.target
         quantityHtml = document.querySelector(".quantity")
