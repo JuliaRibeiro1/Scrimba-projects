@@ -10,6 +10,7 @@ export const menuArray = [
                 optionName: "Greek style",
                 optionsDescription: ["Tomato sauce","feta","eliá kalamatas","artichoke","oregano"],
                 optionPrice:11,
+                quantity:0,
                 optionId:0.1
 
 
@@ -18,6 +19,7 @@ export const menuArray = [
                 optionName: "California style",
                 optionsDescription: ["Shrimps","asparagus","seafood","pineapple"],
                 optionPrice:12,
+                quantity:0,
                 optionId:0.2
                 
 
@@ -26,6 +28,7 @@ export const menuArray = [
                 optionName: "Anchovy pizza",
                 optionsDescription: ["Tomato sauce","creamy mozzarella","salty anchovies capers","oregano"],
                 optionPrice:11.50,
+                quantity:0,
                 optionId:0.3
                 
 
@@ -34,6 +37,7 @@ export const menuArray = [
                 optionName: "Margherita pizza",
                 optionsDescription: ["Crushed San Marzano tomato sauce","mozzarella","basil","olive oil"],
                 optionPrice:10,
+                quantity:0,
                 optionId:0.4
                 
 
@@ -51,6 +55,7 @@ export const menuArray = [
                 optionName: "Theta",
                 optionsDescription: ["Bun","cheddar cheese","dill Pickles","mayonnaise","hickory sauce","beef patty"],
                 optionPrice:5.50,
+                quantity:0,
                 optionId:1.1
 
 
@@ -59,6 +64,7 @@ export const menuArray = [
                 optionName: "Green Chile Cheesburger",
                 optionsDescription: ["Bun","onion","cheese","lettuce","tomato"," mexico green chile","beef patty"],
                 optionPrice:6,
+                quantity:0,
                 optionId:1.2
                 
 
@@ -67,6 +73,7 @@ export const menuArray = [
                 optionName: "Pastrami",
                 optionsDescription: ["Bun","fry sauce","onions","lettuce","pastrami","tomatos","american cheese","beef patty"],
                 optionPrice:6,
+                quantity:0,
                 optionId:1.3
                 
 
@@ -75,6 +82,7 @@ export const menuArray = [
                 optionName: "Australian",
                 optionsDescription: ["Bun","tomato-based sauce","pickled beetroot","tomato","stewed onions","lettuce","beef patty"],
                 optionPrice:5.75,
+                quantity:0,
                 optionId:1.4
                 
 
