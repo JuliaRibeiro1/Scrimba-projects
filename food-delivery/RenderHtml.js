@@ -1,29 +1,56 @@
 //import {increment,decrement} from "./utils.js"
-
-export function RenderHtml(data) {
-    Object.assign(this,data)
-
-   
-    this.renderMenuHtml = function(item) {
-        let result = ""
+import { menuArray } from "./data.js"
+import { returnMenu} from "./utils.js"
+let i = -1
+let result = ""
+let finishReview = ""
+ export class RenderHtml {
+    constructor(data) {
+        Object.assign(this, data)
         
-           const { name, ingredients, id, price, image,quantity } = item.apply(this)
-           // console.log(name)
+        this.data = data
+       // this.element = function() {returnMenu(data)}
+    }
+    renderT = function(data) {
+      //      return data[0]
+       
+    }
+    renderTest = function(data) {
+            return data[i]
+        
+      
+   // 
+    
+ }
+    renderMenuHtml = function(data) {
+       
+        //console.log(result)
+        while(i < 1) {
+            i++
+            
+          const { name, ingredients, id, price, image,quantity } = this.renderTest(data)
              result +=
                 `<div class="item-container" id="${id}">
             <img src=${image}>
                 <div class="item">
-                        
-                        <h1 class="item-name">${name}</h1>
-                        <p class="item-ingredients">${ingredients}</p>
+                    <h1 class="item-name">${name}</h1>
+                    <p class="item-ingredients">${ingredients}</p>
                 </div>
                 <button class="add-item-btn">+</button>
         </div> `
-             
-             return result
-        }
+        
+        }   
+            
+      //  })
+    //  console.log(result)
+         return result
+         
+  //  }
+        
+}
+        
 
-        this.renderNoteContainer = function() {
+        renderNoteContainer = function() {
             return (
                 `
                 <aside class="note-container">
@@ -41,28 +68,23 @@ export function RenderHtml(data) {
                 `
             )
         }
-        this.renderOp = function(price) {
+        renderOp = function(price) {
             return price * this.quantity
             
         }
         
-        this.increment = function(element) {
+        increment = function(element) {
             return element.quantity = element.quantity + 1
            
         }
-        this.decrement = function(element) {
+        decrement = function(element) {
             return element.quantity = element.quantity - 1
         }
        /* this.addOption = function(element) {
             return 
         }*/
-        this.renderMenu = function(data) {
-            data.forEach(item => {
-                return item
-            })
-        }
-        
-        this.renderOption = function(data,event) {
+         
+        renderOption = function(data,event) {
             let selectedEl;
             data.forEach(option => {
                 
@@ -77,14 +99,14 @@ export function RenderHtml(data) {
             return selectedEl
              
         }
-        this.renderPrice = function(element) {
+        renderPrice = function(element) {
             return element.optionPrice
         }
             
         
-        this.finishOrder = function(item) {
-             const { optionId,optionName,optionPrice,optionsDescription } = item
-             let finishReview = ""
+        finishOrder = function(item) {
+             const { optionId,optionName,optionPrice,optionsDescription,quantity } = item
+             
             finishReview += `
                 <div class="order-container">
                     <div class="order">
@@ -97,18 +119,18 @@ export function RenderHtml(data) {
         }
         
         
-    this.refreshPrice = function(element) {
+    refreshPrice = function(element) {
         let price = this.renderPrice(element)
         return price * element.quantity
 
     }     
         
-    this.renderOptions = function(item) {
+    renderOptions = function(item) {
 
     let result = ""
 
     item.options.forEach(function(element)  {
-        const { optionId,optionName,optionPrice,optionsDescription } = element
+        const { optionId,optionName,optionPrice,optionsDescription,quantity } = element
        
         result +=
            ` <div class="option" id=${optionId}>
@@ -125,8 +147,10 @@ export function RenderHtml(data) {
         </div>
     `
     
+     
+   
+    
     })
     return result
-    }
-   
 }
+ }

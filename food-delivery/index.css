@@ -77,7 +77,7 @@ section {
 }
 
 
-.options-section {
+.options-section,.finish-order-container {
     position: fixed;
     width:90%;
     
@@ -103,7 +103,7 @@ section {
    word-wrap: break-word;
    width: 80%
 }
-.option {
+.option,.order-container {
     display: flex;
     align-items: center;
     padding: 2em;
@@ -111,7 +111,7 @@ section {
     justify-content: start;
    
 }
-.option::after {
+.option::after,.order-container::after {
     content:"";
     width: 90%;
     height: 2px;
@@ -203,8 +203,6 @@ input[type="checkbox"]:checked + label::after {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 1em;
-    
-    
 }
 
 .sub-btn,.sum-btn {
@@ -236,8 +234,7 @@ input[type="checkbox"]:checked + label::after {
     font-weight: bold;
 }
 
-.finish-order-container {
-  
+.finish-order-aside {
     padding: 2em;
     
 }
@@ -248,8 +245,20 @@ input[type="checkbox"]:checked + label::after {
     width: 100vw;
    
 }
-.finish-order-container {
+.finish-order-aside {
     margin-top:0;
     position:fixed;
     top:88%;
 }
+/*.finish-order-container {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    background-color:#DEDEDE;
+    width: 50%;
+    height: 90%;
+    left:50%;
+    top:10%;
+    transform: translate(-50%,10%);
+
+}*/
