@@ -1,0 +1,96 @@
+/*body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}*/
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+header {
+  
+  width: 100%;
+}
+.header {
+  padding: 1em;
+  height: 120px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.021);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 2px solid rgba(44, 44, 44, 0.034);
+  margin-bottom: 1em;
+}
+.ul-header {
+  justify-content: space-between;
+
+}
+ul {
+  list-style: none;
+}
+.logo-img {
+  width: 130px;
+}
+.main-user-avatar-img,.ul-post img {
+  border-radius: 50%;
+  width: 50px;
+}
+.flex {
+  display:flex;
+}
+.ul-post {
+  display: grid;
+  grid-template-columns: repeat(2,65px);
+}
+.header-post {
+  padding: 0.5em 1em;
+}
+.ul-post li {
+  width: 75vw;
+}
+.span {
+  grid-row: span 2 ;
+}
+.ul-post h1 {
+  font-size: 1.25rem;
+}
+.ul-post h2 {
+  font-size: 0.9rem;
+  color:grey
+}
+.post-img {
+  width: 100%;
+}
+footer {
+  padding: 0em 1em;
+}
+.btns-container li{
+  margin-right: 1em;
+}
+.btns-container img {
+  width: 25px;
+}
+
+.likesNumberSpan,.comment-main-username {
+  font-weight: bolder;
+}
+button {
+  background-color: transparent;
+  border: none;
+}
+footer section {
+  margin-top: 0.6em;
+}
+.comment-main-username {
+  margin-right: 5px;
+}
+  
