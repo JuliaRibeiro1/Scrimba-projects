@@ -52,7 +52,7 @@ ul {
   grid-template-columns: repeat(2,65px);
 }
 .header-post {
-  padding: 0.5em 1em;
+  padding: 0.5em 0.65em;
 }
 .ul-post li {
   width: 75vw;
