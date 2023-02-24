@@ -1,10 +1,20 @@
+//IMAGES
+import avatarVanG from "./images/avatar-vangogh.jpg"
+import postVanG from "./images/post-vangogh.jpg"
+import avatarCourbet from "./images/avatar-courbet.jpg"
+import postCourbet from "./images/post-courbet.jpg"
+import avatarDucreux from "./images/avatar-ducreux.jpg"
+import postDucreux from "./images/post-ducreux.jpg"
+
+console.log(postVanG)
 export default [
+   
     {
         name: "Vincent van Gogh",
         username: "vincey1853",
         location: "Zundert, Netherlands",
-        avatar: "images/avatar-vangogh.jpg",
-        post: "images/post-vangogh.jpg",
+        avatar:avatarVanG,
+        post: postVanG,
         comment: "just took a few mushrooms lol",
         likes: 21,
         id:"7294334c-b2d2-11ed-afa1-0242ac120002"
@@ -13,8 +23,8 @@ export default [
         name: "Gustave Courbet",
         username: "gus1819",
         location: "Ornans, France",
-        avatar: "images/avatar-courbet.jpg",
-        post: "images/post-courbet.jpg",
+        avatar: avatarCourbet,
+        post: postCourbet,
         comment: "i'm feelin a bit stressed tbh",
         likes: 4,
         id:"88e7ede6-b2d2-11ed-afa1-0242ac120002"
@@ -23,8 +33,8 @@ export default [
         name: "Joseph Ducreux",
         username: "jd1735",
         location: "Paris, France",
-        avatar: "images/avatar-ducreux.jpg",
-        post: "images/post-ducreux.jpg",
+        avatar: avatarDucreux,
+        post: postDucreux,
         comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152,
         id:"959ed07c-b2d2-11ed-afa1-0242ac120002 "
