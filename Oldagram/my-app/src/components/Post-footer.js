@@ -5,6 +5,7 @@ import iconHeart from "../images/icon-heart.png"
 import iconHeartFilled from "../images/filled-heart.png"
 import iconComment from "../images/icon-comment.png"
 import iconDm from "../images/icon-dm.png"
+import userAvatar from "../images/marie-antoinette.jpg"
 
 
 export default function PostFooter(props) {
@@ -30,9 +31,18 @@ export default function PostFooter(props) {
     function addComment() {
         setComment(comment => !comment)
     }
-    let userComment = comment? `
-        <div>oi</div>
-    `:``
+    let userComment = !comment? 
+    <section className="comment-section">
+        <div className="flex">
+            <img className="main-user-comment-img" src={userAvatar}/>
+            <form className="flex">
+            <textarea placeholder="Add a comment..."></textarea>
+            <input type="submit" value="Publish"/>
+            </form>
+            
+        </div>
+    </section>
+    :``
     console.log(props)
    let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1
     return(
