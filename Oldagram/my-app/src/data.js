@@ -15,9 +15,10 @@ export default [
         location: "Zundert, Netherlands",
         avatar:avatarVanG,
         post: postVanG,
-        comment: "just took a few mushrooms lol",
+        quote: "just took a few mushrooms lol",
         likes: 21,
         isLiked:false,
+        comments: [],
         id:"7294334c-b2d2-11ed-afa1-0242ac120002"
     },
     {
@@ -26,10 +27,12 @@ export default [
         location: "Ornans, France",
         avatar: avatarCourbet,
         post: postCourbet,
-        comment: "i'm feelin a bit stressed tbh",
+        quote: "i'm feelin a bit stressed tbh",
         likes: 4,
         isLiked:false,
-        id:"88e7ede6-b2d2-11ed-afa1-0242ac120002"
+        comments: [],
+        id:"88e7ede6-b2d2-11ed-afa1-0242ac120002",
+
     },
         {
         name: "Joseph Ducreux",
@@ -37,9 +40,10 @@ export default [
         location: "Paris, France",
         avatar: avatarDucreux,
         post: postDucreux,
-        comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
+        quote: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152,
         isLiked:false,
+        comments: [],
         id:"959ed07c-b2d2-11ed-afa1-0242ac120002 "
     }
 ]
