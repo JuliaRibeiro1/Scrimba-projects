@@ -1,7 +1,7 @@
 import React from 'react';
 
 import logo from '../images/logo.png'
-import userAvatar from "../images/user-avatar.png"
+import userAvatar from "../images/marie-antoinette.jpg"
 
 export default function Header(){
     return(

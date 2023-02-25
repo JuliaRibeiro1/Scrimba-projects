@@ -2,7 +2,6 @@ import React from "react"
 import PostFooter from "../components/Post-footer.js"
 
 export default function Post(props) {
-    console.log(props.avatar)
     return(
         <article>
             <header className="header-post">
