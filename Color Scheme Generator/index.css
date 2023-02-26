@@ -1,0 +1,89 @@
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    overflow-x: hidden
+}
+.section-header {
+    background-color: white;
+    padding: 1.5em;
+    width: 99vw;
+    
+}
+form {
+    gap:0.7em;
+}
+.flex{
+    display: flex;
+    
+    
+}
+.seed-color {
+    width: 100px;
+    height: 35px;
+    border:2px #D1D5DB solid;
+    align-self: center;
+    
+}
+.option:hover {
+    background-color:red;
+    font-weight: bolder
+}
+select {
+    width: 90%;
+   
+}
+
+select,.submit-btn {
+    padding:0.5em 1em;
+    border-radius: 0.3em;
+    background-color: transparent;
+    border: #D1D5DB 2px solid ;
+}
+.section-scheme-colors {
+    width:  100vw;
+    height: 500px;
+}
+.color div {
+    width:20vw;
+    height: 92% 
+     
+    
+}
+
+#red {
+    background-color: red
+}
+#blue {
+    background-color: blue
+}
+#yellow {
+    background-color: yellow
+}
+#green {
+    background-color: green
+}
+#purple {
+    background-color: purple
+}
+/*.section-scheme-colors div:nth-child(1) {
+    background-color: red;
+}
+.section-scheme-colors div:nth-child(2) {
+    background-color: darkblue;
+}
+.section-scheme-colors  div:nth-child(3) {
+    background-color: yellow;
+}
+.section-scheme-colors div:nth-child(4) {
+    background-color: green;
+}
+.section-scheme-colors div:nth-child(5) {
+    background-color:blue;
+}*/
+span {
+
+ width: 100%;
+  background-color:  grey;
+  padding: 01em 2em
+}

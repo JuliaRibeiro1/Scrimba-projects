@@ -61,7 +61,7 @@ textarea {
   margin-right: 0.3em;
 
 }
-input[type=submit] {
+.submit-comment {
   color:rgb(3, 108, 168);
   font-weight: bold;
   background-color: transparent;

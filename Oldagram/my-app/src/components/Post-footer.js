@@ -14,7 +14,7 @@ export default function PostFooter(props) {
         likesNumber : props.likes
     })
     let [comment,setComment] = React.useState(props.comments)
-    
+    let [postc,setc] = React.useState(props.comments)
      let heartIcon = !postValues.isLiked ? iconHeart : iconHeartFilled
     function addLikes() {
        
@@ -31,19 +31,26 @@ export default function PostFooter(props) {
     function addComment() {
         setComment(comment => !comment)
     }
-    let userComment = !comment? 
+    function pushComment() {
+       // props.comments+= document.querySelector("textarea").value
+       setc([
+        ...comment,document.querySelector("textarea").value
+    ])
+    }
+ 
+    let userComment = comment? 
     <section className="comment-section">
         <div className="flex">
             <img className="main-user-comment-img" src={userAvatar}/>
-            <form className="flex">
-            <textarea placeholder="Add a comment..."></textarea>
-            <input type="submit" value="Publish"/>
-            </form>
+            <form className="flex"></form>
+            <textarea placeholder="Add a comment..." className="textarea"></textarea>
+            <button  className="submit-comment" onClick={pushComment}>Publish</button>
+            
             
         </div>
     </section>
-    :``
-    console.log(props)
+    : ""
+   
    let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1
     return(
         <footer className="post-footer">
