@@ -15,6 +15,7 @@ export default function PostFooter(props) {
     })
     let [comment,setComment] = React.useState(props.comments)
     let [postc,setc] = React.useState(props.comments)
+    const [name, setName] = React.useState('');
      let heartIcon = !postValues.isLiked ? iconHeart : iconHeartFilled
     function addLikes() {
        
@@ -28,25 +29,34 @@ export default function PostFooter(props) {
       })
         
     }
+
     function addComment() {
         setComment(comment => !comment)
     }
-    function pushComment() {
-       // props.comments+= document.querySelector("textarea").value
-       setc([
-        ...comment,document.querySelector("textarea").value
-    ])
-    }
- 
+
     let userComment = comment? 
     <section className="comment-section">
+        <ul className="comments-list">
+        {postc.map(artist => (
+          <li>
+            <img src={artist.userPic} className="user-comment-img span"/>
+            <h1>{artist.username}</h1>
+            <p>{artist.name}</p>
+          </li>
+        ))}
+        </ul>
         <div className="flex">
             <img className="main-user-comment-img" src={userAvatar}/>
             <form className="flex"></form>
-            <textarea placeholder="Add a comment..." className="textarea"></textarea>
-            <button  className="submit-comment" onClick={pushComment}>Publish</button>
-            
-            
+            <textarea placeholder="Add a comment..." className="textarea" onChange={e => setName(e.target.value)} ></textarea>
+            <button  className="submit-comment" onClick={() => {
+        ;
+        setc([
+          ...postc,
+          {userPic: userAvatar,name:name,username:"Marie"}
+        ]
+        )}}>Publish</button>
+          
         </div>
     </section>
     : ""

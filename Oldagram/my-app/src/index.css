@@ -34,6 +34,7 @@ header {
   justify-content: space-between;
 
 }
+
 ul {
   list-style: none;
 }
@@ -46,7 +47,7 @@ ul {
   height: 50px;
 }
 .main-user-comment-img {
-  width: 30px;
+  width: 32px;
   height: 30px;
   border-radius: 50%;
 }
@@ -69,10 +70,17 @@ textarea {
 }
 
 .comment-section div{
-  gap: 0.5em;
+  gap:2px;
   width: 100%;
 }
-.flex {
+.comments-list {
+  padding-left: 0.2em;
+  margin-bottom: 1.2em;
+}
+.comments-list li {
+  margin-bottom: 0.6em;
+}
+.flex  {
   display:flex;
 }
 .ul-post {
@@ -82,9 +90,19 @@ textarea {
 .header-post {
   padding: 0.5em 0.65em;
 }
+.user-comment-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 .ul-post li {
   width: 75vw;
 }
+.comments-list li {
+  display: grid;
+  grid-template-columns: repeat(2,2.5em);
+}
+
 .span {
   grid-row: span 2 ;
 }
@@ -97,6 +115,7 @@ textarea {
 }
 .post-img {
   width: 100%;
+  max-width: 900px;
 }
 footer {
   padding: 0em 1em;
@@ -127,4 +146,22 @@ footer section {
   
 article {
   margin-bottom: 1em;
+}
+
+@media (min-width:450px) {
+  .post-img {
+    max-width: 500px;
+    max-height: 500px;
+  }
+  main {
+    margin: 0 auto;
+   position: relative;
+   display: block;
+   width: 100%;
+    height: 100%;
+    
+  }
+  textarea {
+    width:80%;
+  }
 }
