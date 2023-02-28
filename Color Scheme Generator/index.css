@@ -16,7 +16,6 @@ form {
 .flex{
     display: flex;
     
-    
 }
 .seed-color {
     width: 100px;
@@ -31,10 +30,8 @@ form {
 }
 select {
     width: 90%;
-   
 }
-
-select,.submit-btn {
+select,.random-btn {
     padding:0.5em 1em;
     border-radius: 0.3em;
     background-color: transparent;
@@ -42,48 +39,25 @@ select,.submit-btn {
 }
 .section-scheme-colors {
     width:  100vw;
-    height: 500px;
+    height: 100vh;
 }
-.color div {
-    width:20vw;
-    height: 92% 
-     
-    
+.random-btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1em;
 }
-
-#red {
-    background-color: red
+.color {
+   height: 15%;
+   width: 100vw;
+   justify-content: center;
+   align-items: center;
+   font-family: 'Ubuntu Condensed', sans-serif;
+   
 }
-#blue {
-    background-color: blue
-}
-#yellow {
-    background-color: yellow
-}
-#green {
-    background-color: green
-}
-#purple {
-    background-color: purple
-}
-/*.section-scheme-colors div:nth-child(1) {
-    background-color: red;
-}
-.section-scheme-colors div:nth-child(2) {
-    background-color: darkblue;
-}
-.section-scheme-colors  div:nth-child(3) {
-    background-color: yellow;
-}
-.section-scheme-colors div:nth-child(4) {
-    background-color: green;
-}
-.section-scheme-colors div:nth-child(5) {
-    background-color:blue;
-}*/
 span {
-
- width: 100%;
-  background-color:  grey;
-  padding: 01em 2em
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+  
+  
 }
