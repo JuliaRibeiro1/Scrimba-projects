@@ -16,9 +16,10 @@ export default function Post(props) {
                 </ul>
             </header>
             <img className="post-img" src={props.post}/>
-           <PostFooter
-             {...props}
-           />
+            <PostFooter
+         {...props}
+       />
         </article>
+         
     )
 }

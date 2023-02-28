@@ -26,7 +26,7 @@ export default function App() {
     <>
       <Header/>
       <main>
-        <section>
+        <section className="main-section">
           {postIterate}
         </section>
       </main>

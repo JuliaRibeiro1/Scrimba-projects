@@ -6,54 +6,58 @@ import iconHeartFilled from "../images/filled-heart.png"
 import iconComment from "../images/icon-comment.png"
 import iconDm from "../images/icon-dm.png"
 import userAvatar from "../images/marie-antoinette.jpg"
-
+ 
 
 export default function PostFooter(props) {
     let [postValues,setPost] = React.useState({
         isLiked: props.isLiked,
         likesNumber : props.likes
     })
-    let [comment,setComment] = React.useState(props.comments)
-    let [postc,setc] = React.useState(props.comments)
-    const [name, setName] = React.useState('');
-     let heartIcon = !postValues.isLiked ? iconHeart : iconHeartFilled
-    function addLikes() {
-       
+    
+    let [showComments,setShowComments] = React.useState(props.comments)
+
+    let [postComment,setComment] = React.useState(props.comments)
+
+    let [commentText, setcommentText] = React.useState('');
+
+    let heartIcon = postValues.isLiked? iconHeartFilled : iconHeart
+
+    let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1
+
+    function addLikes() { 
       setPost(prev => {
-       
         return{
         ...prev,   
         isLiked : !prev.isLiked,
-       
         }
-      })
-        
+      }) 
+    }
+    
+
+    function comments() {
+        setShowComments(comment => !comment)
     }
 
-    function addComment() {
-        setComment(comment => !comment)
-    }
-
-    let userComment = comment? 
+    let userComment = !showComments? 
     <section className="comment-section">
         <ul className="comments-list">
-        {postc.map(artist => (
+        {postComment.map(user => (
           <li>
-            <img src={artist.userPic} className="user-comment-img span"/>
-            <h1>{artist.username}</h1>
-            <p>{artist.name}</p>
+            <img src={user.userPic} className="user-comment-img span"/>
+            <h1>{user.username}</h1>
+            <p>{user.name}</p>
           </li>
         ))}
         </ul>
         <div className="flex">
             <img className="main-user-comment-img" src={userAvatar}/>
             <form className="flex"></form>
-            <textarea placeholder="Add a comment..." className="textarea" onChange={e => setName(e.target.value)} ></textarea>
+            <textarea placeholder="Add a comment..." className="textarea" onChange={e => setcommentText(e.target.value)} ></textarea>
             <button  className="submit-comment" onClick={() => {
         ;
-        setc([
-          ...postc,
-          {userPic: userAvatar,name:name,username:"Marie"}
+        setComment([
+          ...postComment,
+          {userPic: userAvatar,name:commentText,username:"Marie"}
         ]
         )}}>Publish</button>
           
@@ -61,13 +65,13 @@ export default function PostFooter(props) {
     </section>
     : ""
    
-   let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1
+   
     return(
         <footer className="post-footer">
             <section>
             <ul className="btns-container flex">
                 <li><button><img src={heartIcon} onClick={addLikes}/></button></li>
-                <li><button><img src={iconComment} onClick={addComment}/></button></li>
+                <li><button><img src={iconComment} onClick={comments}/></button></li>
                 <li><button><img src={iconDm}/></button></li>
             </ul>
             </section>
@@ -79,7 +83,7 @@ export default function PostFooter(props) {
                     <span className="comment-main-username">{props.username}</span>
                     {props.quote}</p>
             </section>
-            <section>
+            <section className="user-comments-container">
                 {userComment}
             </section>
         </footer> 
