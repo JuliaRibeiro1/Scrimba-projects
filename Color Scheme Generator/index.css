@@ -4,6 +4,9 @@
     box-sizing: border-box;
     overflow-x: hidden
 }
+body {
+    height: 100vh;
+}
 .section-header {
     background-color: white;
     padding: 1.5em;
@@ -37,6 +40,9 @@ select,.random-btn {
     background-color: transparent;
     border: #D1D5DB 2px solid ;
 }
+.options-container {
+    max-width: 800px;
+}
 .section-scheme-colors {
     width:  100vw;
     height: 100vh;
@@ -45,10 +51,12 @@ select,.random-btn {
     display: block;
     margin: 0 auto;
     margin-top: 1em;
+    
 }
 .color {
-   height: 15%;
+   height: 20%;
    width: 100vw;
+   display: flex;
    justify-content: center;
    align-items: center;
    font-family: 'Ubuntu Condensed', sans-serif;
@@ -58,6 +66,61 @@ span {
     font-size: 1.3rem;
     color: white;
     font-weight: bold;
-  
-  
+    width: 100%;
+    display: inline-block;
+}
+.color-hex:hover,.color-hex:focus{ 
+font-size: 2.5rem;
+    
+   
+ }
+
+@media(min-width:580px) {
+    .random-btn {
+       display: inline;
+       padding: 0.8em;
+        margin-top: 0;
+        width: 25%;
+        max-width: 250px;
+       
+    }
+    select  {
+        width: 100%;
+        height: 50px;
+    }
+    
+    form {
+        width: 90%;
+        gap:2em;
+        margin-right:1em;
+    }
+    .section-header {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      
+    }
+    .section-scheme-colors {
+        width: 100vw;
+    }
+    .color {
+        display: inline-block;
+        height: 100vh;
+        width: 20%;
+        margin: 0;
+        text-align: center;
+        margin-right: -4px;
+        margin-bottom: -10px;
+    }
+    .color span {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        font-size: 2rem;
+        transform: translate(-50%,50%);
+       
+    }
+    
+    
+
 }

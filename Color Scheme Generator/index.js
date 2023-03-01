@@ -6,6 +6,7 @@ let num = 0;
 let seedColor = document.querySelector(".seed-color")
 let colorsSection = document.querySelector(".section-scheme-colors")
 let selectedOption = document.querySelector(".options-container")
+let randomBtn = document.querySelector(".random-btn")
 let optionsHtml;
 let optionsArr = ["monochrome", "monochrome-dark", "monochrome-light", "analogic", "complement", "analogic-complement", "triad", "quad"]
 
@@ -31,6 +32,11 @@ selectedOption.addEventListener("change",() => {
    scheme(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${selectedValue}&count=5`)
 })
 
+randomBtn.addEventListener("click",() => {
+  fetch("https://www.thecolorapi.com/id?hex=F906F9") //id?rbg(12322,554,33)
+  .then(res => res.json())
+  .then(data => console.log(data.name.value))
+})
 
 function renderOptions() {
   optionsHtml = ""
@@ -39,11 +45,12 @@ function renderOptions() {
   })
   return optionsHtml
 }
+
 function RenderColors() {
   colorHtml = ""
   colors.map((element) => {
     colorHtml += 
-      `<div class="color flex" id=color${num}>
+      `<div class="color" id=color${num}>
         <div></div>
         <span class="color-hex">${element}</span>
       </div>
@@ -70,7 +77,7 @@ function scheme(url) {
 
 document.querySelector(".section-scheme-colors").addEventListener("click",myFunction)
 
-function myFunction() {
+/*function myFunction() {
   // Get the text field
   var copyText = document.querySelector("option");
 
@@ -83,4 +90,4 @@ function myFunction() {
 
   // Alert the copied text
   alert("Copied the text: " + copyText.value);
-} 
+} */
