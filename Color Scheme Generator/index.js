@@ -33,9 +33,9 @@ selectedOption.addEventListener("change",() => {
 })
 
 randomBtn.addEventListener("click",() => {
-  fetch("https://www.thecolorapi.com/id?hex=F906F9") //id?rbg(12322,554,33)
+  fetch(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${selectedValue}&count=5`) //id?rbg(12322,554,33)
   .then(res => res.json())
-  .then(data => console.log(data.name.value))
+  .then(data => console.log(data.colors.forEach(item => console.log(item.name.value))))
 })
 
 function renderOptions() {
@@ -52,11 +52,12 @@ function RenderColors() {
     colorHtml += 
       `<div class="color" id=color${num}>
         <div></div>
-        <span class="color-hex">${element}</span>
+        <span class="color-hex">${element.value}</span>
+        <span>${element.name}</span>
       </div>
       <style>
         #color${num}  {
-          background-color:${element}
+          background-color:${element.value}
         }
       </style>`
       num++
@@ -70,11 +71,15 @@ function scheme(url) {
   fetch(url) //id?rbg(12322,554,33)
   .then(res => res.json())
   .then(data => data.colors.forEach(item => {
-   colors.push(item.hex.value)
+   colors.push({value:item.hex.value,name:item.name.value})
    colorsSection.innerHTML = RenderColors()
   }))
 }
-
+function colorName(url) {
+  fetch(url)
+  .then(res => res.json())
+  .then(data => console.log(data.name.value))
+}
 document.querySelector(".section-scheme-colors").addEventListener("click",myFunction)
 
 /*function myFunction() {

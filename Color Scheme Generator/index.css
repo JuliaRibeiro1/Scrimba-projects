@@ -69,8 +69,11 @@ span {
     width: 100%;
     display: inline-block;
 }
+.color-hex {
+    margin-bottom: 0.8em;
+}
 .color-hex:hover,.color-hex:focus{ 
-font-size: 2.5rem;
+    font-size: 2.5rem;
     
    
  }
