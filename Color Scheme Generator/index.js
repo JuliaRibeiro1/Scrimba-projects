@@ -11,44 +11,28 @@ let optionsHtml;
 let optionsArr = ["monochrome", "monochrome-dark", "monochrome-light", "analogic", "complement", "analogic-complement", "triad", "quad"]
 
 selectedOption.innerHTML = renderOptions()
-seedValue = seedColor.value.substring(1)
-  selectedValue = selectedOption.value
+/*seedValue = seedColor.value.substring(1)
+selectedValue = selectedOption.value*/
 
 function getRandomColor() {
     const random = setRandomColor()
-    randomBtn.disabled = false
-    selectedValue = selectedOption.value
     seedColor.value = random  
-    scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedValue}&count=5`)
-
+   scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)
+   
   }
 
 getRandomColor()
-seedColor.addEventListener("change",() => {
-  seedValue = seedColor.value.substring(1)
-  selectedValue = selectedOption.value
+seedColor.addEventListener("change",() => {scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)})
 
-   scheme(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${selectedValue}&count=5`)
-})
 
-selectedOption.addEventListener("change",() => {
- 
-  seedValue = seedColor.value.substring(1)
-  selectedValue = selectedOption.value
- 
-   scheme(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${selectedValue}&count=5`)
-})
+selectedOption.addEventListener("change",() => {scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)})
 
 randomBtn.addEventListener("click",() => {
- 
-  const random = setRandomColor()
   setTimeout(() => {
     randomBtn.disabled = false
     getRandomColor()
-     
-  },500)
+  },200)
   randomBtn.disabled = true
-
 
 })
 
@@ -88,6 +72,7 @@ function RenderColors() {
   
 }
 async function scheme(url) {
+  seedValue = seedColor.value.substring(1)
   
   colors = []
  const res = await fetch(url) 
