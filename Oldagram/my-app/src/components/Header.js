@@ -7,8 +7,8 @@ export default function Header(){
     return(
     <header className='header'>
         <ul className='ul-header flex'>
-            <li> <img className='logo-img' src={logo}/> </li>
-            <li> <img className='main-user-avatar-img'src={userAvatar}/> </li>  
+            <li> <img className='logo-img' alt="oldagram logo" src={logo}/> </li>
+            <li> <img className='main-user-avatar-img' alt="user" src={userAvatar}/> </li>  
         </ul>
     </header>
     )

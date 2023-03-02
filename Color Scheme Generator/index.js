@@ -33,9 +33,18 @@ selectedOption.addEventListener("change",() => {
 })
 
 randomBtn.addEventListener("click",() => {
-  fetch(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${selectedValue}&count=5`) //id?rbg(12322,554,33)
-  .then(res => res.json())
-  .then(data => console.log(data.colors.forEach(item => console.log(item.name.value))))
+  selectedValue = selectedOption.value
+  const random = getRandomColor()
+  
+ 
+setTimeout(() => {
+  
+ 
+  console.log(random)
+  
+ scheme(`https://www.thecolorapi.com/scheme?hex=${random.substring(1)}&mode=${selectedValue}&count=5`)
+  seedColor.value = random
+},100)
 })
 
 function renderOptions() {
@@ -45,6 +54,15 @@ function renderOptions() {
   })
   return optionsHtml
 }
+function getRandomColor() {
+  let color = '0123456789ABCDEF'
+  let ap = "#"
+  for (let i = 0; i < 6; i++) {
+    ap += color[Math.floor(Math.random() * 16)];
+  }
+  return ap;
+}
+
 
 function RenderColors() {
   colorHtml = ""
@@ -80,7 +98,7 @@ function colorName(url) {
   .then(res => res.json())
   .then(data => console.log(data.name.value))
 }
-document.querySelector(".section-scheme-colors").addEventListener("click",myFunction)
+
 
 /*function myFunction() {
   // Get the text field
