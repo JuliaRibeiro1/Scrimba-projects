@@ -11,12 +11,19 @@ let optionsHtml;
 let optionsArr = ["monochrome", "monochrome-dark", "monochrome-light", "analogic", "complement", "analogic-complement", "triad", "quad"]
 
 selectedOption.innerHTML = renderOptions()
-
 seedValue = seedColor.value.substring(1)
   selectedValue = selectedOption.value
 
-   scheme(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${selectedValue}&count=5`)
+function getRandomColor() {
+    const random = setRandomColor()
+    randomBtn.disabled = false
+    selectedValue = selectedOption.value
+    seedColor.value = random  
+    scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedValue}&count=5`)
 
+  }
+
+getRandomColor()
 seedColor.addEventListener("change",() => {
   seedValue = seedColor.value.substring(1)
   selectedValue = selectedOption.value
@@ -33,18 +40,16 @@ selectedOption.addEventListener("change",() => {
 })
 
 randomBtn.addEventListener("click",() => {
-  selectedValue = selectedOption.value
-  const random = getRandomColor()
-  
  
-setTimeout(() => {
-  
- 
-  console.log(random)
-  
- scheme(`https://www.thecolorapi.com/scheme?hex=${random.substring(1)}&mode=${selectedValue}&count=5`)
-  seedColor.value = random
-},100)
+  const random = setRandomColor()
+  setTimeout(() => {
+    randomBtn.disabled = false
+    getRandomColor()
+     
+  },500)
+  randomBtn.disabled = true
+
+
 })
 
 function renderOptions() {
@@ -54,15 +59,14 @@ function renderOptions() {
   })
   return optionsHtml
 }
-function getRandomColor() {
-  let color = '0123456789ABCDEF'
-  let ap = "#"
+function setRandomColor() {
+  let colorCharacters = '0123456789ABCDEF'
+  let color = "#"
   for (let i = 0; i < 6; i++) {
-    ap += color[Math.floor(Math.random() * 16)];
+    color += colorCharacters[Math.floor(Math.random() * 16)];
   }
-  return ap;
+  return color;
 }
-
 
 function RenderColors() {
   colorHtml = ""
@@ -83,20 +87,15 @@ function RenderColors() {
   return colorHtml
   
 }
-function scheme(url) {
+async function scheme(url) {
   
   colors = []
-  fetch(url) //id?rbg(12322,554,33)
-  .then(res => res.json())
-  .then(data => data.colors.forEach(item => {
-   colors.push({value:item.hex.value,name:item.name.value})
-   colorsSection.innerHTML = RenderColors()
-  }))
-}
-function colorName(url) {
-  fetch(url)
-  .then(res => res.json())
-  .then(data => console.log(data.name.value))
+ const res = await fetch(url) 
+  const data = await res.json()
+  return data.colors.forEach(item => {
+    colors.push({value:item.hex.value,name:item.name.value})
+    colorsSection.innerHTML = RenderColors()
+  })
 }
 
 
