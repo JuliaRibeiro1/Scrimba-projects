@@ -86,7 +86,7 @@ document.querySelector("article").addEventListener("click",(e) => {
   if(target.className == "color-hex") {
     let text =  e.target.textContent
     navigator.clipboard.writeText(`${text}`);
-    document.querySelector("article").attr("Cpied to clipboard")
+    document.querySelector("article").setAttribute("data-text","Copied to clipboard")
   }
 })
   

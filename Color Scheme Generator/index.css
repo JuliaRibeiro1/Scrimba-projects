@@ -89,7 +89,7 @@ span {
     position: relative;
  }
  article::after {
-    content: attr(text);
+    content: attr(data-text);
     width:25%;
     height: 60px;
     border-radius: 10%/100%;
@@ -99,7 +99,13 @@ span {
     transform: translate(-50%,0%);
     opacity: 0.8;
     position: absolute;
-    animation: fade 2s ease-in forwards;
+    color:white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
  }
  @keyframes fade {
     100% {
