@@ -11,8 +11,6 @@ let optionsHtml;
 let optionsArr = ["monochrome", "monochrome-dark", "monochrome-light", "analogic", "complement", "analogic-complement", "triad", "quad"]
 
 selectedOption.innerHTML = renderOptions()
-/*seedValue = seedColor.value.substring(1)
-selectedValue = selectedOption.value*/
 
 function getRandomColor() {
     const random = setRandomColor()
@@ -22,6 +20,7 @@ function getRandomColor() {
   }
 
 getRandomColor()
+
 seedColor.addEventListener("change",() => {scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)})
 
 
@@ -57,7 +56,7 @@ function RenderColors() {
   colors.map((element) => {
     colorHtml += 
       `<div class="color" id=color${num}>
-        <div></div>
+        
         <span class="color-hex">${element.value}</span>
         <span>${element.name}</span>
       </div>
@@ -69,11 +68,10 @@ function RenderColors() {
       num++
   })
   return colorHtml
-  
 }
+
 async function scheme(url) {
   seedValue = seedColor.value.substring(1)
-  
   colors = []
  const res = await fetch(url) 
   const data = await res.json()
@@ -83,18 +81,12 @@ async function scheme(url) {
   })
 }
 
-
-/*function myFunction() {
-  // Get the text field
-  var copyText = document.querySelector("option");
-
-  // Select the text field
-  //copyText.select();
-  //copyText.setSelectionRange(0, 99999); // For mobile devices
-
-   // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-
-  // Alert the copied text
-  alert("Copied the text: " + copyText.value);
-} */
+document.querySelector("article").addEventListener("click",(e) => {
+  let target = e.target
+  if(target.className == "color-hex") {
+    let text =  e.target.textContent
+    navigator.clipboard.writeText(`${text}`);
+    document.querySelector("article").attr("Cpied to clipboard")
+  }
+})
+  
