@@ -23,7 +23,6 @@ getRandomColor()
 
 seedColor.addEventListener("change",() => {scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)})
 
-
 selectedOption.addEventListener("change",() => {scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)})
 
 randomBtn.addEventListener("click",() => {
@@ -56,7 +55,6 @@ function RenderColors() {
   colors.map((element) => {
     colorHtml += 
       `<div class="color" id=color${num}>
-        
         <span class="color-hex">${element.value}</span>
         <span>${element.name}</span>
       </div>
@@ -80,13 +78,20 @@ async function scheme(url) {
     colorsSection.innerHTML = RenderColors()
   })
 }
-
+var str = window.getComputedStyle(document.querySelector('article'), ':after') .getPropertyValue('content');
 document.querySelector("article").addEventListener("click",(e) => {
+  const root = document.querySelector(":root");
   let target = e.target
   if(target.className == "color-hex") {
-    let text =  e.target.textContent
-    navigator.clipboard.writeText(`${text}`);
-    document.querySelector("article").setAttribute("data-text","Copied to clipboard")
+    let colorHex =  e.target.textContent
+    navigator.clipboard.writeText(`${colorHex}`);
+    root.style.setProperty("--pseudo-opacity", 0.8);
+    root.style.setProperty("--pseudo-animation", 'fade 3s');
+
+    setTimeout(() => {
+      root.style.setProperty("--pseudo-animation", '');
+      root.style.setProperty("--pseudo-opacity", 0)
+    },1000)
   }
 })
   

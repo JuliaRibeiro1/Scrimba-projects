@@ -4,6 +4,10 @@
     box-sizing: border-box;
     overflow-x: hidden
 }
+:root{
+    --pseudo-opacity: 0;
+    --pseudo-animation : ""
+    }
 body {
     height: 100vh;
 }
@@ -76,34 +80,35 @@ span {
    
 }
 .color-hex {
-    margin-top: 15%;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 
 .color-hex:hover,.color-hex:focus{ 
     font-size: 2rem;
     
-   
  }
  article {
     position: relative;
  }
  article::after {
-    content: attr(data-text);
-    width:25%;
-    height: 60px;
+    content: "Color copied to clipboard";
+    width:55%;
+    height: 5%;
+    max-width: 400px;
     border-radius: 10%/100%;
     background-color: black;
     left:50%;
-    top:80%;
+    top:75%;
     transform: translate(-50%,0%);
-    opacity: 0.8;
+    opacity: var(--pseudo-opacity);
     position: absolute;
     color:white;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: var(--pseudo-animation)
     
     
  }
