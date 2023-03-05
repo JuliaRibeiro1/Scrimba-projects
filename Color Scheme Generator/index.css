@@ -12,10 +12,11 @@ body {
     height: 100vh;
 }
 .section-header {
-    background-color: white;
+    background-color: rgb(23, 32, 43);
     padding: 1.5em;
     width: 99vw;
     height: 10%;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.336);
   
     
 }
@@ -29,7 +30,7 @@ form {
 .seed-color {
     width: 100px;
     height: 35px;
-    border:2px #D1D5DB solid;
+    border:1px #D1D5DB solid;
     align-self: center;
     
 }
@@ -43,8 +44,8 @@ select {
 select,.random-btn {
     padding:0.5em 1em;
     border-radius: 0.3em;
-    background-color: transparent;
-    border: #D1D5DB 2px solid ;
+    background-color: rgba(231, 225, 225, 0.952);
+    border: #ebeceea8 2px solid ;
 }
 .options-container {
     max-width: 800px;
@@ -71,9 +72,8 @@ select,.random-btn {
    
 }
 span {
-    font-size: 1.3rem;
-    color: white;
-    font-weight: bold;
+    font-size: 2rem;
+    
     width: 100%;
     display: inline-block;
     text-align: center;
@@ -82,6 +82,14 @@ span {
 .color-hex {
     margin-top: 50px;
     margin-bottom: 10px;
+}
+.color-name {
+    width: 100%;
+    height: auto;
+    
+    
+    font-family: 'Cookie', cursive;
+    overflow-y: hidden;
 }
 
 .color-hex:hover,.color-hex:focus{ 
@@ -118,7 +126,7 @@ span {
     }
  }
 
-@media(min-width:700px) {
+@media(min-width:900px) {
     .random-btn {
        display: inline;
        padding: 0.8em;
@@ -154,12 +162,14 @@ span {
         text-align: center;
         margin-right: -4px;
         margin-bottom: -10px;
+        padding: 1em;
     }
     .color span {
         position: relative;
         top: 50%;
         left: 50%;
-        font-size: 2rem;
+        margin-top: 0;
+        font-size: 3rem;
         transform: translate(-50%,50%);
        
     } 
@@ -167,10 +177,17 @@ span {
         margin-bottom: 0.8em;
     }
     .color-hex:hover,.color-hex:focus{ 
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         
-       
      }
   
 
+}
+@media (min-width:800px) and (max-width:900px) {
+    .color-hex {
+    margin-top: 50px;
+    }
+    span {
+        font-size: 2.3rem;
+    }
 }
