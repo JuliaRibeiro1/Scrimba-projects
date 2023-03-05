@@ -19,7 +19,7 @@ function getRandomColor() {
    scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`) // IRÁ PEGAR O VALOR ATUAL DO INPUT DO TIPO COR E A OPÇÃO ATUAL SELECIONADO NO SELECT TODA VEZ QUE A FUNÇÃO FOR CHAMADA
    
   }
-
+  
 getRandomColor() // IRÁ GERAR UM SCHEME COM UMA COR BASE ALEATÓRIA ASSIM QUE A PÁGINA FOR CARREGADA
 
 seedColor.addEventListener("change",() => {scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`)})
@@ -90,3 +90,4 @@ document.querySelector("article").addEventListener("click",(e) => {
     },1000)
   }
 })
+
