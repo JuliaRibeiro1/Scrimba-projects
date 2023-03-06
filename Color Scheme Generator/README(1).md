@@ -3,7 +3,7 @@
 
 
 ## Aprendizados
-*✨Primeiro projeto usando API✨
+* ✨Primeiro projeto usando API✨
 * Neste projeto consegui me familiarizar com o uso de APIs e como usá-la com async/await.
 * Provocar animações de css por eventos onClick.
 * Uso de funções importadas.
