@@ -7,47 +7,45 @@ import iconComment from "../images/icon-comment.png"
 import iconDm from "../images/icon-dm.png"
 import userAvatar from "../images/marie-antoinette.jpg"
  
-
 export default function PostFooter(props) {
-    let [postValues,setPost] = React.useState({
+    let [postValues,setValues] = React.useState({ 
         isLiked: props.isLiked,
         likesNumber : props.likes
     })
-    
-        window.localStorage.setItem("postValues", JSON.stringify(postValues.isLiked));
+    let [postComment,setComment] = React.useState({ 
+        showComment : false,
+        comments : props.comments,
+        text : ""
+    })
       
-    let [showComments,setShowComments] = React.useState(props.comments)
+    /*let [showComments,setShowComments] = React.useState(false)
 
     let [postComment,setComment] = React.useState(props.comments)
 
-    let [commentText, setcommentText] = React.useState('');
+    let [commentText, setcommentText] = React.useState('');*/
 
-   let heartIcon = postValues.isLiked? iconHeartFilled : iconHeart
+    let heartIcon = postValues.isLiked? iconHeartFilled : iconHeart //SE O ISLIKED FOR VERDADEIRO A ICONE É TROCADO POR UM CORAÇÃO VERMELHO, CASO CONTRÁRIO CONTINUA O MESMO
 
-   
-  window.localStorage.setItem("img",heartIcon)
-   let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1
+ 
+   let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1 //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
   
-
     function addLikes() { 
-      setPost(prev => {
+      setValues(prev => {
         return{
         ...prev,   
-        isLiked : !prev.isLiked,
+        isLiked : !prev.isLiked, //TODA VEZ QUE O BOTÃO DE LIKE FOR CLICADO O SEU ESTADO IRÁ INVERTER,TRUE => FALSE, FALSE => TRUE
         }
       }) 
     }
     
-
-
     function comments() {
         setShowComments(comment => !comment)
     }
-
-    let userComment = !showComments? 
+    
+    let userComment = showComments? 
     <section className="comment-section">
-        <ul className="comments-list">
-        {postComment.map(user => (
+        <ul className="comments-list">  {/*IRÁ RENDERIZAR OS COMENTÁRIOS ANTERIORES(OBJETOS)*/}
+        {postComment.map(user => (  
           <li>
             <img src={user.userPic} alt="user" className="user-comment-img span"/>
             <h1>{user.username}</h1>
@@ -55,23 +53,22 @@ export default function PostFooter(props) {
           </li>
         ))}
         </ul>
-        <div className="flex">
+        <div className="flex"> {/*ONDE O USUÁRIO IRÁ DIGITAR SEU COMENTÁRIO*/}
             <img className="main-user-comment-img" alt="user" src={userAvatar}/>
-            <form className="flex"></form>
-            <textarea placeholder="Add a comment..." className="textarea" onChange={e => setcommentText(e.target.value)} ></textarea>
+            <textarea placeholder="Add a comment..." className="textarea" value={commentText} onChange={e => setcommentText(e.target.value)} ></textarea>
             <button  className="submit-comment" onClick={() => {
-        ;
-        setComment([
-          ...postComment,
-          {userPic: userAvatar,text:commentText,username:"Marie"}
-        ]
-        )}}>Publish</button>
+                
+            setComment([ //IRÁ ADICIONAR AO ARRAY UM OBJETO COM A FOTO,USERNAME E COMENTÁRIO DO USUÁRIO
+                ...postComment,
+                {userPic: userAvatar,text:commentText,username:"Marie"}
+                ])
+                setcommentText("") //LIMPAR O TEXTAREA DEPOIS QUE O BOTÃO DE PUBLICAR FOR CLICADO
+            }}>Publish</button>
           
         </div>
     </section>
     : ""
    
-
     return(
         <footer className="post-footer">
             <section>
@@ -93,6 +90,5 @@ export default function PostFooter(props) {
                 {userComment}
             </section>
         </footer> 
-        
     )
 }
