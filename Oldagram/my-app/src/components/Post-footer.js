@@ -12,17 +12,12 @@ export default function PostFooter(props) {
         isLiked: props.isLiked,
         likesNumber : props.likes
     })
-    let [postComment,setComment] = React.useState({ 
-        showComment : false,
-        comments : props.comments,
-        text : ""
-    })
-      
-    /*let [showComments,setShowComments] = React.useState(false)
+    
+    let [showComments,setShowComments] = React.useState(false)
 
     let [postComment,setComment] = React.useState(props.comments)
 
-    let [commentText, setcommentText] = React.useState('');*/
+    let [commentText, setcommentText] = React.useState('');
 
     let heartIcon = postValues.isLiked? iconHeartFilled : iconHeart //SE O ISLIKED FOR VERDADEIRO A ICONE É TROCADO POR UM CORAÇÃO VERMELHO, CASO CONTRÁRIO CONTINUA O MESMO
 
