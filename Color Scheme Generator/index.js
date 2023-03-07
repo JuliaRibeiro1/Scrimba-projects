@@ -67,12 +67,18 @@ function RenderColors() { //IRÁ CRIAR UMA DIV PARA "ABRIGAR" A COR, VALOR E NOM
 async function scheme(url) {
   seedValue = seedColor.value.substring(1)
   colors = []
- const res = await fetch(url) 
+  try{
+  const res = await fetch(url) 
+  if(!res.ok) {
+    throw Error("Cor indisponível")
+  }
   const data = await res.json()
   return data.colors.forEach(item => {
     colors.push({value:item.hex.value,name:item.name.value}) //CRIEI UM OBJETO COM O VALOR E O NOME DA COR
     colorsSection.innerHTML = RenderColors()
   })
+}catch(err) {alert(err)}
+  
 }
 
 document.querySelector("article").addEventListener("click",(e) => {
