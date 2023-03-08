@@ -14,29 +14,41 @@ document.querySelectorAll(".btns-container button").forEach(button => button.add
     else if(button.className == "pass-btn") {
         profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-nope.png"></span>`
     }
-    dogsProfiles.shift()
-    swiped(dogsProfiles)
+    
+    
+    if(dogsProfiles.length > 1) {
     setTimeout(() => {
+        dogsProfiles.shift()
+        swiped(dogsProfiles)
     renderProfile(dogsProfiles)
     },500)
+}
+else {
+   profilesSection.innerHTML = endProfiles()
+}
 }))
 
 let currentProfile;
 renderProfile(dogsProfiles)
 function renderProfile(profile) {
+   // dogsProfiles.shift()
+   let imgsDots = ""
+   if(profile[0].avatar.length > 1) {
+    profile[0].avatar.map(img => {
+        imgsDots += `<button class="dot"></button>`
+    })
+        
+   }
     currentProfile = ""
-    console.log(profile.length)
-    if(profile.length > 0) {
+   
+  
     currentProfile = `
-    <img src=${profile[0].avatar} alt="user-profile">
+    <span class="dots-container">${imgsDots}</span>
+    <img src=${profile[0].avatar[0]} alt="user-profile">
     <div class="user-information-container">
     <h1>${profile[0].name}, ${profile[0].age}</h1>
     <p>${profile[0].bio}</p>
-    </div>
-`}
-else {
-    currentProfile = endProfiles()
-}
+    </div>`
 
 return profilesHtml.innerHTML = currentProfile
 
@@ -50,7 +62,13 @@ function swiped(profile) {
 function endProfiles() {
     let endText = ""
     endText = `
-        <p>That's it for now! Come back later for more matches</p>
+    <div class="end-message-container">
+    <svg class="heart" viewBox="0 0 32 29.6">
+    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+      c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+    </svg> 
+        <p class="endMessage">Oops, that's it for now, come back later for new more matches!</p>
+    </div>
     `
     return endText
 }
