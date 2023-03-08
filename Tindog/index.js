@@ -25,13 +25,19 @@ let currentProfile;
 renderProfile(dogsProfiles)
 function renderProfile(profile) {
     currentProfile = ""
+    console.log(profile.length)
+    if(profile.length > 0) {
     currentProfile = `
     <img src=${profile[0].avatar} alt="user-profile">
     <div class="user-information-container">
     <h1>${profile[0].name}, ${profile[0].age}</h1>
     <p>${profile[0].bio}</p>
     </div>
-`
+`}
+else {
+    currentProfile = endProfiles()
+}
+
 return profilesHtml.innerHTML = currentProfile
 
 }
@@ -40,4 +46,11 @@ function liked(profile) {
 }
 function swiped(profile) {
     return profile[0].hasBeenSwiped = true
+}
+function endProfiles() {
+    let endText = ""
+    endText = `
+        <p>That's it for now! Come back later for more matches</p>
+    `
+    return endText
 }
