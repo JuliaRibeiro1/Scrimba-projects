@@ -27,32 +27,41 @@ else {
    profilesSection.innerHTML = endProfiles()
 }
 }))
-
+let i = 0
 let currentProfile;
 renderProfile(dogsProfiles)
+
 function renderProfile(profile) {
-   // dogsProfiles.shift()
-   let imgsDots = ""
-   if(profile[0].avatar.length > 1) {
-    profile[0].avatar.map(img => {
-        imgsDots += `<button class="dot"></button>`
-    })
-        
-   }
+  let imgsDots =""
+  if(profile[0].avatar.length > 1) {
+   profile[0].avatar.map(img => {
+       imgsDots += `<button class="dot"></button>`
+   })
+}
+  let currentImg = profile[0].avatar.length > 1 ? profile[0].avatar[i]: profile[0].avatar[0]
+
     currentProfile = ""
-   
-  
     currentProfile = `
     <span class="dots-container">${imgsDots}</span>
-    <img src=${profile[0].avatar[0]} alt="user-profile">
+    <img src=${currentImg} alt="user-profile"></img>
     <div class="user-information-container">
     <h1>${profile[0].name}, ${profile[0].age}</h1>
     <p>${profile[0].bio}</p>
     </div>`
 
-return profilesHtml.innerHTML = currentProfile
-
+return  profilesHtml.innerHTML = currentProfile
 }
+console.log(document.querySelector(".dot"))
+
+document.querySelector("body").addEventListener("click",(e) => {
+if(e.target.className == "dot") {
+    
+    i = Array.from(e.target.parentNode.children).indexOf(e.target)
+    console.log(i)
+     renderProfile(dogsProfiles)
+}
+})
+
 function liked(profile) {
     return profile[0].hasBeenLiked = true
 }
