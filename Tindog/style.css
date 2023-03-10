@@ -99,6 +99,11 @@ ul {
     z-index: 1;
     position: absolute;
 }
+.toggle-dot {
+    background-color: white;
+    width: 15px;
+    height: 15px;
+}
 .badge-span{
     z-index: 1;
     position: absolute;

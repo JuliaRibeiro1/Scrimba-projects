@@ -2,9 +2,10 @@ import {dogs} from "./data.js"
 let dogsProfiles = dogs
 
 let likeBtn = document.querySelector(".like-btn")
-
+let div = document.createElement("section")
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
+let c ;
 
 document.querySelectorAll(".btns-container button").forEach(button => button.addEventListener("click",(e) => {
     if(button.className == "like-btn") {
@@ -28,8 +29,14 @@ else {
 }
 }))
 let i = 0
+
 let currentProfile;
 renderProfile(dogsProfiles)
+
+function a(profile) {
+    document.querySelector(".current-img").src = profile[0].avatar[i]
+}
+
 
 function renderProfile(profile) {
   let imgsDots =""
@@ -38,29 +45,53 @@ function renderProfile(profile) {
        imgsDots += `<button class="dot"></button>`
    })
 }
+/*let a = document.querySelector(".dots-container")
+    a.children[i].style.cssText = "background-color:white"*/
+  
+//  let span =  `<span class="dots-container">${imgsDots}</span>`
   let currentImg = profile[0].avatar.length > 1 ? profile[0].avatar[i]: profile[0].avatar[0]
-
-    currentProfile = ""
-    currentProfile = `
+  
+   // div.innerHTML = ""
+    div.innerHTML = `
     <span class="dots-container">${imgsDots}</span>
-    <img src=${currentImg} alt="user-profile"></img>
+    <img class="current-img" src=${currentImg} alt="user-profile"></img>
     <div class="user-information-container">
     <h1>${profile[0].name}, ${profile[0].age}</h1>
     <p>${profile[0].bio}</p>
     </div>`
-
-return  profilesHtml.innerHTML = currentProfile
+    
+    profilesHtml.append(div)
+  /*  c = Array.from(document.querySelector(".dots-container").children)
+    c[i].classList.toggle("toggle-dot") */
+    
+   
+    return  profilesHtml.innerHTML = div.innerHTML
 }
-console.log(document.querySelector(".dot"))
+
 
 document.querySelector("body").addEventListener("click",(e) => {
-if(e.target.className == "dot") {
     
+if(e.target.className == "dot") {
     i = Array.from(e.target.parentNode.children).indexOf(e.target)
-    console.log(i)
-     renderProfile(dogsProfiles)
+    a(dogsProfiles)
+    e.target.classList.toggle("toggle-dot")
+   // renderProfile(dogsProfiles)
+    //console.log(i)
+  /*  let a = document.querySelector(".dots-container")
+    a.children[i].style.cssText = "background-color:white"*/
+   // c[i].classList.toggle("toggle-dot")
+  //  e.target.style.cssText = "background-color:white"
+
+   
+    
+    
+    
 }
+    // 
 })
+function oi() {
+    c[i].classList.toggle("toggle-dot") 
+}
 
 function liked(profile) {
     return profile[0].hasBeenLiked = true
