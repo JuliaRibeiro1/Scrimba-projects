@@ -91,7 +91,7 @@ ul {
     height: 10px;
     border: none;
     background-color: rgb(173, 173, 173);
-    margin-left: .2em;
+    margin-left: .4em;
     border-radius: 50%;
     z-index: 1;
 }
@@ -99,7 +99,8 @@ ul {
     z-index: 1;
     position: absolute;
 }
-.toggle-dot {
+
+.white {
     background-color: white;
     width: 15px;
     height: 15px;

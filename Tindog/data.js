@@ -24,7 +24,7 @@ export let dogs = [
     },
     {
         name: "Charlie",
-        avatar: ["images/salsicha2.jpg"],
+        avatar: ["images/salsicha.jpg","images/salsicha2.jpg"],
         age: 35,
         bio: "Looking for someone to hold the door open for me, but slap my butt as I walk through",
         hasBeenSwiped: false,
@@ -32,7 +32,7 @@ export let dogs = [
     },
     {
         name: "Smoky",
-        avatar: ["images/husky.jpg"],
+        avatar: ["images/husky.jpg","images/husky2.jpg","images/husky3.jpg"],
         age: 23,
         bio: "Tell me about the last time you cried, and I\'ll tell you about mine",
         hasBeenSwiped: false,
