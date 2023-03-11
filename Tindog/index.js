@@ -1,11 +1,10 @@
 import {dogs} from "./data.js"
 let dogsProfiles = dogs
-
-let likeBtn = document.querySelector(".like-btn")
 let currentProfile = document.createElement("div")
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
-let c ;
+let i = 0
+renderProfile(dogsProfiles)
 
 document.querySelectorAll(".btns-container button").forEach(button => button.addEventListener("click",(e) => {
     if(button.className == "like-btn") {
@@ -31,12 +30,12 @@ else {
    
 }
 }))
-let i = 0
 
 
-renderProfile(dogsProfiles)
+
 
 function getCurrentImg(profile) {
+    document.querySelectorAll(".dot").forEach(link => link.classList.remove('white'));
    document.querySelector(".current-img").src = profile[0].avatar[i]
 
 }
@@ -67,15 +66,34 @@ function renderProfile(profile) {
   
 }
 
-
+let parent = document
 document.querySelector("body").addEventListener("click",(e) => {
-    
+    parent =  Array.from(document.querySelector(".dots-container").children) 
 if(e.target.className == "dot") {
-    i = Array.from(e.target.parentNode.children).indexOf(e.target)
-    document.querySelectorAll(".dot").forEach(link => link.classList.remove('white'));
-    e.target.classList.toggle("white")
+   
+    i = parent.indexOf(e.target)
     getCurrentImg(dogsProfiles)
-
+    e.target.classList.toggle("white")
+    
+}
+if(e.target.className == "current-img") {
+    console.log(e.clientY)
+    
+    let imgWidth = e.target.width
+   // console.log(imgWidth)
+  if(parent.length > i) {
+    if(e.clientX < (imgWidth + 50) / 2 ){
+        i--
+        getCurrentImg(dogsProfiles)
+        parent[i].classList.add("white")
+    }
+    else {
+        i++
+        getCurrentImg(dogsProfiles)
+        parent[i].classList.add("white")
+    }
+    //getCurrentImg(dogsProfiles)*/
+}
 }
 })
 
