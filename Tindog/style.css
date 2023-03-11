@@ -80,10 +80,10 @@ ul {
 .btns-container img {
     width: 30px;
 }
-.like-btn:hover,.like-btn:focus {
+.like-btn:hover,.like-btn:active {
     background-color: #DBFFF4;
 }
-.pass-btn:hover,.pass-btn:focus {
+.pass-btn:hover,.pass-btn:active {
     background-color: #FFE7EF;
 }
 .dot {

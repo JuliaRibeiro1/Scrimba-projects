@@ -6,32 +6,41 @@ let profilesHtml = document.querySelector(".profiles")
 let i = 0
 renderProfile(dogsProfiles)
 
-document.querySelectorAll(".btns-container button").forEach(button => button.addEventListener("click",(e) => {
-    if(button.className == "like-btn") {
-        liked(dogsProfiles)
-        profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
-    }
-    else if(button.className == "pass-btn") {
-        profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-nope.png"></span>`
-    }
-    
-    if(dogsProfiles.length > 1) {
-    setTimeout(() => {
-        dogsProfiles.shift()
-        swiped(dogsProfiles)
-    renderProfile(dogsProfiles)
-    },500)
-}
+let buttons = document.querySelectorAll(".btns-container button")
 
+let click = true
+document.querySelectorAll(".btns-container button").forEach((button,index,array) => button.addEventListener("click",(e) => {
+  console.log(click)
+  
+  if(click == true) {
+    if(button.className == "like-btn") { 
+            liked(dogsProfiles)
+            profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
+    
+    }
+     else if(button.className == "pass-btn") {
+ 
+            profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-nope.png"></span>`   
+
+    }
+    click = false
+    if(dogsProfiles.length > 1) {
+        setTimeout(() => {
+            dogsProfiles.shift()
+            swiped(dogsProfiles)
+            renderProfile(dogsProfiles)
+            click=true 
+           
+        },900)
+    
+}
 else {
     setTimeout(() => {
         profilesSection.innerHTML = endProfiles()
     },1000)
-   
-}
+
+  }}
 }))
-
-
 
 
 function getCurrentImg(profile) {
@@ -66,7 +75,7 @@ function renderProfile(profile) {
   
 }
 
-let parent = document
+let parent;
 document.querySelector("body").addEventListener("click",(e) => {
     parent =  Array.from(document.querySelector(".dots-container").children) 
 if(e.target.className == "dot") {
@@ -81,7 +90,9 @@ if(e.target.className == "current-img") {
     
     let imgWidth = e.target.width
    // console.log(imgWidth)
+   console.log(parent.length)
   if(parent.length > i) {
+    console.log(i)
     if(e.clientX < (imgWidth + 50) / 2 ){
         i--
         getCurrentImg(dogsProfiles)
