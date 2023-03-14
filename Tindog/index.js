@@ -1,13 +1,21 @@
-import {dogs} from "./data.js"
+import {dogs,dogs2} from "./data.js"
+
+
+console.log(dogs2)
 let dogsProfiles = dogs
+//localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
+let doggos = JSON.parse(localStorage.getItem("doggos"))
 let currentProfile = document.createElement("div")
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
 let i = 0
-renderProfile(dogsProfiles)
 
+renderProfile(JSON.parse(localStorage.getItem("doggos")))
+
+//localStorage.setItem("length", JSON.stringify(dogsProfiles.length))
+let length = window.localStorage.getItem("length")
 let btnDisabled = true
-
+console.log(length)
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
   i = 0
   if(btnDisabled == true) {
@@ -20,19 +28,32 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
             profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-nope.png"></span>`   
     }
     btnDisabled = false
-    if(dogsProfiles.length > 1) {
+    //dogsProfiles.length
+  if(doggos.length > 1) {
+    console.log(doggos)
         setTimeout(() => {
-            dogsProfiles.shift()
-            swiped(dogsProfiles)
-            renderProfile(dogsProfiles)
+            //dogsProfiles.shift()
+            localStorage.setItem("doggos",JSON.stringify(doggos))
+            doggos.shift()
+            
+        ///   doggos.shift()
+            swiped(doggos)
+            renderProfile(doggos)
             btnDisabled=true 
+           
+            
            
         },900)
     
 }
 else {
     setTimeout(() => {
+      //  doggos.shift()
         profilesSection.innerHTML = endProfiles()
+        localStorage.setItem("doggos",JSON.stringify(dogs2))
+        renderProfile(doggos)
+
+       
     },1000)
 
   }}
@@ -46,6 +67,7 @@ function getCurrentImg(profile) {
 }
 
 function renderProfile(profile) {
+    console.log(profile)
     const {avatar,name,bio,age} = profile[0]
   let imgsDots = ""
     avatar.map((dot,index) => {
@@ -76,7 +98,7 @@ document.querySelector("body").addEventListener("click",(e) => {
     parent =  Array.from(document.querySelector(".dots-container").children) 
 if(e.target.className == "dot") { 
     i = parent.indexOf(e.target)
-    getCurrentImg(dogsProfiles)
+    getCurrentImg(doggos)
  
 }
 if(e.target.className == "current-img") {   
@@ -91,7 +113,7 @@ if(e.target.className == "current-img") {
             i++
         }
     }
-    getCurrentImg(dogsProfiles)
+    getCurrentImg(doggos)
 }
 })
 
