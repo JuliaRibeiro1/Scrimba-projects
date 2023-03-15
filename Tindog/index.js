@@ -2,26 +2,28 @@ import {dogsArr} from "./data.js"
 import {liked,swiped,endProfiles} from "./utils.js"
 //let dogsProfiles = dogsArr[0]
 
-//localStorage.clear()
-localStorage.setItem("isFirstTime",true)
 let dogsProfiles = dogsArr
-console.log(dogsProfiles)
+
+localStorage.setItem("isFirstTime",true)
 if(localStorage.getItem("isFirstTime") == true) {
     console.log("Oi")
-    localStorage.setItem("doggos",JSON.stringify(dogsArr[0]))
+    localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0]))
     localStorage.setItem("isFirstTime",false)
     
 }
 
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
 
+setTimeout(() => {
+    localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
+},60000)
 let doggos = JSON.parse(localStorage.getItem("doggos"))
 
 let currentProfile = document.createElement("div")
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
 let i = 0
-
+console.log(doggos)
 
 doggos.length > 0 ? renderProfile(doggos[0]) : profilesSection.innerHTML = endProfiles()
 
@@ -55,18 +57,11 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
 }
 else {
     setTimeout(() => {
-      //  doggos.shift()
-     // if(doggos.length > 0) {
         profilesSection.innerHTML = endProfiles()
         doggos.shift()
         
          localStorage.setItem("doggos",JSON.stringify(doggos))
          swiped(doggos[0])
-     /*    renderProfile(doggos[0]) 
-      }
-      else {
-        profilesSection.innerHTML = endProfiles()
-      }*/
        
     },1000)
 
@@ -82,7 +77,8 @@ function getCurrentImg(profile) {
 
 function renderProfile(profile) {
    
-    const {avatar,name,bio,age} = profile[0]
+    const {avatar,name,bio,age,distance} = profile[0]
+let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance} metres away`
   let imgsDots = ""
     avatar.map((dot,index) => {
         if(index == 0) {
@@ -98,6 +94,7 @@ function renderProfile(profile) {
     <div class="user-information-container">
     <h1>${name}, ${age}</h1>
     <p>${bio}</p>
+    <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
     </div>`
      
     profilesHtml.append(currentProfile)
@@ -110,7 +107,7 @@ document.querySelector("body").addEventListener("click",(e) => {
     parent =  Array.from(document.querySelector(".dots-container").children) 
 if(e.target.className == "dot") { 
     i = parent.indexOf(e.target)
-    getCurrentImg(doggos)
+    getCurrentImg(doggos[0])
  
 }
 if(e.target.className == "current-img") {   
@@ -125,6 +122,10 @@ if(e.target.className == "current-img") {
             i++
         }
     }
-    getCurrentImg(doggos)
+    getCurrentImg(doggos[0])
 }
 })
+
+function renderSettings() {
+
+}
