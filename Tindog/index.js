@@ -108,7 +108,7 @@ let parent;
 let parent2;
 document.querySelector("body").addEventListener("click",(e) => {
     parent =  Array.from(document.querySelector(".dots-container").children) 
-    parent2 =  Array.from(document.querySelector(".range-container").children) 
+   
 if(e.target.className == "dot") { 
     i = parent.indexOf(e.target)
     getCurrentImg(doggos[0])
@@ -128,15 +128,18 @@ if(e.target.className == "current-img") {
     }
     getCurrentImg(doggos[0])
 }
-if(e.target== parent2[0]) {
 
-    if(e.target.value > parent2[1].value - 1) {
-        e.target.disabled = true
+
+document.querySelector("body").addEventListener("input",(e) => {
+    parent2 =  Array.from(document.querySelector(".range-container").children) 
+    if(e.target== parent2[0]) {
+        if(e.target.value > parent2[1].value - 1) {
+            e.target.value = parent2[1].value - 1
+        }
     }
-}
-    
+        
+    })
 })
-
 document.querySelector(".settings-icon").addEventListener("click",() => {
     console.log("OI")
     renderSettings()
