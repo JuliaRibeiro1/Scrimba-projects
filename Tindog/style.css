@@ -34,6 +34,7 @@ ul {
     justify-content: center;
     align-items: center;
     position: relative;
+   
 }
 .profiles img {
     width: 97vw;
@@ -50,7 +51,7 @@ ul {
     color: white;
     width: 90%;
     max-width: 400px;
-    height: 20%;
+    height: 22%;
     
 }
 .user-information-container,#user-location {
@@ -71,6 +72,8 @@ ul {
     display: flex;
     align-items: center;
     gap: 1.5em;
+  
+  
 }
 .profiles {
     position: relative;
@@ -129,16 +132,103 @@ ul {
     padding: 1.3em;
     height: 200px;
     width: 90%;
+    max-width: 600px;
     border-radius: 10%/20%;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.116);
-    position: relative;
-    left: 45%;
+    position: absolute;
+    left: 50%;
     top: 50%;
     margin: 0;
     text-align: center;
-    transform: translate(-50%,50%);
+    transform: translate(-50%,100%);
     
 }
+input[type="range"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 80vw;
+    height: 5px;
+    outline: none;
+    position: absolute;
+    margin: auto;
+    top: 0%;
+    bottom: 0;
+    background-color: rgba(109, 109, 109, 0.048);
+    pointer-events: none;
+    transform: translate(-50%,100%);
+    max-width: 500px;
+    border-radius: 1em;
+    margin-bottom: 2em
+}
+.range-container{
+   
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 30px;
+}
+/*.slider-track{
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+}*/
+input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 5px;
+   
+}
+input[type="range"]::-moz-range-track{
+    -moz-appearance: none;
+    height: 5px;
+}
+input[type="range"]::-ms-track{
+    appearance: none;
+    height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
+    margin-top: -9px;
+    pointer-events: auto;
+    border-radius: 50%;
+    border:none
+}
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
+    pointer-events: auto;
+    border: none;
+}
+input[type="range"]::-ms-thumb{
+    appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
+    pointer-events: auto;
+    border: none;
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #ffffff;
+    border: 3px solid #3264fe;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
+}
+
 .user-location {
     display: flex;
     align-items: center;
@@ -152,10 +242,53 @@ ul {
     width: 20px;
     height: 20px;
 }
+.settings-nav {
+    order: -1;
+    margin-top: 1em;
+    
+
+}
+.settings-nav li {
+    margin-bottom: 3.5em;
+}
+/*input[type="range"] {
+    -webkit-appearance: none;
+    width: 80vw;
+    height: 3px;
+    background: #afafaf6b;
+    border-radius: 1em;
+    margin-bottom: 40px;
+    outline: 0;
+    border: 0;
+}
+/*
+input[type="range"]::-moz-range-thumb  {
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
+    width: 22px;
+    height: 22px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    z-index: 2;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
+    width: 22px;
+    height: 22px;
+}*/
+/*input[type="range"]::-moz-range-progress {
+    background: linear-gradient(135deg,#FF655B,#ff4756,#fe3c72, #FD297B)
+ 
+}*/
+  
 .user-location {
     font-weight: 300;
-    margin-top: .5em;
-    
+    margin-top: 10px;  
 }
 .heart {
     width: 40px;
@@ -170,4 +303,21 @@ ul {
     100% {
         transform: scale(1);
     }
+}
+
+@media (min-width: 500px) {
+body {
+        font-size: 1.2rem;
+    }
+.end-message-container {
+   top:10%;
+   
+  
+    
+
+
+}
+.profiles-section {
+
+}
 }

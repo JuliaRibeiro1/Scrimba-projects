@@ -20,6 +20,8 @@ setTimeout(() => {
 let doggos = JSON.parse(localStorage.getItem("doggos"))
 
 let currentProfile = document.createElement("div")
+let rangesHtml = document.createElement("nav")
+rangesHtml.className = "settings-nav"
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
 let i = 0
@@ -103,8 +105,10 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
 }
 
 let parent;
+let parent2;
 document.querySelector("body").addEventListener("click",(e) => {
     parent =  Array.from(document.querySelector(".dots-container").children) 
+    parent2 =  Array.from(document.querySelector(".range-container").children) 
 if(e.target.className == "dot") { 
     i = parent.indexOf(e.target)
     getCurrentImg(doggos[0])
@@ -124,8 +128,40 @@ if(e.target.className == "current-img") {
     }
     getCurrentImg(doggos[0])
 }
+if(e.target== parent2[0]) {
+
+    if(e.target.value > parent2[1].value - 1) {
+        e.target.disabled = true
+    }
+}
+    
 })
 
+document.querySelector(".settings-icon").addEventListener("click",() => {
+    console.log("OI")
+    renderSettings()
+})
 function renderSettings() {
-
+   
+    rangesHtml.innerHTML = `
+        
+        
+      <li> <div class="range-container">
+          
+            <input type="range" min="0" max="50" value="0" id="slider-1" >
+            <input type="range" min="0" max="50" value="0" id="slider-2" >
+        </div>
+    </div>
+    </li>
+   
+    `
+    profilesSection.append(rangesHtml)
+    return profilesSection.innerHTML += rangesHtml.innerHTML
 }
+
+//  <div class="slider-track"></div>
+/*<li><div class="range_slider"><input type="range" step="1" class="two-range-slider" min="0" max="50" >
+<input type="range" step="2" class="two-range-slider" min="0" max="50" ></div>
+</li>
+<li><input type="range">
+</li>**/
