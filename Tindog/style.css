@@ -252,6 +252,7 @@ input[type="range"]::-ms-thumb{
 fieldset {
    position: relative;
   border: none;
+  margin-bottom: .5em;
    
 
 }
@@ -263,7 +264,7 @@ legend {
 
     
 }
-.minmax {
+.minmax-distance {
     position: relative;
     top:-7vh;
     left:31vw;

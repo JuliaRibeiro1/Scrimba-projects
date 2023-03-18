@@ -19,7 +19,7 @@ setTimeout(() => {
 },6000)
 let doggos = JSON.parse(localStorage.getItem("doggos"))
 let oi = doggos[0].filter(check)
-localStorage.setItem("doggos",JSON.stringify(oi))
+//localStorage.setItem("doggos",JSON.stringify(oi))
 let currentProfile = document.createElement("div")
 let rangesHtml = document.createElement("nav")
 rangesHtml.className = "settings-nav"
@@ -52,7 +52,7 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
     console.log(oi)
         setTimeout(() => {
            // if(doggos[0]) {
-             
+             console.log(oi)
             oi.shift()
             localStorage.setItem("doggos",JSON.stringify(doggos))
             swiped(oi)
@@ -71,11 +71,17 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
 }
 else {
     setTimeout(() => {
+       
         profilesSection.innerHTML = endProfiles()
-        oi.shift()
-        
-         localStorage.setItem("doggos",JSON.stringify(oi))
-         swiped(oi)
+       // oi.shift()
+       doggos.shift()
+       console.log(doggos)
+      // oi = doggos[0].filter(check)
+     //   console.log(oi)
+      localStorage.setItem("doggos",JSON.stringify(doggos))
+  
+       // localStorage.setItem("doggos",JSON.stringify(oi))
+      //  swiped(oi)
        
     },1000)
 
@@ -109,12 +115,12 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
     })
 
     currentProfile.innerHTML = `
-    ${avatar.length > 1? `<span class="dots-container ">${imgsDots}</span>`:""}
+    ${avatar.length > 1? `<span class="dots-container">${imgsDots}</span>`:""}
     <img class="current-img" src=${avatar[0]}></img>
     <div class="user-information-container">
-    <h1>${name}, ${age}</h1>
-    <p>${bio}</p>
-    <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
+        <h1>${name}, ${age}</h1>
+        <p>${bio}</p>
+        <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
     </div>`
      
     profilesHtml.append(currentProfile)
@@ -146,24 +152,37 @@ if(e.target.className == "current-img") {
     }
     getCurrentImg(doggos[0])
 }
-
+})
 
 document.querySelector("body").addEventListener("input",(e) => {
-    parent2 =  Array.from(document.querySelector(".inputs").children) 
+    renderRangeValues(e)
+})
+document.querySelector("body").addEventListener("touchdown",(e) => {
+    renderRangeValues(e)
+})
+function renderRangeValues(e) {
+   parent2 =  Array.from(e.target.parentElement.children) 
+    console.log(parent2)
     if(e.target == parent2[0]) {
+       console.log(e.target.value)
         if(e.target.value > parent2[1].value - 1) {
-            e.target.value = parent2[1].value - 1
+            e.target.value = parseInt(parent2[1].value) -1
         }
-        console.log("OI")
         document.querySelector(".min-range-value").textContent = e.target.value
        
     }
     else if(e.target == parent2[1]) {
+        
+        if(e.target.value < parseInt(parent2[0].value) + 1) {
+       
+            e.target.value = parseInt(parent2[0].value)+ 1
+
+           // console.log(Number(parent2[0].value)+1)
+        }
         document.querySelector(".max-range-value").textContent = e.target.value
     }
-        
-    })
-})
+}
+
 document.querySelector(".settings-icon").addEventListener("click",() => {
     console.log("OI")
     renderSettings()
@@ -177,12 +196,21 @@ function renderSettings() {
         <div class="range-container">
             <fieldset>
                 <legend>Distance</legend>
-                <div class="minmax"><span class="min-range-value">0</span> - <span class="max-range-value">25</span> km</div>
+                <div class="minmax-distance"><span class="min-range-value">0</span> - <span class="max-range-value">25</span> km</div>
                 <div class="inputs">
-                <input type="range" min="0" max="50" value="0" id="slider-1" >
-                <input type="range" min="0" max="50" value="25" id="slider-2" >
+                    <input type="range" min="0" max="50" value="0" id="slider-1" >
+                    <input type="range" min="0" max="50" value="25" id="slider-2" >
                 </div>
             </fieldset>
+
+            <fieldset>
+            <legend>Age</legend>
+                <div class="minmax-distance"><span class="min-range-value">0</span> - <span class="max-range-value">25</span> km</div>
+                <div class="inputs2">
+                    <input type="range" min="0" max="50" value="0" id="slider" >
+                    <input type="range" min="0" max="50" value="25" id="slider3" >
+                </div>
+        </fieldset>
         </div>
     </li>
    
@@ -191,9 +219,3 @@ function renderSettings() {
     return rangesHtml.innerHTML
 }
 
-//  <div class="slider-track"></div>
-/*<li><div class="range_slider"><input type="range" step="1" class="two-range-slider" min="0" max="50" >
-<input type="range" step="2" class="two-range-slider" min="0" max="50" ></div>
-</li>
-<li><input type="range">
-</li>**/
