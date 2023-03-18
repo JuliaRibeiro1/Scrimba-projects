@@ -107,6 +107,9 @@ ul {
 .dots-container {
     z-index: 1;
     position: absolute;
+    left:50%;
+   transform: translate(-50%,0%);
+    
 }
 
 .white {
@@ -156,13 +159,12 @@ input[type="range"]{
     bottom: 0;
     background-color: rgba(109, 109, 109, 0.048);
     pointer-events: none;
-    transform: translate(-50%,100%);
+    transform: translate(-40%,100%);
     max-width: 500px;
     border-radius: 1em;
     margin-bottom: 2em
 }
 .range-container{
-   
     margin: 0 auto;
     position: relative;
     margin-bottom: 30px;
@@ -199,8 +201,9 @@ input[type="range"]::-webkit-slider-thumb{
     margin-top: -9px;
     pointer-events: auto;
     border-radius: 50%;
-    border:none
+    border:none;
 }
+
 input[type="range"]::-moz-range-thumb{
     -webkit-appearance: none;
     height: 20px;
@@ -211,7 +214,9 @@ input[type="range"]::-moz-range-thumb{
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
     pointer-events: auto;
     border: none;
+    position:relative;
 }
+
 input[type="range"]::-ms-thumb{
     appearance: none;
     height: 1.7em;
@@ -222,11 +227,6 @@ input[type="range"]::-ms-thumb{
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
     pointer-events: auto;
     border: none;
-}
-input[type="range"]:active::-webkit-slider-thumb{
-    background-color: #ffffff;
-    border: 3px solid #3264fe;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
 }
 
 .user-location {
@@ -245,11 +245,29 @@ input[type="range"]:active::-webkit-slider-thumb{
 .settings-nav {
     order: -1;
     margin-top: 1em;
-    
-
 }
 .settings-nav li {
-    margin-bottom: 3.5em;
+    margin-bottom: 1.5em;
+}
+fieldset {
+   position: relative;
+  border: none;
+   
+
+}
+legend {
+    font-size: 1.1rem;
+    margin-bottom: 1.7em;
+    position: relative;
+    left:-31vw;
+
+    
+}
+.minmax {
+    position: relative;
+    top:-7vh;
+    left:31vw;
+    color:rgba(0, 0, 0, 0.63)
 }
 /*input[type="range"] {
     -webkit-appearance: none;
@@ -260,32 +278,14 @@ input[type="range"]:active::-webkit-slider-thumb{
     margin-bottom: 40px;
     outline: 0;
     border: 0;
-}
-/*
-input[type="range"]::-moz-range-thumb  {
-    -webkit-appearance: none;
-    background-color: #ffffff;
-    border-radius: 50%;
-    border: none;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
-    width: 22px;
-    height: 22px;
-}
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: #ffffff;
-    border-radius: 50%;
-    border: none;
-    z-index: 2;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.521);
-    width: 22px;
-    height: 22px;
 }*/
+
+
 /*input[type="range"]::-moz-range-progress {
     background: linear-gradient(135deg,#FF655B,#ff4756,#fe3c72, #FD297B)
  
-}*/
-  
+}
+  */
 .user-location {
     font-weight: 300;
     margin-top: 10px;  
@@ -311,13 +311,6 @@ body {
     }
 .end-message-container {
    top:10%;
-   
-  
-    
-
-
-}
-.profiles-section {
 
 }
 }
