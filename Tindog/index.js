@@ -1,8 +1,8 @@
 import {dogsArr} from "./data.js"
 import {liked,swiped,endProfiles} from "./utils.js"
 //let dogsProfiles = dogsArr[0]
-localStorage.setItem("ageMin",18)
-localStorage.setItem("ageMax",100)
+localStorage.setItem("ageMin",30)
+localStorage.setItem("ageMax",55)
 localStorage.setItem("distanceMin",0)
 localStorage.setItem("distanceMax",50)
 let dogsProfiles = dogsArr
@@ -15,14 +15,20 @@ localStorage.setItem("isFirstTime",true)
     
 }*/
 
-//localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
+//localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0]))
 //localStorage.clear()
 console.log(dogsProfiles)
 setTimeout(() => {
-    localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
-},6000)
+   // localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
+   localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
+},60000)
+
+
+//localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
 let doggos = JSON.parse(localStorage.getItem("doggos"))
-localStorage.setItem("doggos",JSON.stringify(doggos[0].filter(check)))
+
+
+
 document.querySelector(".settings-icon").addEventListener("click",() => {
     console.log("OI")
     renderSettings()
@@ -33,20 +39,22 @@ rangesHtml.className = "settings-nav"
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
 let i = 0
-console.log(doggos)
 
-doggos.length > 0 ? renderProfile(doggos[0].filter(check)): profilesSection.innerHTML = endProfiles()
-let oi = doggos[0].filter(check)
-localStorage.setItem("doggos",JSON.stringify(oi))
+console.log(doggos)
+doggos.length > 0 ? renderProfile(doggos): profilesSection.innerHTML = endProfiles()
+let oi = dogsProfiles[0].filter(check)
+
 //localStorage.setItem("length", JSON.stringify(dogsProfiles.length))
 let length = window.localStorage.getItem("length")
 let btnDisabled = true
 console.log(oi)
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
+   console.log(doggos)
+  
   i = 0
   if(btnDisabled == true) {
     if(button.className == "like-btn") { 
-            liked(doggos[0])
+            liked(doggos)
             profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
     }
      else if(button.className == "pass-btn") {
@@ -55,33 +63,38 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
     }
     btnDisabled = false
     //dogsProfiles.length
-  if(JSON.parse(localStorage.getItem("doggos")).length > 1) {
-    console.log("OI")
-    console.log(oi)
+ 
+  if(doggos.length > 0) {
+ console.log("OI")
         setTimeout(() => {
-            let b = JSON.parse(localStorage.getItem("doggos"))
-           // JSON.parse(localStorage.getItem("doggos")).shift()
-           b.shift()
-            localStorage.setItem("doggos",JSON.stringify(b))
+           
+           doggos.shift()
+
+           localStorage.setItem("doggos",JSON.stringify(doggos))
+           console.log(doggos)
+            renderProfile(doggos)
             swiped(oi)
-            renderProfile(b)
+           
             btnDisabled=true 
 
- 
         },900)
     
        
 }
 else {
     setTimeout(() => {
-       
+      
         profilesSection.innerHTML = endProfiles()
        // oi.shift()
-        doggos.shift()
-      
-        localStorage.setItem("doggos",JSON.stringify(doggos))
+        //doggos.shift()
+        if(dogsProfiles.length > 0) {
+       dogsProfiles.shift()
+        console.log(dogsProfiles)
+        console.log(dogsProfiles[1])
+        console.log(doggos[0])
+        localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
         console.log(doggos)
-    
+        }
        
     },1000)
 
@@ -161,16 +174,18 @@ if(e.target.className == "save-settings-btn") {
     let ageMaxValue = document.querySelector("#age-max")
     let distanceMinValue = document.querySelector("#distance-min")
     let distanceMaxValue = document.querySelector("#distance-max")
+console.log(ageMinValue.value)
 
-    localStorage.setItem("ageMin",ageMinValue.value)
+   localStorage.setItem("ageMin",ageMinValue.value)
     localStorage.setItem("ageMax",ageMaxValue.value)
     localStorage.setItem("distanceMin",distanceMinValue.value)
     localStorage.setItem("distanceMax",distanceMaxValue.value)
 
-    localStorage.setItem("doggos",JSON.stringify(doggos[0].filter(check)))
-    console.log(doggos[0].filter(check).length)
+  // localStorage.setItem("doggos",JSON.stringify(doggos))
+  //  console.log(doggos[0].filter(check).length)
+    localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
   // renderProfile(doggos[0].filter(check))
-    doggos[0].filter(check).length > 0 ? renderProfile(doggos[0].filter(check)): profilesSection.innerHTML = notFoundMessage()
+    dogsProfiles[0].filter(check).length > 0 ? renderProfile(dogsProfiles[0].filter(check)): profilesSection.innerHTML = notFoundMessage()
 
 
 }
@@ -205,7 +220,7 @@ function renderRangeValues(e) {
            
            // console.log(Number(parent2[0].value)+1)
         }
-        localStorage.setItem("ageMin",e.target.value)
+       
        //document.querySelectorAll(".max-range-value").forEach(e => e.textContent = "oi")
        // console.log(document.querySelector(".inputs2"))
        document.querySelector(`.${e.target.parentElement.parentElement.className} .max-range-value`).textContent = e.target.value
@@ -214,7 +229,7 @@ function renderRangeValues(e) {
 
 
 function renderSettings() {
-   
+   console.log(localStorage.getItem("ageMin"))
     rangesHtml.innerHTML = `
 
       <li> 
@@ -223,8 +238,8 @@ function renderSettings() {
                 <legend>Distance</legend>
                 <div class="minmax-distance"><span class="min-range-value">0</span> - <span class="max-range-value">25</span> km</div>
                 <div class="inputs">
-                    <input type="range" min="0" max="50" value="0" id="distance-min" >
-                    <input type="range" min="0" max="50" value="25" id="distance-max" >
+                    <input type="range" min="0" max="50" value=0 id="distance-min" >
+                    <input type="range" min="0" max="50" value=100 id="distance-max" >
                 </div>
             </fieldset>
             </li>
@@ -233,8 +248,8 @@ function renderSettings() {
             <legend>Age</legend>
                 <div class="minmax-distance"><span class="min-range-value">18</span> - <span class="max-range-value" >25</span></div>
                 <div class="inputs2">
-                    <input type="range" min="18" max="100" value="18" id="age-min" >
-                    <input type="range" min="18" max="100" value="25" id="age-max" >
+                    <input type="range" min=18 max=100 value=18 id=age-min >
+                    <input type="range" min=18 max=100 value=100 id=age-max >
                 </div>
         </fieldset>
         </div>
