@@ -30,7 +30,7 @@
         avatar: ["images/salsicha.jpg","images/salsicha2.jpg"],
         age: 35,
         bio: "Looking for someone to hold the door open for me, but slap my butt as I walk through",
-        distance:1000,
+        distance:10000,
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
@@ -66,7 +66,7 @@
         avatar: ["images/caramelo1.jpg","images/caramelo2.jpg"],
         age: 37,
         bio: "I believe in following my dreams. Can I have your Instagram?",
-        distance:1200,
+        distance:12000,
         hasBeenSwiped: false,
         hasBeenLiked: false
     }

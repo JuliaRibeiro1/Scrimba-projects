@@ -18,13 +18,13 @@ console.log(dogsProfiles)
 setTimeout(() => {
     dogsProfiles = dogsArr
     console.log(dogsArr)
-  /* localStorage.setItem("ageMin",28)
+ /*  localStorage.setItem("ageMin",28)
     localStorage.setItem("ageMax",55)
     localStorage.setItem("distanceMin",0)
-    localStorage.setItem("distanceMax",20)
-   localStorage.setItem("doggos",JSON.stringify(dogsProfiles))*/
+    localStorage.setItem("distanceMax",15)*/
+   localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
    localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
-},10000)
+},1000)
 
 
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
@@ -43,8 +43,8 @@ let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
 let i = 0
 
-console.log(doggos)
-doggos.length > 0 ? renderProfile(dogsProfiles.filter(check)): profilesSection.innerHTML = endProfiles()
+console.log(dogsProfiles)
+doggos.length > 0 ? renderProfile(dogsProfiles): profilesSection.innerHTML = endProfiles()
 //let oi = dogsProfiles[0].filter(check)
 
 //localStorage.setItem("length", JSON.stringify(dogsProfiles.length))
@@ -143,8 +143,11 @@ function check(obj) {
     console.log(localStorage.getItem("ageMin"))
 // console.log(JSON.parse(localStorage.getItem("minAge")))
     if(obj.age >= localStorage.getItem("ageMin") && obj.age <= localStorage.getItem("ageMax")){
+        
+        if(obj.distance/1000 >= localStorage.getItem("distanceMin") && obj.distance/1000 <= localStorage.getItem("distanceMax")) {
         return true
-    }
+        }
+ }
    
 }
 function getCurrentImg(profile) {
@@ -185,7 +188,9 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
 let parent;
 let parent2;
 document.querySelector("body").addEventListener("click",(e) => {
-  /*  parent =  Array.from(document.querySelector(".dots-container").children) 
+    if(document.querySelector(".dots-container")) {
+    parent =  Array.from(document.querySelector(".dots-container").children) 
+    }
    
 if(e.target.className == "dot") { 
     i = parent.indexOf(e.target)
@@ -207,7 +212,7 @@ if(e.target.className == "current-img") {
         }
     }
     getCurrentImg(doggos)
-}*/
+}
 if(e.target.className == "save-settings-btn") {
     console.log("OI")
     let ageMinValue = document.querySelector("#age-min")
@@ -281,8 +286,8 @@ function renderSettings() {
                 <legend>Distance</legend>
                 <div class="minmax-distance"><span class="min-range-value">${localStorage.getItem("distanceMin")}</span> - <span class="max-range-value">${localStorage.getItem("distanceMax")}</span> km</div>
                 <div class="inputs">
-                    <input type="range" min=0 max=20 value=${localStorage.getItem("distanceMin")} id=distance-min >
-                    <input type="range" min=0 max=20 value=${localStorage.getItem("ageMax")} id=distance-max >
+                    <input type="range" min=0 max=15 value=${localStorage.getItem("distanceMin")} id=distance-min >
+                    <input type="range" min=0 max=15 value=${localStorage.getItem("ageMax")} id=distance-max >
                 </div>
             </fieldset>
             </li>
