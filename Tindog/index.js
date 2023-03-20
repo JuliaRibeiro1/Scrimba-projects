@@ -1,7 +1,7 @@
 import {dogsArr} from "./data.js"
 import {liked,swiped,endProfiles} from "./utils.js"
 //let dogsProfiles = dogsArr[0]
-localStorage.setItem("ageMin",30)
+localStorage.setItem("ageMin",28)
 localStorage.setItem("ageMax",55)
 localStorage.setItem("distanceMin",0)
 localStorage.setItem("distanceMax",50)
@@ -19,9 +19,11 @@ localStorage.setItem("isFirstTime",true)
 //localStorage.clear()
 console.log(dogsProfiles)
 setTimeout(() => {
-   // localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
+    dogsProfiles = dogsArr
+    console.log(dogsProfiles)
+   localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
    localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
-},60000)
+},10000)
 
 
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
@@ -49,12 +51,14 @@ let length = window.localStorage.getItem("length")
 let btnDisabled = true
 console.log(oi)
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
+    localStorage.setItem("doggos",JSON.stringify(doggos))
    console.log(doggos)
-  
+   
   i = 0
   if(btnDisabled == true) {
+    doggos.shift()
     if(button.className == "like-btn") { 
-            liked(doggos)
+           // liked(doggos)
             profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
     }
      else if(button.className == "pass-btn") {
@@ -63,17 +67,19 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
     }
     btnDisabled = false
     //dogsProfiles.length
- 
-  if(doggos.length > 0) {
+    
+  if(JSON.parse(localStorage.getItem("doggos")).length > 1) {
+  
  console.log("OI")
         setTimeout(() => {
-           
-           doggos.shift()
-
+           console.log(doggos[0])
+          
+          
            localStorage.setItem("doggos",JSON.stringify(doggos))
            console.log(doggos)
+           
             renderProfile(doggos)
-            swiped(oi)
+            swiped(doggos)
            
             btnDisabled=true 
 
@@ -83,18 +89,36 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
 }
 else {
     setTimeout(() => {
-      
+     
         profilesSection.innerHTML = endProfiles()
        // oi.shift()
         //doggos.shift()
-        if(dogsProfiles.length > 0) {
-       dogsProfiles.shift()
+       //if(dogsProfiles.length > 1) {
+        dogsProfiles.shift()
         console.log(dogsProfiles)
         console.log(dogsProfiles[1])
         console.log(doggos[0])
-        localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
-        console.log(doggos)
+       /* if(JSON.parse(localStorage.getItem("doggos")).length === 1) {
+            doggos.shift()
+            profilesSection.innerHTML = endProfiles()
+           
+           }*/
+           localStorage.setItem("doggos",JSON.stringify(doggos))
+           console.log(doggos)
+          // localStorage.setItem("doggos",JSON.stringify(doggos))
+      //  localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
+      /*  if(doggos.length == 1) {
+            doggos.shift()
+         
         }
+       /*localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
+        
+        localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))*/
+     //  }
+        /**/
+        
+        
+     //   }
        
     },1000)
 
@@ -152,7 +176,9 @@ document.querySelector("body").addEventListener("click",(e) => {
    
 if(e.target.className == "dot") { 
     i = parent.indexOf(e.target)
-    getCurrentImg(doggos[0])
+    console.log(doggos[0])
+    getCurrentImg(doggos)
+   
  
 }
 if(e.target.className == "current-img") {   
@@ -167,9 +193,10 @@ if(e.target.className == "current-img") {
             i++
         }
     }
-    getCurrentImg(doggos[0])
+    getCurrentImg(doggos)
 }
 if(e.target.className == "save-settings-btn") {
+    console.log("OI")
     let ageMinValue = document.querySelector("#age-min")
     let ageMaxValue = document.querySelector("#age-max")
     let distanceMinValue = document.querySelector("#distance-min")
@@ -183,9 +210,9 @@ console.log(ageMinValue.value)
 
   // localStorage.setItem("doggos",JSON.stringify(doggos))
   //  console.log(doggos[0].filter(check).length)
-    localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
+   // localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0].filter(check)))
   // renderProfile(doggos[0].filter(check))
-    dogsProfiles[0].filter(check).length > 0 ? renderProfile(dogsProfiles[0].filter(check)): profilesSection.innerHTML = notFoundMessage()
+  //  dogsProfiles[0].filter(check).length > 0 ? renderProfile(dogsProfiles[0].filter(check)): profilesSection.innerHTML = notFoundMessage()
 
 
 }
