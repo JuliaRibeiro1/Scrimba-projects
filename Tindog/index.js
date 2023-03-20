@@ -1,5 +1,5 @@
 import {dogsArr} from "./data.js"
-import {liked,swiped,endProfiles} from "./utils.js"
+import {liked,swiped,endProfiles,notFound} from "./utils.js"
 //let dogsProfiles = dogsArr[0]
 
 let dogsProfiles = dogsArr
@@ -43,18 +43,17 @@ let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
 let i = 0
 
-console.log(dogsProfiles)
-doggos.length > 0 ? renderProfile(dogsProfiles): profilesSection.innerHTML = endProfiles()
-//let oi = dogsProfiles[0].filter(check)
-
-//localStorage.setItem("length", JSON.stringify(dogsProfiles.length))
-let length = window.localStorage.getItem("length")
+console.log(doggos)
+doggos.length > 0 ? renderProfile(doggos): profilesHtml.innerHTML = endProfiles()
 let btnDisabled = true
+let length = window.localStorage.getItem("length")
+
 //console.log(oi)
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
  //   localStorage.setItem("doggos",JSON.stringify(doggos))
+ console.log("clickk")
  doggos = JSON.parse(localStorage.getItem("doggos"))
-  
+  console.log(btnDisabled)
   i = 0
   if(btnDisabled == true) {
     
@@ -81,7 +80,7 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
   
  console.log("OI")
         setTimeout(() => {
-            
+            btnDisabled=true
            console.log(doggos)
 
            console.log(doggos)
@@ -93,7 +92,7 @@ localStorage.setItem("doggos",JSON.stringify(doggos))
            
             
            
-            btnDisabled=true 
+            
 
         },900)
     
@@ -102,7 +101,8 @@ localStorage.setItem("doggos",JSON.stringify(doggos))
 else {
     setTimeout(() => {
      
-        profilesSection.innerHTML = endProfiles()
+        profilesHtml.innerHTML = endProfiles()
+        btnDisabled = true
        // oi.shift()
         //doggos.shift()
        //if(dogsProfiles.length > 1) {
@@ -158,7 +158,7 @@ function getCurrentImg(profile) {
 }
 
 function renderProfile(profile) {
-   
+    document.querySelector(".btns-container").style.display = "inline-flex"
     const {avatar,name,bio,age,distance} = profile[0]
 let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance} metres away`
   let imgsDots = ""
@@ -181,7 +181,7 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
     </div>`
      
     profilesHtml.append(currentProfile)
-
+  
     return profilesHtml.innerHTML = currentProfile.innerHTML
 }
 
@@ -232,8 +232,16 @@ console.log(ageMinValue.value)
   // renderProfile(doggos[0].filter(check))
   dogsProfiles = dogsArr
   localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
-  console.log(dogsProfiles.filter(check))
-  dogsProfiles.filter(check) ? renderProfile(dogsProfiles.filter(check)): profilesSection.innerHTML = notFoundMessage()
+
+ // doggos
+  if(dogsProfiles.filter(check).length > 0) {
+    console.log("OI")
+    renderProfile(dogsProfiles.filter(check))
+  } /*renderProfile(dogsProfiles.filter(check)): */
+  else {
+    profilesHtml.innerHTML = notFound()
+  //  document.querySelector(".btns-contaner").getElementsByClassName.display = "none"
+  }
  
 
 }
@@ -309,20 +317,6 @@ function renderSettings() {
     `
     profilesSection.append(rangesHtml)
     return rangesHtml.innerHTML
-}
-
-function notFoundMessage() {
-    let endText = ""
-    endText = `
-    <div class="end-message-container">
-    <svg class="heart" viewBox="0 0 32 29.6">
-    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-      c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-    </svg> 
-        <p class="endMessage">We couldn't find anyome</p>
-    </div>
-    `
-    return endText
 }
 
 

@@ -76,6 +76,7 @@ ul {
   
 }
 .profiles {
+    width: 100%;
     position: relative;
     justify-content: center;
 }
@@ -130,10 +131,9 @@ ul {
     background-size: cover ;
     background-position: center;
 }
-.end-message-container {
+.message-container {
     background-color:white;
     padding: 1.3em;
-    height: 200px;
     width: 90%;
     max-width: 600px;
     border-radius: 10%/20%;
@@ -310,7 +310,7 @@ legend {
 body {
         font-size: 1.2rem;
     }
-.end-message-container {
+.message-container {
    top:30%;
 
 }
