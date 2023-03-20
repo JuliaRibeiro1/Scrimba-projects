@@ -1,4 +1,4 @@
- export let dogsArr = [ [
+ export let dogsArr = [ 
     {
         name: "Rex",
         avatar: ["images/dog-rex.jpg","images/pug2.jpg"],
@@ -42,8 +42,7 @@
         distance:800,
         hasBeenSwiped: false,
         hasBeenLiked: false
-    }
-],   [
+    },
     {
         name: "Bruno",
         avatar: ["images/pastor-alemao1.jpg","images/pastor-alemao2.jpg"],
@@ -71,7 +70,7 @@
         hasBeenSwiped: false,
         hasBeenLiked: false
     }
-]
+
    
 ]
 
