@@ -24,20 +24,28 @@ setTimeout(() => {
     localStorage.setItem("distanceMax",15)*/
    localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
    localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
-},1000)
+},10000)
 
 
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
 let doggos = JSON.parse(localStorage.getItem("doggos"))
 
 
-
+let isSettingsOpen = false
 document.querySelector(".settings-icon").addEventListener("click",() => {
-    console.log("OI")
+    console.log(rangesHtml)
+    if(!isSettingsOpen) {
+        rangesHtml.style.display = "inline"
     renderSettings()
+    isSettingsOpen = true
+    }else {
+        isSettingsOpen = false
+        rangesHtml.style.display = "none"
+    }
 })
 let currentProfile = document.createElement("div")
 let rangesHtml = document.createElement("nav")
+rangesHtml.className = "nav-settings-container"
 rangesHtml.className = "settings-nav"
 let profilesSection = document.querySelector(".profiles-section")
 let profilesHtml = document.querySelector(".profiles")
@@ -52,7 +60,9 @@ let length = window.localStorage.getItem("length")
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
  //   localStorage.setItem("doggos",JSON.stringify(doggos))
  console.log("clickk")
+ 
  doggos = JSON.parse(localStorage.getItem("doggos"))
+ doggos.shift()
   console.log(btnDisabled)
   i = 0
   if(btnDisabled == true) {
@@ -72,11 +82,11 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
    
     console.log(doggos)
     btnDisabled = false
-    doggos.shift()
+  
     console.log(JSON.parse(localStorage.getItem("doggos")))
     //dogsProfiles.length
     console.log(doggos.length > 1 )
-  if(doggos[0] ) {
+  if(doggos.length > 1) {
   
  console.log("OI")
         setTimeout(() => {
@@ -85,12 +95,12 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
 
            console.log(doggos)
 //if(doggos.length > 0) {
-            renderProfile(doggos)
-//}
-          
-localStorage.setItem("doggos",JSON.stringify(doggos))
-           
             
+//}
+localStorage.setItem("doggos",JSON.stringify(doggos))
+
+           
+renderProfile(doggos)
            
             
 
@@ -103,6 +113,8 @@ else {
      
         profilesHtml.innerHTML = endProfiles()
         btnDisabled = true
+        doggos.shift()
+        localStorage.setItem("doggos",JSON.stringify(doggos))
        // oi.shift()
         //doggos.shift()
        //if(dogsProfiles.length > 1) {
@@ -133,7 +145,7 @@ else {
      //   }
        
     },1000)
-
+   
   }}
 }))
 
@@ -232,6 +244,8 @@ console.log(ageMinValue.value)
   // renderProfile(doggos[0].filter(check))
   dogsProfiles = dogsArr
   localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
+  isSettingsOpen = false
+    rangesHtml.style.display = "none"
 
  // doggos
   if(dogsProfiles.filter(check).length > 0) {

@@ -140,10 +140,10 @@ ul {
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.116);
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 0%;
     margin: 0;
     text-align: center;
-    transform: translate(-50%,100%);
+    transform: translate(-50%,50%);
     
 }
 input[type="range"]{
@@ -234,6 +234,8 @@ input[type="range"]::-ms-thumb{
     align-items: center;
     margin-top: 1em;
 }
+
+
 .settings-icon {
     width: 40px;
     height: 40px;
@@ -245,30 +247,39 @@ input[type="range"]::-ms-thumb{
 .settings-nav {
     order: -1;
     margin-top: 1em;
+    width: 20%;
 }
-.settings-nav li {
-    margin-bottom: 1.5em;
-}
+
 fieldset {
-   position: relative;
-  border: none;
-  margin-bottom: .5em;
-   
+    position: relative;
+    border: none;
 
 }
+
+
 legend {
     font-size: 1.1rem;
     margin-bottom: 1.7em;
+    margin-top: -1.5em;
     position: relative;
     left:-31vw;
-
-    
 }
 .minmax-distance {
     position: relative;
     top:-7vh;
     left:31vw;
     color:rgba(0, 0, 0, 0.63)
+}
+.save-settings-btn {
+    border: 0;
+    padding: 1em ;
+    width: 100%;
+    border-radius: 1.3em;
+    background: linear-gradient(-90deg,#FF655B,#ff4756,#fe3c72, #FD297B);
+    color:white;
+    font-size: 0.9rem;
+    margin-bottom: 1.5em;
+    text-align: center;
 }
 /*input[type="range"] {
     -webkit-appearance: none;
@@ -297,6 +308,7 @@ legend {
     margin-bottom: 1em;
     animation: pump 2s infinite;
 }
+
 @keyframes pump {
     50% {
         transform: scale(1.1);
