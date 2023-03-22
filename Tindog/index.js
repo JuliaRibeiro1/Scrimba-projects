@@ -11,19 +11,23 @@ localStorage.setItem("isFirstTime",true)
 
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0]))
 //localStorage.clear()
+//localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
 let doggos = JSON.parse(localStorage.getItem("doggos"))
-if(doggos.length == 0) {
+//if(doggos.length == 0) {
 setTimeout(() => {
+    console.log("voltou")
     dogsProfiles = dogsArr
     localStorage.setItem("ageMin",18)
     localStorage.setItem("ageMax",100)
     localStorage.setItem("distanceMin",0)
     localStorage.setItem("distanceMax",15)
    localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
-   localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
+   localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
+  // localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
 },6000)
-}
-
+//}
+//localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
+let filter = JSON.parse(localStorage.getItem("dogsArr")).filter(check)
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles))
 //let doggos = JSON.parse(localStorage.getItem("doggos"))
 
@@ -48,17 +52,21 @@ let profilesSection = get(".profiles-section")
 let profilesHtml = get(".profiles")
 let i = 0
 
-doggos.length > 0 ? renderProfile(doggos): profilesHtml.innerHTML = endProfiles()
+filter.length > 0 ? renderProfile(JSON.parse(localStorage.getItem("dogsArr")).filter(check)): profilesHtml.innerHTML = endProfiles()
 let btnDisabled = true
-let filter = doggos.filter(check)
+
+//localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
+let getDoggos = JSON.parse(localStorage.getItem("dogsArr"))
+
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
- 
- doggos = JSON.parse(localStorage.getItem("doggos"))
+    console.log(getDoggos)
+    let c =  dogsProfiles.find(e => e.id == filter[0].id);
+ getDoggos = JSON.parse(localStorage.getItem("dogsArr"))
   i = 0
   if(btnDisabled == true) {
     
     if(button.className == "like-btn") { 
-            liked(doggos)
+            liked(dogsProfiles)
             profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
     }
      else if(button.className == "pass-btn") {
@@ -66,25 +74,29 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
     }
 
     btnDisabled = false
-    swiped(doggos)
+    console.log(filter[0])
+    swiped(c)
+    
+    console.log(getDoggos)
    // console.log( renderProfile(doggos.filter(check)))
   /*if(doggos[0]) {
  
         setTimeout(() => {*/
         btnDisabled=true
-       
+       // filter = doggos.filter(check)
 if(filter.length > 1) {
+   
     setTimeout(() => {
-
+     //   console.log(getDoggos.find(filter[0]))
+console.log(c)
     filter.shift()
-    console.log(filter)
+    console.log(getDoggos)
     renderProfile(filter)
 },900)
 }
 else {
-    doggos.filter(check).shift()
+    filter.shift()
     setTimeout(() => {
-     
         profilesHtml.innerHTML = endProfiles()
         btnDisabled = true
        
@@ -94,6 +106,7 @@ else {
 //localStorage.setItem("doggos",JSON.stringify(doggos))          
 //},900)
 //}
+localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
 }
 }))
 
@@ -140,7 +153,7 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
         <p>${bio}</p>
         <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
     </div>`
-     
+    document.querySelector(".btns-container").style.display = "inline"
     profilesHtml.append(currentProfile)
     return profilesHtml.innerHTML = currentProfile.innerHTML
 }
@@ -183,8 +196,10 @@ if(e.target.className == "save-settings-btn") {
  /* isSettingsOpen = false
   rangesHtml.classList.add("close")*/
 doggos = JSON.parse(localStorage.getItem("doggos"))
-filter = doggos.filter(check)
+filter = JSON.parse(localStorage.getItem("dogsArr")).filter(check)
+console.log(filter)
   dogsProfiles.filter.length > 0? renderProfile(filter):profilesHtml.innerHTML = notFound()
+  localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
 
 }
 })

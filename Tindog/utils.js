@@ -4,7 +4,7 @@ function liked(profile) {
     return profile[0].hasBeenLiked = true
 }
 function swiped(profile) {
-    return profile[0].hasBeenSwiped = true
+    return profile.hasBeenSwiped = true
 }
 function endProfiles() {
     document.querySelector(".btns-container").style.display = "none"

@@ -6,7 +6,8 @@
         bio: "Art. Literature. Natural wine. Yoga.",
         distance:2000,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:1,
     },{
         name: "Bella",
         avatar: ["images/dog-bella.jpg"],
@@ -14,7 +15,8 @@
         bio: "Yup, that's my owner. U can meet him if you want",
         distance:3000,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:2,
     },
     {
         name: "Teddy",
@@ -23,7 +25,8 @@
         bio: "How you doin?",
         distance:5000,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:3,
     },
     {
         name: "Charlie",
@@ -32,7 +35,8 @@
         bio: "Looking for someone to hold the door open for me, but slap my butt as I walk through",
         distance:10000,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:4,
     },
     {
         name: "Smoky",
@@ -41,7 +45,8 @@
         bio: "Tell me about the last time you cried, and I\'ll tell you about mine",
         distance:800,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:5,
     },
     {
         name: "Bruno",
@@ -50,7 +55,8 @@
         bio: "I would love to take you to the movies, but they don’t allow snacks.",
         distance:2500,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:6,
     },
     {
         name: "Buddy",
@@ -59,7 +65,8 @@
         bio: "What’s your fav meme?",
         distance:900,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:7,
     },
     {
         name: "Theo",
@@ -68,7 +75,8 @@
         bio: "I believe in following my dreams. Can I have your Instagram?",
         distance:12000,
         hasBeenSwiped: false,
-        hasBeenLiked: false
+        hasBeenLiked: false,
+        id:8,
     }
 
    
