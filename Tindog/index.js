@@ -2,11 +2,12 @@
 
 import {dogsArr} from "./data.js"
 import {liked,swiped,endProfiles,notFound,renderSettings} from "./utils.js"
+export{rangesHtml,profilesSection}
 
 const get = element => document.querySelector(element)
 let dogsProfiles = dogsArr
 localStorage.setItem("isFirstTime",true)
-export{rangesHtml,profilesSection}
+
 
 //localStorage.setItem("doggos",JSON.stringify(dogsProfiles[0]))
 //localStorage.clear()
@@ -49,10 +50,8 @@ let i = 0
 
 doggos.length > 0 ? renderProfile(doggos): profilesHtml.innerHTML = endProfiles()
 let btnDisabled = true
-
-
+let filter = doggos.filter(check)
 document.querySelectorAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
- //   localStorage.setItem("doggos",JSON.stringify(doggos))
  
  doggos = JSON.parse(localStorage.getItem("doggos"))
   i = 0
@@ -63,21 +62,27 @@ document.querySelectorAll(".btns-container button").forEach((button) => button.a
             profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
     }
      else if(button.className == "pass-btn") {
-            swiped(doggos)
             profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-nope.png"></span>`  
     }
+
     btnDisabled = false
-  
-  if(doggos[0]) {
+    swiped(doggos)
+   // console.log( renderProfile(doggos.filter(check)))
+  /*if(doggos[0]) {
  
-        setTimeout(() => {
+        setTimeout(() => {*/
         btnDisabled=true
-if(doggos.length > 1) {
-    doggos.shift()
-    renderProfile(doggos)
+       
+if(filter.length > 1) {
+    setTimeout(() => {
+
+    filter.shift()
+    console.log(filter)
+    renderProfile(filter)
+},900)
 }
 else {
-    doggos.shift()
+    doggos.filter(check).shift()
     setTimeout(() => {
      
         profilesHtml.innerHTML = endProfiles()
@@ -86,17 +91,24 @@ else {
     },1000)
 }
         
-localStorage.setItem("doggos",JSON.stringify(doggos))          
-},900)
+//localStorage.setItem("doggos",JSON.stringify(doggos))          
+//},900)
+//}
 }
-  }
 }))
 
-function check(obj) {
-    if(obj.age >= localStorage.getItem("ageMin") && obj.age <= localStorage.getItem("ageMax")){
-        
-        if(obj.distance/1000 >= localStorage.getItem("distanceMin") && obj.distance/1000 <= localStorage.getItem("distanceMax")) {
+function swi(obj) {
+    if(!obj.hasBeenSwiped) {
         return true
+    }
+}
+function check(obj) {
+
+    if(obj.age >= localStorage.getItem("ageMin") && obj.age <= localStorage.getItem("ageMax")){
+        if(obj.distance/1000 >= localStorage.getItem("distanceMin") && obj.distance/1000 <= localStorage.getItem("distanceMax")) {
+            if(!obj.hasBeenSwiped) {
+                return true
+            }
         }
  }
 }
@@ -166,12 +178,13 @@ if(e.target.className == "save-settings-btn") {
     localStorage.setItem("distanceMin",get("#distance-min").value)
     localStorage.setItem("distanceMax", get("#distance-max").value)
 
-  dogsProfiles = dogsArr
-  localStorage.setItem("doggos",JSON.stringify(dogsProfiles.filter(check)))
-  isSettingsOpen = false
-  rangesHtml.classList.add("close")
-
-  dogsProfiles.filter(check).length > 0? renderProfile(dogsProfiles.filter(check)):profilesHtml.innerHTML = notFound()
+  //dogsProfiles = dogsArr
+  //localStorage.setItem("doggos",JSON.stringify(dogs.filter(check)))
+ /* isSettingsOpen = false
+  rangesHtml.classList.add("close")*/
+doggos = JSON.parse(localStorage.getItem("doggos"))
+filter = doggos.filter(check)
+  dogsProfiles.filter.length > 0? renderProfile(filter):profilesHtml.innerHTML = notFound()
 
 }
 })
@@ -183,7 +196,6 @@ get("body").addEventListener("touchdown",(e) => {
     renderRangeValues(e)
 })
 
-let min = ""
 function renderRangeValues(e) {
    parent2 =  Array.from(e.target.parentElement.children) 
 

@@ -46,13 +46,12 @@ ul {
 .user-information-container {
     position: absolute;
     bottom:2.5em;
-    left:6%;
     z-index: 1;
     color: white;
     width: 90%;
     max-width: 400px;
     height: 22%;
-    
+
 }
 .user-information-container,#user-location {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.897);
@@ -76,7 +75,7 @@ ul {
   
 }
 .profiles {
-    width: 100%;
+  
     position: relative;
     justify-content: center;
 }
@@ -134,13 +133,12 @@ ul {
 .message-container {
     background-color:white;
     padding: 1.3em;
-    width: 90%;
+    width: 90vw;
     max-width: 600px;
     border-radius: 10%/20%;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.116);
     position: absolute;
     left: 50%;
-    
     margin: 0;
     text-align: center;
     transform: translate(-50%,100%);
@@ -170,15 +168,7 @@ input[type="range"]{
     margin-bottom: 30px;
    
 }
-/*.slider-track{
-    width: 100%;
-    height: 5px;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    border-radius: 5px;
-}*/
+
 input[type="range"]::-webkit-slider-runnable-track{
     -webkit-appearance: none;
     height: 5px;
@@ -329,7 +319,14 @@ body {
    top:30%;
 
 }
+
+
 }
+ @media (max-width: 500px) {
+    .profiles {
+        width: 90vw;
+    }
+ }
 
 .open {
     display:inline
