@@ -1,3 +1,5 @@
+import { rangesHtml,profilesSection } from "./index.js"
+
 function liked(profile) {
     return profile[0].hasBeenLiked = true
 }
@@ -34,4 +36,36 @@ function notFound() {
     return endText
 }
 
-export {swiped,liked,endProfiles,notFound}
+function renderSettings() {
+    rangesHtml.innerHTML = `
+
+      <li> 
+        <div class="range-container">
+            <fieldset class="field5">
+                <legend>Distance</legend>
+                <div class="minmax-distance"><span class="min-range-value">${localStorage.getItem("distanceMin")}</span> - <span class="max-range-value">${localStorage.getItem("distanceMax")}</span> km</div>
+                <div class="inputs">
+                    <input type="range" min=0 max=15 value=${localStorage.getItem("distanceMin")} id=distance-min >
+                    <input type="range" min=0 max=15 value=${localStorage.getItem("ageMax")} id=distance-max >
+                </div>
+            </fieldset>
+            </li>
+            <li>
+            <fieldset class="field">
+            <legend>Age</legend>
+                <div class="minmax-distance"><span class="min-range-value">${localStorage.getItem("ageMin")}</span> - <span class="max-range-value">${localStorage.getItem("ageMax")}</span></div>
+                <div class="inputs2">
+                    <input type="range" min=18 max=100 value=${JSON.parse(localStorage.getItem("ageMin"))} id=age-min >
+                    <input type="range" min=18 max=100 value=${JSON.parse(localStorage.getItem("ageMax"))} id=age-max >
+                </div>
+        </fieldset>
+        </div>
+        </li>
+        <button class="save-settings-btn">Save</button>
+    `
+    profilesSection.append(rangesHtml)
+    return rangesHtml.innerHTML
+}
+
+
+export {swiped,liked,endProfiles,notFound,renderSettings}
