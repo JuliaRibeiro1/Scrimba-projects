@@ -1,5 +1,7 @@
 import { rangesHtml,profilesSection } from "./index.js"
 
+const get = element => document.querySelector(element)
+
 function liked(profile) {
     return profile[0].hasBeenLiked = true
 }
@@ -7,7 +9,7 @@ function swiped(profile) {
     return profile.hasBeenSwiped = true
 }
 function endProfiles() {
-    document.querySelector(".btns-container").style.display = "none"
+    get(".btns-container").classList.remove("open")
     let endText = ""
     endText = `
     <div class="message-container">
@@ -22,7 +24,7 @@ function endProfiles() {
 }
 
 function notFound() {
-    document.querySelector(".btns-container").style.display = "none"
+    get(".btns-container").classList.remove("open")
     let endText = ""
     endText = `
     <div class="message-container">

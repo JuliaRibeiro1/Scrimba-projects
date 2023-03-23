@@ -103,7 +103,7 @@ else {
     },1000)
 }
         
-//localStorage.setItem("doggos",JSON.stringify(doggos))          
+localStorage.setItem("doggos",JSON.stringify(filter))          
 //},900)
 //}
 localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
@@ -153,7 +153,7 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
         <p>${bio}</p>
         <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
     </div>`
-    document.querySelector(".btns-container").style.display = "inline"
+   // document.querySelector(".btns-container").style.display = "inline"
     profilesHtml.append(currentProfile)
     return profilesHtml.innerHTML = currentProfile.innerHTML
 }
@@ -171,8 +171,7 @@ if(e.target.className == "dot") {
  
 }
 if(e.target.className == "current-img") {   
-    let imgWidth = e.target.width
-    if(e.clientX < (imgWidth + 50) / 2 ){
+    if(e.pageX < (window.screen.availWidth / 2) ){
         if(i !== 0) {
             i--
         }
@@ -191,10 +190,6 @@ if(e.target.className == "save-settings-btn") {
     localStorage.setItem("distanceMin",get("#distance-min").value)
     localStorage.setItem("distanceMax", get("#distance-max").value)
 
-  //dogsProfiles = dogsArr
-  //localStorage.setItem("doggos",JSON.stringify(dogs.filter(check)))
- /* isSettingsOpen = false
-  rangesHtml.classList.add("close")*/
 doggos = JSON.parse(localStorage.getItem("doggos"))
 filter = JSON.parse(localStorage.getItem("dogsArr")).filter(check)
 console.log(filter)
