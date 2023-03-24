@@ -14,7 +14,6 @@ body {
 header {
     padding: 1em;
 }
-
 li img {
     width: 30px;
 }
@@ -34,14 +33,12 @@ ul {
     justify-content: center;
     align-items: center;
     position: relative;
-   
 }
 .profiles img {
     width: 97vw;
     border-radius: 3%;
     height: 600px;
-    max-width: 500px;
-    
+    max-width: 500px; 
 }
 .user-information-container {
     position: absolute;
@@ -50,13 +47,14 @@ ul {
     color: white;
     width: 90%;
     max-width: 400px;
-    height: 22%;
-
+    height: 23%;
+    padding-bottom:1em
+   
 }
+
 .user-information-container,#user-location {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.897);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.938);
 }
-
 .user-information-container h1{
     font-size: 1.5rem;
 }
@@ -72,11 +70,8 @@ ul {
     align-items: center;
     gap: 1.5em;
     display: none;
-  
-  
 }
 .profiles {
-  
     position: relative;
     justify-content: center;
 }
@@ -109,10 +104,8 @@ ul {
     z-index: 1;
     position: absolute;
     left:50%;
-   transform: translate(-50%,0%);
-    
+    transform: translate(-50%,0%);
 }
-
 .white {
     background-color: white;
     width: 15px;
@@ -142,8 +135,7 @@ ul {
     left: 50%;
     margin: 0;
     text-align: center;
-    transform: translate(-50%,100%);
-    
+    transform: translate(-50%,100%);  
 }
 input[type="range"]{
     -webkit-appearance: none;
@@ -167,13 +159,11 @@ input[type="range"]{
     margin: 0 auto;
     position: relative;
     margin-bottom: 30px;
-   
 }
 
 input[type="range"]::-webkit-slider-runnable-track{
     -webkit-appearance: none;
     height: 5px;
-   
 }
 input[type="range"]::-moz-range-track{
     -moz-appearance: none;
@@ -195,7 +185,6 @@ input[type="range"]::-webkit-slider-thumb{
     border-radius: 50%;
     border:none;
 }
-
 input[type="range"]::-moz-range-thumb{
     -webkit-appearance: none;
     height: 20px;
@@ -208,7 +197,6 @@ input[type="range"]::-moz-range-thumb{
     border: none;
     position:relative;
 }
-
 input[type="range"]::-ms-thumb{
     appearance: none;
     height: 1.7em;
@@ -220,14 +208,11 @@ input[type="range"]::-ms-thumb{
     pointer-events: auto;
     border: none;
 }
-
 .user-location {
     display: flex;
     align-items: center;
     margin-top: 1em;
 }
-
-
 .settings-icon {
     width: 40px;
     height: 40px;
@@ -235,6 +220,7 @@ input[type="range"]::-ms-thumb{
 #location-icon {
     width: 20px;
     height: 20px;
+    margin-left: 4px;
 }
 .settings-nav {
     order: -1;
@@ -242,14 +228,10 @@ input[type="range"]::-ms-thumb{
     width: 20%;
     display: none;
 }
-
 fieldset {
     position: relative;
     border: none;
-
 }
-
-
 legend {
     font-size: 1.1rem;
     margin-bottom: 1.7em;
@@ -275,23 +257,6 @@ legend {
     margin-bottom: .5em;
     text-align: center;
 }
-/*input[type="range"] {
-    -webkit-appearance: none;
-    width: 80vw;
-    height: 3px;
-    background: #afafaf6b;
-    border-radius: 1em;
-    margin-bottom: 40px;
-    outline: 0;
-    border: 0;
-}*/
-
-
-/*input[type="range"]::-moz-range-progress {
-    background: linear-gradient(135deg,#FF655B,#ff4756,#fe3c72, #FD297B)
- 
-}
-  */
 .user-location {
     font-weight: 300;
     margin-top: 10px;  
@@ -302,7 +267,6 @@ legend {
     margin-bottom: 1em;
     animation: pump 2s infinite;
 }
-
 @keyframes pump {
     50% {
         transform: scale(1.1);
@@ -311,27 +275,49 @@ legend {
         transform: scale(1);
     }
 }
+@keyframes fade-right {
+    100% {
+        transform: translate(200px) rotate(15deg);
+        opacity: 0;
+    }
+}
+@keyframes fade-left {
+    100% {
+        transform: translate(-200px) rotate(-15deg);
+        opacity: 0; 
+    }
+}
+@keyframes fade{
+    100% {
 
+        transform: translate(0px) rotate(0deg);
+        opacity: 1;
+    }
+}
 @media (min-width: 500px) {
 body {
         font-size: 1.2rem;
     }
 .message-container {
    top:30%;
-
 }
-
-
 }
- @media (max-width: 500px) {
+@media (max-width: 500px) {
     .profiles {
         width: 90vw;
     }
  }
-
 .open {
     display:inline
 }
 .close {
     display:none
+}
+.active-fade-right {
+    z-index: 5;
+    animation: fade-right .7s ease-in;
+}
+.active-fade-left {
+    z-index: 5;
+    animation: fade-left .7s ease-in;
 }

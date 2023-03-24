@@ -1,13 +1,39 @@
-import { rangesHtml,profilesSection } from "./index.js"
+import { rangesHtml,profilesSection, profilesHtml} from "./index.js"
 
 const get = element => document.querySelector(element)
-
+let currentProfileHtml = document.createElement("div")
 function liked(profile) {
-    return profile[0].hasBeenLiked = true
+    return profile.hasBeenLiked = true
 }
 function swiped(profile) {
     return profile.hasBeenSwiped = true
 }
+function renderProfile(profile) {
+    get(".btns-container").classList.add("open")
+    const {avatar,name,bio,age,distance,id} = profile[0]
+let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance} metres away`
+  let imgsDots = ""
+    avatar.map((dot,index) => {
+        if(index == 0) {
+            imgsDots += `<button class="dot white" ></button>`
+        }
+        else {
+            imgsDots += `<button class="dot"></button>`
+        }
+    })
+    currentProfileHtml.innerHTML = `
+    ${avatar.length > 1? `<span class="dots-container">${imgsDots}</span>`:""}
+    <img class="current-img" src=${avatar[0]}></img>
+    <div class="user-information-container">
+        <h1>${name}, ${age}</h1>
+        <p>${bio}</p>
+        <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
+    </div>`
+    profilesHtml.append(currentProfileHtml)
+    return profilesHtml.innerHTML = currentProfileHtml.innerHTML
+}
+
+
 function endProfiles() {
     get(".btns-container").classList.remove("open")
     let endText = ""
@@ -32,7 +58,7 @@ function notFound() {
     <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
       c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
     </svg> 
-        <p class="endMessage">Sorry! We couldn't find anyone, try changing the settings to view more profiles</p>
+        <p class="endMessage">Sorry! you have viewed all profiles,try changing the settings or come back later to view more</p>
     </div>
     `
     return endText
@@ -70,4 +96,4 @@ function renderSettings() {
 }
 
 
-export {swiped,liked,endProfiles,notFound,renderSettings}
+export {swiped,liked,renderProfile,endProfiles,notFound,renderSettings}
