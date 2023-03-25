@@ -1,6 +1,8 @@
-import { rangesHtml,profilesSection, profilesHtml} from "./index.js"
+import { rangesHtml, profilesHtml} from "./index.js"
+
 
 const get = element => document.querySelector(element)
+let profilesSection = get(".profiles-section")
 let currentProfileHtml = document.createElement("div")
 function liked(profile) {
     return profile.hasBeenLiked = true
@@ -11,8 +13,8 @@ function swiped(profile) {
 function renderProfile(profile) {
     get(".btns-container").classList.add("open")
     const {avatar,name,bio,age,distance,id} = profile[0]
-let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance} metres away`
-  let imgsDots = ""
+    let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance} metres away`
+    let imgsDots = ""
     avatar.map((dot,index) => {
         if(index == 0) {
             imgsDots += `<button class="dot white" ></button>`
@@ -36,8 +38,8 @@ let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance
 
 function endProfiles() {
     get(".btns-container").classList.remove("open")
-    let endText = ""
-    endText = `
+    let endProfileWarning = ""
+    endProfileWarning  = `
     <div class="message-container">
     <svg class="heart" viewBox="0 0 32 29.6">
     <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
@@ -46,13 +48,13 @@ function endProfiles() {
         <p class="endMessage">Oops, that's it for now, come back later or change the settings for new more matches!</p>
     </div>
     `
-    return endText
+    return endProfileWarning
 }
 
 function notFound() {
     get(".btns-container").classList.remove("open")
-    let endText = ""
-    endText = `
+    let notFoundWarning = ""
+    notFoundWarning = `
     <div class="message-container">
     <svg class="heart" viewBox="0 0 32 29.6">
     <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
@@ -61,7 +63,7 @@ function notFound() {
         <p class="endMessage">Sorry! you have viewed all profiles,try changing the settings or come back later to view more</p>
     </div>
     `
-    return endText
+    return notFoundWarning
 }
 
 function renderSettings() {
