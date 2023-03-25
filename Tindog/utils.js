@@ -1,6 +1,6 @@
 import { rangesHtml, profilesHtml} from "./index.js"
 
-
+let isSettingsOpen = false
 const get = element => document.querySelector(element)
 let profilesSection = get(".profiles-section")
 let currentProfileHtml = document.createElement("div")
@@ -9,6 +9,17 @@ function liked(profile) {
 }
 function swiped(profile) {
     return profile.hasBeenSwiped = true
+}
+function ageConditions(obj) {
+    return obj.age >= localStorage.getItem("ageMin") && obj.age <= localStorage.getItem("ageMax")
+ }
+ function distanceConditions(obj) {
+     return obj.distance/1000 >= localStorage.getItem("distanceMin") && obj.distance/1000 <= localStorage.getItem("distanceMax")
+ }
+ function removeFadeAnimation(direction) {
+    setTimeout(()=> { 
+        get(".profiles").classList.remove(`active-fade-${direction}`)  
+        },500)
 }
 function renderProfile(profile) {
     get(".btns-container").classList.add("open")
@@ -26,7 +37,7 @@ function renderProfile(profile) {
     currentProfileHtml.innerHTML = `
     ${avatar.length > 1? `<span class="dots-container">${imgsDots}</span>`:""}
     <img class="current-img" src=${avatar[0]}></img>
-    <div class="user-information-container">
+    <div class="user">
         <h1>${name}, ${age}</h1>
         <p>${bio}</p>
         <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
@@ -35,7 +46,18 @@ function renderProfile(profile) {
     return profilesHtml.innerHTML = currentProfileHtml.innerHTML
 }
 
-
+function updateSettingsDisplay() {
+    console.log("OI")
+    if(!isSettingsOpen) {
+        rangesHtml.classList.add("open")
+            renderSettings()
+            isSettingsOpen = true
+       }
+       else {
+            rangesHtml.classList.remove("open")
+            isSettingsOpen = false
+        }
+}
 function endProfiles() {
     get(".btns-container").classList.remove("open")
     let endProfileWarning = ""
@@ -96,6 +118,16 @@ function renderSettings() {
     profilesSection.append(rangesHtml)
     return rangesHtml.innerHTML
 }
+function setCurrentSettings() {
+    localStorage.setItem("ageMin", get("#age-min").value)
+    localStorage.setItem("ageMax",get("#age-max").value)
+    localStorage.setItem("distanceMin",get("#distance-min").value)
+    localStorage.setItem("distanceMax", get("#distance-max").value)
 
+}
 
-export {swiped,liked,renderProfile,endProfiles,notFound,renderSettings}
+function updateLocalStorageArr(filter,dogsProfiles) {
+    localStorage.setItem("doggos",JSON.stringify(filter))          
+    localStorage.setItem("dogsArr",JSON.stringify(dogsProfiles))
+}
+export {swiped,liked,removeFadeAnimation,updateSettingsDisplay,renderProfile,endProfiles,notFound,renderSettings,ageConditions,distanceConditions,setCurrentSettings,updateLocalStorageArr}

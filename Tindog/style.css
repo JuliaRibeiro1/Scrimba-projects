@@ -34,24 +34,87 @@ ul {
     align-items: center;
     position: relative;
 }
-.profiles img {
+.profiles img,.next-profiles img {
     width: 97vw;
     border-radius: 3%;
     height: 600px;
     max-width: 500px; 
 }
+.div-1 {
+    position: relative;
+    margin-top: 0%;
+    z-index: 0;
+  
+  }
+.div-2 {
+  position: relative;
+  margin-top: -105%;
+  z-index: -1;
+
+}
+.div-3 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -2;
+  
+  }
+.div-4 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -3;
+}
+.div-5 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -4;
+}
+.div-6 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -5;
+}
+.div-7 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -6;
+}
+.div-8 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -7;
+}
+.div-9 {
+    position: relative;
+    margin-top: -105%;
+    z-index: -7;
+}
+
+.user {
+    position: relative;
+    bottom:200px;
+    width: 90%;
+    color:white
+}
+.next-profiles {
+    display: block;
+  
+    
+}
+.next-profiles img {
+    display: block;
+}
+
 .user-information-container {
     position: absolute;
     bottom:2.5em;
-    z-index: 1;
+    z-index: 2;
     color: white;
     width: 90%;
     max-width: 400px;
     height: 23%;
     padding-bottom:1em
-   
-}
 
+}
 .user-information-container,#user-location {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.938);
 }
@@ -72,6 +135,8 @@ ul {
     display: none;
 }
 .profiles {
+    margin-top: -170%;
+    z-index: 10;
     position: relative;
     justify-content: center;
 }
@@ -160,7 +225,6 @@ input[type="range"]{
     position: relative;
     margin-bottom: 30px;
 }
-
 input[type="range"]::-webkit-slider-runnable-track{
     -webkit-appearance: none;
     height: 5px;
@@ -259,7 +323,7 @@ legend {
 }
 .user-location {
     font-weight: 300;
-    margin-top: 10px;  !dogsProfiles.find(e => e.hasBeenSwiped == true)
+    margin-top: 10px; 
 }
 .heart {
     width: 40px;

@@ -96,4 +96,3 @@ document.querySelector("article").addEventListener("click",(e) => {
     },1000)
   }
 })
-
