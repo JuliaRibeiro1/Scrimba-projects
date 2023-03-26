@@ -56,8 +56,8 @@ get(".settings-icon").addEventListener("click",() => {
    updateSettingsDisplay()
 })
 let i = 0
-JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderProfile(JSON.parse(localStorage.getItem(("doggos"))),0): profilesHtml.innerHTML = endProfiles()
-
+JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderCurrentImg(JSON.parse(localStorage.getItem(("doggos"))),0): profilesHtml.innerHTML = endProfiles()
+renderPreviousImg(filter,1)
 function retu(filter) {
     let total = ""
    /* filter.map(item => {
@@ -73,12 +73,12 @@ function retu(filter) {
     })
     get(".next-profiles").innerHTML = total*/
    
-    get(".next-profiles").innerHTML = renderProfile(filter,1)
-    i = 0
+   // get(".next-profiles").innerHTML = renderProfile(filter,1)
+    //i = 0
 }
-let c = filter
 
-get(".next-profiles").innerHTML = renderProfile(filter,1)
+
+
 console.log(renderProfile(filter,0))
 //retu(filter)
 function addBadge(button,currentProfile) {
@@ -96,7 +96,12 @@ function addBadge(button,currentProfile) {
         removeFadeAnimation("left")
     }
 }
-
+function renderCurrentImg(filter,i) {
+    return profilesHtml.innerHTML = renderProfile(filter,i)
+}
+function renderPreviousImg(filter,i) {
+    return get(".next-profiles").innerHTML = renderProfile(filter,i)
+}
 getAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
     filter = JSON.parse(localStorage.getItem(("doggos")))
    let currentProfile =  dogsProfiles.find(e => e.id == filter[0].id);
@@ -112,10 +117,10 @@ if(filter.length > 1) {
     setTimeout(() => {
         btnDisabled=true
         filter.shift()
-        renderProfile(filter,0)
+        renderCurrentImg(filter,0)
         updateLocalStorageArr(filter,dogsProfiles)
         console.log(filter)
-        get(".next-profiles").innerHTML = renderProfile(filter,1)
+         renderPreviousImg(filter,1)
         
     },500)
 }

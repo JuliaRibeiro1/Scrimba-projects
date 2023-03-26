@@ -84,16 +84,14 @@ ul {
 
 .next-profiles {
     display: block;
-    left:50%;
-    
-    z-index: -10;
+    left:50%; 
+    z-index: -100;
     position: absolute;
     justify-content: center;
     position: absolute;
- 
     top: 100%;
-    left:45%;
-    transform: translate(-50%,0%);
+    left:65%;
+    transform: translate(-78%,0%);
    
 }
 .next-profiles img {
@@ -129,9 +127,10 @@ ul {
     display: none;
     position: absolute;
     z-index: 100;
-    top:100%;
+    margin-top: 1em;
+    top:95%;
     left:50%;
-    transform: translate(-50%,-70%);
+    transform: translate(-50%,0%);
 }
 .profiles {  
     justify-content: center;
