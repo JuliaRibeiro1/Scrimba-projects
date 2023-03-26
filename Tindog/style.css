@@ -90,7 +90,7 @@ ul {
     justify-content: center;
     position: absolute;
     top: 100%;
-    left:65%;
+    left:75%;
     transform: translate(-78%,0%);
    
 }
@@ -137,9 +137,8 @@ ul {
     position: absolute;
     z-index: 100;
     top: 100%;
-    left:50%;
+    left:52%;
     transform: translate(-50%,0%);
-    
     
 }
 .btns-container button {
@@ -350,17 +349,11 @@ legend {
 }
 @keyframes fade-left {
     100% {
-        transform: translate(-200px) rotate(-15deg);
+        transform: translate(-350px) rotate(-10deg);
         opacity: 0; 
     }
 }
-@keyframes fade{
-    100% {
 
-        transform: translate(0px) rotate(0deg);
-        opacity: 1;
-    }
-}
 @media (min-width: 500px) {
 body {
         font-size: 1.2rem;
@@ -386,5 +379,5 @@ body {
 }
 .active-fade-left {
     z-index: 5;
-    animation: fade-left .7s ease-in;
+    animation: fade-left .7s ease-out;
 }

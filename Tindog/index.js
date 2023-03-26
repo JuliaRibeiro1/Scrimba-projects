@@ -57,27 +57,8 @@ get(".settings-icon").addEventListener("click",() => {
 })
 let i = 0
 JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderCurrentImg(JSON.parse(localStorage.getItem(("doggos"))),0): profilesHtml.innerHTML = endProfiles()
+//JSON.parse(localStorage.getItem(("doggos"))).length !== 1? renderPreviousImg(filter,1) : renderCurrentImg(JSON.parse(localStorage.getItem(("doggos"))),0)
 renderPreviousImg(filter,1)
-function retu(filter) {
-    let total = ""
-   /* filter.map(item => {
-        i++
-        total += `<div class=div-${i}>
-        <img class="img-${i}" src=${item.avatar[0]}></img>
-        <div class="user-information-container">
-            <h1>${item.name}, ${item.age}</h1>
-            <p>${item.bio}</p>
-            <span class="user-location"><img id=location-icon src=images/icons8-location-50.png></span>
-        </div>
-        </div>`
-    })
-    get(".next-profiles").innerHTML = total*/
-   
-   // get(".next-profiles").innerHTML = renderProfile(filter,1)
-    //i = 0
-}
-
-
 
 console.log(renderProfile(filter,0))
 //retu(filter)
@@ -100,18 +81,22 @@ function renderCurrentImg(filter,i) {
     return profilesHtml.innerHTML = renderProfile(filter,i)
 }
 function renderPreviousImg(filter,i) {
+    if(filter.length > 1) {
     return get(".next-profiles").innerHTML = renderProfile(filter,i)
+    }
+    else {
+        return get(".next-profiles").innerHTML = " "
+    }
 }
 getAll(".btns-container button").forEach((button) => button.addEventListener("click",() => {
     filter = JSON.parse(localStorage.getItem(("doggos")))
    let currentProfile =  dogsProfiles.find(e => e.id == filter[0].id);
   
   currentImgIndex = 0
-  if(btnDisabled == true) {
+if(btnDisabled == true) {
     addBadge(button,currentProfile)
     btnDisabled = false
     swiped(currentProfile)
-
 
 if(filter.length > 1) {
     setTimeout(() => {
@@ -125,7 +110,9 @@ if(filter.length > 1) {
     },500)
 }
 else {
+   // renderPreviousImg(filter,1)
     filter.shift()
+    
     setTimeout(() => {
         profilesHtml.innerHTML = endProfiles()
         btnDisabled = true
@@ -149,7 +136,7 @@ let parent2;
 
 get("body").addEventListener("click",(e) => {
     if(get(".dots-container")) {
-        parent =  Array.from(get(".dots-container").children) 
+        parent =  Array.from(get(".profiles .dots-container").children) 
     }
    
 if(e.target.className == "dot") { 
@@ -183,8 +170,9 @@ get("body").addEventListener("input",(e) => {
 })
 
 function getCurrentImg(profile) {
+    console.log(profile)
    getAll(".dot").forEach(link => link.classList.remove('white'));
-   get(".current-img").src = profile[0].avatar[currentImgIndex]
+   get(".profiles .current-img").src = profile[0].avatar[currentImgIndex]
    parent[currentImgIndex].classList.add("white")
 }
 function renderRangeValues(e) {
