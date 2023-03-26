@@ -21,9 +21,32 @@ function ageConditions(obj) {
         get(".profiles").classList.remove(`active-fade-${direction}`)  
         },500)
 }
-function renderProfile(profile) {
+
+
+let i = 0
+function a(profile) {
+
+    profile.map(item => {
+        i++
+        const {avatar,name,bio,age,distance,id} = item
+        console.log(avatar[0])
+        profilesArr.push(
+       
+            `<div class=div-${i}>
+            <img  src=${avatar[0]}></img>
+        <div class="user-information-container">
+            <h1>${name}, ${age}</h1>
+            <p>${bio}</p>
+            <span class="user-location"><img id=location-icon src=images/icons8-location-50.png></span>
+        </div>
+        </div>`)
+    })
+    return profilesArr
+}
+function renderProfile(profile,i) {
+    console.log(profile)
     get(".btns-container").classList.add("open")
-    const {avatar,name,bio,age,distance,id} = profile[0]
+    const {avatar,name,bio,age,distance,id} = profile[i]
     let checkDistance = distance >= 1000 ? `${distance / 1000}km away` : `${distance} metres away`
     let imgsDots = ""
     avatar.map((dot,index) => {
@@ -37,13 +60,15 @@ function renderProfile(profile) {
     currentProfileHtml.innerHTML = `
     ${avatar.length > 1? `<span class="dots-container">${imgsDots}</span>`:""}
     <img class="current-img" src=${avatar[0]}></img>
-    <div class="user">
+    <div class="user-information-container">
         <h1>${name}, ${age}</h1>
         <p>${bio}</p>
         <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
     </div>`
     profilesHtml.append(currentProfileHtml)
+   
     return profilesHtml.innerHTML = currentProfileHtml.innerHTML
+    
 }
 
 function updateSettingsDisplay() {

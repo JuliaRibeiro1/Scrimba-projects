@@ -26,8 +26,9 @@ let dogsProfiles = dogsArr
     resetLocalStorage()
   }
 }
+let filter;
+if(JSON.parse(localStorage.getItem("dogsArr"))!==null) {
 
-let filter = JSON.parse(localStorage.getItem("dogsArr")).filter(filterProfilesConditions)
 if(!(JSON.parse(localStorage.getItem("dogsArr"))).find(e => e.hasBeenSwiped == false)) {
     load()
 }
@@ -36,6 +37,11 @@ else {
         load()
     },6000)
 }
+}else {
+    load()
+}
+filter = JSON.parse(localStorage.getItem("dogsArr")).filter(filterProfilesConditions)
+
 function resetLocalStorage() {
     dogsProfiles = dogsArr
     localStorage.setItem("ageMin",18)
@@ -50,32 +56,38 @@ get(".settings-icon").addEventListener("click",() => {
    updateSettingsDisplay()
 })
 let i = 0
-JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderProfile(JSON.parse(localStorage.getItem(("doggos")))): profilesHtml.innerHTML = endProfiles()
+JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderProfile(JSON.parse(localStorage.getItem(("doggos"))),0): profilesHtml.innerHTML = endProfiles()
 
 function retu(filter) {
     let total = ""
-    filter.map(item => {
+   /* filter.map(item => {
         i++
         total += `<div class=div-${i}>
         <img class="img-${i}" src=${item.avatar[0]}></img>
-        <div class="user">
+        <div class="user-information-container">
             <h1>${item.name}, ${item.age}</h1>
             <p>${item.bio}</p>
             <span class="user-location"><img id=location-icon src=images/icons8-location-50.png></span>
         </div>
         </div>`
     })
-    get(".next-profiles").innerHTML = total
-    profilesHtml.innerHTML = get(".next-profiles").innerHTML 
+    get(".next-profiles").innerHTML = total*/
+   
+    get(".next-profiles").innerHTML = renderProfile(filter,1)
+    i = 0
 }
+let c = filter
 
-retu(JSON.parse(localStorage.getItem(("doggos"))))
+get(".next-profiles").innerHTML = renderProfile(filter,1)
+console.log(renderProfile(filter,0))
+//retu(filter)
 function addBadge(button,currentProfile) {
     if(button.className == "like-btn") { 
         liked(currentProfile)
         profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-like.png"></span>`
         profilesHtml.classList.add("active-fade-right")
-        removeFadeAnimation("right")
+           // get(".div-1").classList.add(`active-fade-right`)  
+            removeFadeAnimation("right")
     }
 
      else if(button.className == "pass-btn") {
@@ -95,13 +107,16 @@ getAll(".btns-container button").forEach((button) => button.addEventListener("cl
     btnDisabled = false
     swiped(currentProfile)
 
+
 if(filter.length > 1) {
     setTimeout(() => {
         btnDisabled=true
         filter.shift()
-        renderProfile(filter)
+        renderProfile(filter,0)
         updateLocalStorageArr(filter,dogsProfiles)
-       
+        console.log(filter)
+        get(".next-profiles").innerHTML = renderProfile(filter,1)
+        
     },500)
 }
 else {
@@ -153,7 +168,7 @@ if(e.target.className == "current-img") {
 if(e.target.className == "save-settings-btn") {
   setCurrentSettings()
   filter = JSON.parse(localStorage.getItem("dogsArr")).filter(filterProfilesConditions)
-  filter.length > 0? renderProfile(filter):profilesHtml.innerHTML = notFound()
+  filter.length > 0? renderProfile(filter,0):profilesHtml.innerHTML = notFound()
   updateLocalStorageArr(filter,dogsProfiles)
 }
 })
