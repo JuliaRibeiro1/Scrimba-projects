@@ -56,7 +56,7 @@ get(".settings-icon").addEventListener("click",() => {
    updateSettingsDisplay()
 })
 let i = 0
-JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderCurrentImg(JSON.parse(localStorage.getItem(("doggos"))),0): profilesHtml.innerHTML = endProfiles()
+JSON.parse(localStorage.getItem(("doggos"))).length > 0 ? renderCurrentImg(JSON.parse(localStorage.getItem(("doggos"))).filter(filterProfilesConditions),0): profilesHtml.innerHTML = endProfiles()
 //JSON.parse(localStorage.getItem(("doggos"))).length !== 1? renderPreviousImg(filter,1) : renderCurrentImg(JSON.parse(localStorage.getItem(("doggos"))),0)
 renderPreviousImg(filter,1)
 
@@ -73,7 +73,7 @@ function addBadge(button,currentProfile) {
 
      else if(button.className == "pass-btn") {
         profilesHtml.innerHTML += `<span class="badge-span"><img src="images/badge-nope.png"></span>`  
-        get(".profiles").classList.add("active-fade-left")
+        profilesHtml.classList.add("active-fade-left")
         removeFadeAnimation("left")
     }
 }
@@ -104,7 +104,7 @@ if(filter.length > 1) {
         filter.shift()
         renderCurrentImg(filter,0)
         updateLocalStorageArr(filter,dogsProfiles)
-        console.log(filter)
+        console.log(filter.length)
          renderPreviousImg(filter,1)
         
     },500)
@@ -135,7 +135,7 @@ let parent;
 let parent2;
 
 get("body").addEventListener("click",(e) => {
-    if(get(".dots-container")) {
+    if(get(".profiles .dots-container")) {
         parent =  Array.from(get(".profiles .dots-container").children) 
     }
    
@@ -160,8 +160,9 @@ if(e.target.className == "current-img") {
 if(e.target.className == "save-settings-btn") {
   setCurrentSettings()
   filter = JSON.parse(localStorage.getItem("dogsArr")).filter(filterProfilesConditions)
-  filter.length > 0? renderProfile(filter,0):profilesHtml.innerHTML = notFound()
+  filter.length > 0? renderCurrentImg(filter,0):profilesHtml.innerHTML = notFound()
   updateLocalStorageArr(filter,dogsProfiles)
+  renderPreviousImg(filter,1)
 }
 })
 

@@ -10,6 +10,16 @@ body {
 }
 .main {
     overflow-y: hidden;
+    
+  
+}
+article{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: -1em;
+    width: 100%;
 }
 header {
     padding: 1em;
@@ -28,11 +38,9 @@ ul {
     align-items: center;
 }
 .profiles-section {
-    margin-top: 0.3em;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    background-color: transparent;
+    margin-bottom: 2em;
+    max-width: 500px;
     
 }
 .profiles img,.next-profiles img {
@@ -41,61 +49,17 @@ ul {
     height: 600px;
     max-width: 500px; 
 }
-/*.div-1 {
-    position: absolute;
-    top: 10%;
-    z-index: 0;
-}
-.div-2 {
-  position: absolute;
-  top:15%;
-  z-index: -1;
-}
-.div-3 {
-    position: absolute;
-    top: 16%;
-    z-index: -2;
-}
-.div-4 {
-    position: absolute;
-    top: 17%;
-    z-index: -3;
-}
-.div-5 {
-    position: absolute;
-    top: 18%;
-    z-index: -4;
-}
-.div-6 {
-    position: absolute;
-    top: 15%;
-    z-index: -5;
-}
-.div-7 {
-    position: absolute;
-    top: 15%;
-    z-index: -6;
-}
-.div-8 {
-    position: absolute;
-    top: 15%;
-    z-index: -7;
-}*/
 
 .next-profiles {
-    display: block;
-    left:50%; 
     z-index: -100;
     position: absolute;
-    justify-content: center;
-    position: absolute;
-    top: 100%;
-    left:75%;
-    transform: translate(-78%,0%);
-   
-}
-.next-profiles img {
-    display: block;
+    top: 20%;
+    left:5%;
+    max-width: 500px;
+    box-shadow: -1px 5px 15px rgba(0, 0, 0, 0.452);
+    border-radius: 1em;
+    height: 600px;
+
 }
 .user-information-container {
     position: absolute;
@@ -125,28 +89,30 @@ ul {
     align-items: center;
     gap: 1.5em; 
     display: none;
-    position: absolute;
+    position: relative;
     z-index: 100;
-    margin-top: 1em;
-    top:95%;
-    left:50%;
+    top:84vh;
+    left:35%;
+    order: 5;
     transform: translate(-50%,0%);
 }
-.profiles {  
+.profiles,.next-profiles {  
     justify-content: center;
     position: absolute;
-    z-index: 100;
-    top: 100%;
-    left:52%;
     transform: translate(-50%,0%);
-    
+    box-shadow: -1px 0px 15px rgba(0, 0, 0, 0.685);
+    border-radius: 3em;
+}
+.profiles {
+    left:52%;
+    top: 40%;
+    z-index: 100;
 }
 .btns-container button {
     border-radius: 50%;
     padding: 1.2em;
     background-color: white;
     border: none;
-    
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.116);
 }
 .btns-container img {
@@ -171,7 +137,7 @@ ul {
     z-index: 1;
     position: absolute;
     left:50%;
-    transform: translate(-50%,0%);
+    transform: translate(-50%,50%);
 }
 .white {
     background-color: white;
@@ -202,7 +168,7 @@ ul {
     left: 50%;
     margin: 0;
     text-align: center;
-    transform: translate(-50%,100%);  
+    transform: translate(-52%,100%);  
 }
 input[type="range"]{
     -webkit-appearance: none;
@@ -333,6 +299,18 @@ legend {
     margin-bottom: 1em;
     animation: pump 2s infinite;
 }
+.next-profiles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left:50%
+    
+}
+.endMessage {
+  
+    margin-bottom: 1.5em;
+}
 @keyframes pump {
     50% {
         transform: scale(1.1);
@@ -355,16 +333,24 @@ legend {
 }
 
 @media (min-width: 500px) {
-body {
+    body {
         font-size: 1.2rem;
     }
+
 .message-container {
    top:30%;
 }
+.btns-container {
+  
+}
+
 }
 @media (max-width: 500px) {
     .profiles {
         width: 90vw;
+    }
+    article {
+        margin-top: -2em;
     }
  }
 .open {
