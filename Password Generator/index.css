@@ -1,30 +1,27 @@
 * {
     margin: 0;
-    padding:0
+    padding:0;
+    box-sizing: border-box;
 
+}
+body,html {
+    overflow-x: hidden;
 }
 body {
    
     background-color: #1F2937;
     color:white;
-    width: 100vw;
-    height: 100vh;
-    
+    width: 90vw;
 }
-.container {
+h1,h2,.setUp-container,.generateBtn {
     margin: 45px 0px 0px 50px;
-   
-    
+    width: 80%;
 }
+
 .setUp-container > * {
     display: block;
-    
-    
 }
-.setUp-container {
- position: relative;
-   
-}
+
 input {
     width: 180px;
    position: relative;
@@ -33,9 +30,6 @@ input {
     font-weight: bolder;
     font-size: 1.1rem;
     text-align: center;
- 
-
-
 }
 .container h1 {
     font-size: 4rem;
@@ -51,6 +45,9 @@ span {
     font-weight: lighter;
     color: #D5D4D8;
 }
+.container h1,.container h1 {
+    max-width: 90%;
+}
 .generateBtn,input {
   
     border: none;
@@ -61,35 +58,37 @@ span {
 .generateBtn {
     width: 20%;
     max-width: 400px;
-    min-width: 280px;
-    background-color: #5ce284;
+    min-width: 250px;
+    background-color: #32be5c;
     color:white;
     font-size: 1.2rem;
     font-weight: bolder;
     margin-top: 1.3em;
     padding: 1.4em;
     border-radius: 20%/80%;
-    color:#ffffff
+    color:#ffffff;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
 }
 .password-container {
-
-    width: 85%;
-    display: flex;
-    justify-content: space-between;
+   margin-left: 30px;
+   margin-top: 1em;
+   width: 100vw;
 }
-.password-container:before {
-    content:"";
-    width: 80vw;
-    left:-10px;
-    position: relative;
+
+.passwords {
+    margin-right: 0;
+    width: 90vw;
     border-top: #2F3E53 1px solid ;
+    display: inline-block;
+    vertical-align: middle;
 }
-
 .password {
     color:#4ae282;
     background-color: #273549;
     border: none;
-    padding: 0.5em 1.2em;
+    padding: 0.5em .7em;
     border-radius: 5px;
     width:30%;
     min-height: 35px;
@@ -99,45 +98,53 @@ span {
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
-    min-width: 200px;
-
+    min-width: 100px;
+    text-align: center;
+    margin-right: 2em;
+    max-width: 420px;
+    float:left
 }
+
 #div-password,#div-digit {
     width: fit-content;
+    
 }
 #div-password::before {
     content: attr(data-content);
-    color: rgb(255, 255, 255);
+    color:rgb(255, 52, 38);
     position: relative;
     width: 100%;
     height: 10px;
     font-weight: bold;
-    top:5px;
+    top:2px;
     display: block;
 }
 #div-digit::before {
     content: attr(data-content);
-    color: rgb(255, 255, 255);
+    color: rgb(255, 52, 38);
     position: relative;
-    width: 100%;
+    width: 90vw;
     height: 10px;
     font-weight: bold;
-    top:5px;
+    top:-8px;
     display: block;
 }
 .passwords-quantity-input {
-    width: 20%;
+    width: 20vw;
     min-width: 250px;
-    max-width: 300px;
+    max-width: 350px;
     background-color: #57ec70;
 }
 .digits-quantity-input {
-    width: 50%;
-    min-width: 100px;
-    max-width: 120px;
+    width: 20vw;
+    min-width: 120px;
+    max-width: 200px;
     background-color: #4ee680;
 }
-@media (max-width:600px) {
+@media (max-width:550px) {
+    body {
+        margin: 0;
+    }
     .container {
         width:70%
     }
@@ -146,30 +153,109 @@ span {
     }
     .container h2 {
         font-size:1.6em;
-        margin-bottom:.7em
+        margin-bottom:.1em
     }
-    .password-container {
-        flex-direction: column;   
+    .setUp-container {
+        margin-top:1em;
+    }
+    .passwords {
+        width: 85vw;
+        margin-left:10px;
+       
+    }
+    #div-digit {
+        width: 100px;
     }
     .password  {
-        margin: .9em 0;
+        width: 78%;
+       padding: .7em;
+       margin-right: 2em;
+       display: inline-block;
+       vertical-align: middle;
+       margin-bottom: .5em;
+       margin-left: 20px;
+       font-size: 1.3rem;
+
     }
     input {
+        
+       padding: 1em;
+    }
+    .digits-quantity-input {
         padding: .9em;
         margin-top:5px;
+        width: 100px;
+    }
+
+    .passwords-quantity-input{
+        width: 200px;
     }
     .generateBtn {
         margin-top: 1em;
-        left:52%;
-        position: relative;
-        transform: translate(-50%,0%);
+        display: block;
+        margin-top: 1em;
+        display: flex;
+        
     }
 }
-@media (min-width:600px) {
+
+@media (min-width:550px) and (max-width:930px) {
+    .container h1 {
+        font-size: 3em;
+        margin-top: 2em;
+    }
+    .container h2 {
+        font-size:2em;
+        margin-bottom:.1em
+        
+    }
+    .setUp-container  {
+        display: flex;
+   
+    }
+    input {
+        padding: 1.5em;
+        margin-right: 1em;
+    }
+    .password-container {
+        margin-top: 1em;
+        margin-left: 50px;
+    }
+    .password {
+        font-size: 1.3em;
+        width: 40%;
+        
+        padding: 1em;
+    }
+
+}
+@media (min-width:930px) {
     .container h1,.container h2 {
         margin-bottom: 0.6em;
     }
     .generateBtn,input {
         margin-bottom: 3em;
+
+    }
+    .generateBtn {
+        border-radius: 20%/100%;
+        width: 100%;
+        display: block;
+    }
+    input {
+        padding: 1.5em;
+        margin-right: 1em;
+    }
+    .password-container {
+       margin-left: 50px;
+    }
+    .password {
+        padding: 1.2em;
+        width: 45%;
+
+    }
+    .setUp-container  {
+        display: flex;
+   
     }
 }
