@@ -146,10 +146,11 @@ span {
         margin: 0;
     }
     .container {
-        width:70%
+        width:75%
     }
     .container h1 {
         font-size: 2.6em;
+        width: 100%;
     }
     .container h2 {
         font-size:1.6em;
@@ -161,7 +162,6 @@ span {
     .passwords {
         width: 85vw;
         margin-left:10px;
-       
     }
     #div-digit {
         width: 100px;
@@ -195,6 +195,7 @@ span {
         display: block;
         margin-top: 1em;
         display: flex;
+        width: 270px;
         
     }
 }
@@ -203,6 +204,7 @@ span {
     .container h1 {
         font-size: 3em;
         margin-top: 2em;
+        
     }
     .container h2 {
         font-size:2em;

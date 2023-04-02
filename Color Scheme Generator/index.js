@@ -70,17 +70,19 @@ async function scheme(url) {
   try{
   const res = await fetch(url) 
   if(!res.ok) {
-    throw Error("Cor indisponível")
+    const message = `ERRO ${res.status}`
+    throw Error(message)
+
   }
   const data = await res.json()
   return data.colors.forEach(item => {
     colors.push({value:item.hex.value,name:item.name.value}) //CRIEI UM OBJETO COM O VALOR E O NOME DA COR
     colorsSection.innerHTML = RenderColors()
   })
-}catch(err) {alert(err)}
+}catch(err) {alert(err.message)}
   
 }
-
+console.log(scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`))
 document.querySelector("article").addEventListener("click",(e) => {
   const root = document.querySelector(":root");
   let target = e.target
