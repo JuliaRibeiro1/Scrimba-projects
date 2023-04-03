@@ -1,5 +1,5 @@
 import React from "react"
-import path from "../assets/path.png"
+import locationIcon from "../assets/locationIcon.svg"
 
 export default function Note(props) {
     const {title,location, googleMapsUrl,startDate,endDate,description,imageUrl} = props
@@ -11,10 +11,9 @@ export default function Note(props) {
             <section className="note-container">
             <section className="note-header">
                 <header>
-                    <div className="note-location"><img src={path}/>{location}</div>
-                    <div><a href={googleMapsUrl}>View on Google Maps</a></div>
+                    <div className="note-location"><img class="locationIcon" src={locationIcon}/>{location}</div>
+                    <div><a class="google-maps-link"href={googleMapsUrl}>View on Google Maps</a></div>
                 </header>
-                
             </section>
             <section className="note">
                 <h1>{title}</h1>
