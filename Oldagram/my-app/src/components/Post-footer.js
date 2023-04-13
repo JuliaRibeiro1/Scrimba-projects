@@ -37,7 +37,7 @@ export default function PostFooter(props) {
         setShowComments(comment => !comment)
     }
     
-    let userComment = showComments? 
+   let userComment = //showComments? 
     <section className="comment-section">
         <ul className="comments-list">  {/*IRÁ RENDERIZAR OS COMENTÁRIOS ANTERIORES(OBJETOS)*/}
         {postComment.map(user => (  
@@ -62,7 +62,7 @@ export default function PostFooter(props) {
           
         </div>
     </section>
-    : ""
+   // : "" 
    
     return(
         <footer className="post-footer">
@@ -81,9 +81,9 @@ export default function PostFooter(props) {
                     <span className="comment-main-username">{props.username}</span>
                     {props.quote}</p>
             </section>
-            <section className="user-comments-container">
+            {showComments && <section className="user-comments-container">
                 {userComment}
-            </section>
+            </section>}
         </footer> 
     )
 }
