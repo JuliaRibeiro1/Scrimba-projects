@@ -10,12 +10,22 @@ import posts from "./data.js"
 
 
 export default function App() {
-  
- const postIterate = posts.map(post => {
+  const [data,setData] = React.useState(posts)
+  function toggleLike(id) {
+    console.log("Oiiii")
+      setData(prev => {
+          return prev.map(post => {
+           
+              return post.id === id ? {...post, isLiked: !post.isLiked} : post
+          })
+      })
+  }
+ const postIterate = data.map(post => {
     
     return (
       <Post
        key={post.id}
+       toggleFunction={() => toggleLike(post.id)}
        {...post}
         />
    )

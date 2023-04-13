@@ -1,7 +1,8 @@
 import React from "react"
 import PostFooter from "../components/Post-footer.js"
 
-export default function Post(props) { //O POST EM SI COM A FOTO, NOME, LOCAL E POST DO USUÁRIO
+export default function Post(props) {
+ //O POST EM SI COM A FOTO, NOME, LOCAL E POST DO USUÁRIO
     return(
         <article>
             <header className="header-post">

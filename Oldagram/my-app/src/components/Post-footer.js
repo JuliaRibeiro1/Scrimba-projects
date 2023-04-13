@@ -8,30 +8,31 @@ import iconDm from "../images/icon-dm.png"
 import userAvatar from "../images/marie-antoinette.jpg"
  
 export default function PostFooter(props) {
-    let [postValues,setValues] = React.useState({ 
+    
+  /* let [postValues,setValues] = React.useState({ 
         isLiked: props.isLiked,
         likesNumber : props.likes
-    })
-    
+    })*/
+   
     let [showComments,setShowComments] = React.useState(false)
 
     let [postComment,setComment] = React.useState(props.comments)
 
     let [commentText, setcommentText] = React.useState('');
 
-    let heartIcon = postValues.isLiked? iconHeartFilled : iconHeart //SE O ISLIKED FOR VERDADEIRO A ICONE É TROCADO POR UM CORAÇÃO VERMELHO, CASO CONTRÁRIO CONTINUA O MESMO
+    let heartIcon = props.isLiked? iconHeartFilled : iconHeart //SE O ISLIKED FOR VERDADEIRO A ICONE É TROCADO POR UM CORAÇÃO VERMELHO, CASO CONTRÁRIO CONTINUA O MESMO
 
  
-   let likes =  !postValues.isLiked ? postValues.likesNumber : postValues.likesNumber + 1 //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
+   let likes =  props.isLiked ? props.likes + 1: props.likes //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
   
-    function addLikes() { 
+   /* function addLikes() { 
       setValues(prev => {
         return{
         ...prev,   
         isLiked : !prev.isLiked, //TODA VEZ QUE O BOTÃO DE LIKE FOR CLICADO O SEU ESTADO IRÁ INVERTER,TRUE => FALSE, FALSE => TRUE
         }
       }) 
-    }
+    }*/
     
     function comments() {
         setShowComments(comment => !comment)
@@ -68,7 +69,8 @@ export default function PostFooter(props) {
         <footer className="post-footer">
             <section>
             <ul className="btns-container flex">
-                <li><button><img src={heartIcon} alt="like" onClick={addLikes}/></button></li>
+                
+                <li><button><img src={heartIcon} alt="like" onClick={props.toggleFunction}/></button></li>
                 <li><button><img src={iconComment} alt="comment" onClick={comments}/></button></li>
                 <li><button><img src={iconDm} alt="dm"/></button></li>
             </ul>
