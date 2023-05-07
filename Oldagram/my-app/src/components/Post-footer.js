@@ -5,14 +5,12 @@ import iconHeart from "../images/icon-heart.png"
 import iconHeartFilled from "../images/filled-heart.png"
 import iconComment from "../images/icon-comment.png"
 import iconDm from "../images/icon-dm.png"
-import userAvatar from "../images/marie-antoinette.jpg"
+import data from "../data.js"
+import userData from "../userData.js"
  
 export default function PostFooter(props) {
-    
-  /* let [postValues,setValues] = React.useState({ 
-        isLiked: props.isLiked,
-        likesNumber : props.likes
-    })*/
+    let [post,setPost] = React.useState(data)
+   let [postLikes,setLikes] = React.useState(props.isLiked)
    
     let [showComments,setShowComments] = React.useState(false)
 
@@ -23,16 +21,14 @@ export default function PostFooter(props) {
     let heartIcon = props.isLiked? iconHeartFilled : iconHeart //SE O ISLIKED FOR VERDADEIRO A ICONE É TROCADO POR UM CORAÇÃO VERMELHO, CASO CONTRÁRIO CONTINUA O MESMO
 
  
-   let likes =  props.isLiked ? props.likes + 1: props.likes //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
-  
-   /* function addLikes() { 
-      setValues(prev => {
-        return{
-        ...prev,   
-        isLiked : !prev.isLiked, //TODA VEZ QUE O BOTÃO DE LIKE FOR CLICADO O SEU ESTADO IRÁ INVERTER,TRUE => FALSE, FALSE => TRUE
-        }
-      }) 
-    }*/
+    let likes =  props.isLiked ? props.likes + 1: props.likes //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
+  console.log(props.toggleFunction)
+    React.useEffect(() => {
+        setLikes(prev => 
+            !prev
+        )
+    },[postLikes]) 
+
     
     function comments() {
         setShowComments(comment => !comment)
@@ -50,13 +46,13 @@ export default function PostFooter(props) {
         ))}
         </ul>
         <div className="flex"> {/*ONDE O USUÁRIO IRÁ DIGITAR SEU COMENTÁRIO*/}
-            <img className="main-user-comment-img" alt="user" src={userAvatar}/>
+            <img className="main-user-comment-img" alt="user" src={userData.profileImg}/>
             <textarea placeholder="Add a comment..." className="textarea" value={commentText} onChange={e => setcommentText(e.target.value)} ></textarea>
             <button  className="submit-comment" onClick={() => {
                 
             setComment([ //IRÁ ADICIONAR AO ARRAY UM OBJETO COM A FOTO,USERNAME E COMENTÁRIO DO USUÁRIO
                 ...postComment,
-                {userPic: userAvatar,text:commentText,username:"Marie"}
+                {userPic: userData.profileImg,text:commentText,username:userData.username}
                 ])
                 setcommentText("") //LIMPAR O TEXTAREA DEPOIS QUE O BOTÃO DE PUBLICAR FOR CLICADO
             }}>Publish</button>

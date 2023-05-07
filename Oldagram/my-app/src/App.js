@@ -17,15 +17,18 @@ export default function App() {
           return prev.map(post => {
            
               return post.id === id ? {...post, isLiked: !post.isLiked} : post
+              
           })
       })
   }
+
  const postIterate = data.map(post => {
     
     return (
       <Post
        key={post.id}
        toggleFunction={() => toggleLike(post.id)}
+       
        {...post}
         />
    )
