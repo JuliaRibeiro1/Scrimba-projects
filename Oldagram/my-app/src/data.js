@@ -18,6 +18,7 @@ export default [
         quote: "just took a few mushrooms lol",
         likes: 21,
         isLiked:false,
+        commentsOn: false,
         comments: [],
         id:"7294334c-b2d2-11ed-afa1-0242ac120002"
     },
@@ -30,6 +31,7 @@ export default [
         quote: "i'm feelin a bit stressed tbh",
         likes: 4,
         isLiked:false,
+        commentsOn: false,
         comments: [],
         id:"88e7ede6-b2d2-11ed-afa1-0242ac120002",
 
@@ -43,6 +45,7 @@ export default [
         quote: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152,
         isLiked:false,
+        commentsOn: false,
         comments: [],
         id:"959ed07c-b2d2-11ed-afa1-0242ac120002 "
     }

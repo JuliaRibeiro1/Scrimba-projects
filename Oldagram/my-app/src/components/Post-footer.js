@@ -9,30 +9,23 @@ import data from "../data.js"
 import userData from "../userData.js"
  
 export default function PostFooter(props) {
-    let [post,setPost] = React.useState(data)
-   let [postLikes,setLikes] = React.useState(props.isLiked)
    
-    let [showComments,setShowComments] = React.useState(false)
+ //   let [showComments,setShowComments] = React.useState(false)
 
     let [postComment,setComment] = React.useState(props.comments)
 
     let [commentText, setcommentText] = React.useState('');
 
     let heartIcon = props.isLiked? iconHeartFilled : iconHeart //SE O ISLIKED FOR VERDADEIRO A ICONE É TROCADO POR UM CORAÇÃO VERMELHO, CASO CONTRÁRIO CONTINUA O MESMO
-
  
-    let likes =  props.isLiked ? props.likes + 1: props.likes //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
-  console.log(props.toggleFunction)
-    React.useEffect(() => {
-        setLikes(prev => 
-            !prev
-        )
-    },[postLikes]) 
+   // let likes =  props.isLiked ? props.likes + 1: props.likes //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
+
+   
 
     
-    function comments() {
+  /*  function comments() {
         setShowComments(comment => !comment)
-    }
+    }*/
     
    let userComment = //showComments? 
     <section className="comment-section">
@@ -66,20 +59,20 @@ export default function PostFooter(props) {
             <section>
             <ul className="btns-container flex">
                 
-                <li><button><img src={heartIcon} alt="like" onClick={props.toggleFunction}/></button></li>
-                <li><button><img src={iconComment} alt="comment" onClick={comments}/></button></li>
+                <li><button><img src={heartIcon} alt="like" onClick={props.toggleLike}/></button></li>
+                <li><button><img src={iconComment} alt="comment" onClick={props.toggleComments}/></button></li>
                 <li><button><img src={iconDm} alt="dm"/></button></li>
             </ul>
             </section>
             <section>
-                <span className="likesNumberSpan">{likes}<span>likes</span></span>
+                <span className="likesNumberSpan">{props.likes}<span>likes</span></span>
             </section>
             <section className="main-comments-container">
                 <p className="main-comment">
                     <span className="comment-main-username">{props.username}</span>
                     {props.quote}</p>
             </section>
-            {showComments && <section className="user-comments-container">
+            {props.commentsOn && <section className="user-comments-container">
                 {userComment}
             </section>}
         </footer> 
