@@ -10,7 +10,7 @@ import userData from "../userData.js"
  
 export default function PostFooter(props) {
    
- //   let [showComments,setShowComments] = React.useState(false)
+ //   
 
     let [postComment,setComment] = React.useState(props.comments)
 
@@ -20,12 +20,6 @@ export default function PostFooter(props) {
  
    // let likes =  props.isLiked ? props.likes + 1: props.likes //SE O ISLIKED FOR FALSO O VALOR DE LIKES CONTINUA O MEMSO, CASO CONTRÁRIO O NÚMERO DE O LIKES AUMENTA 1
 
-   
-
-    
-  /*  function comments() {
-        setShowComments(comment => !comment)
-    }*/
     
    let userComment = //showComments? 
     <section className="comment-section">

@@ -8,12 +8,13 @@ import posts from "./data.js"
 
 
 export default function App() {
-  const [data,setData] = React.useState(posts)
+
+  const [postsData,setData] = React.useState(JSON.parse( localStorage.getItem("postsData")) || posts)
   function toggleLike(id) {
  
       setData(prev => {
           return prev.map(post => {
-              return post.id === id ? {...post, isLiked: !post.isLiked, likes: post.likes + 1} : post   
+              return post.id === id ? {...post, isLiked: !post.isLiked, likes: post.isLiked? post.likes - 1 : post.likes + 1} : post   
           })
       })
   }
@@ -25,7 +26,12 @@ export default function App() {
         })
     })
 }
- const postIterate = data.map(post => {
+React.useEffect(() => {
+  localStorage.setItem("postsData",JSON.stringify(postsData))
+  console.log(postsData)
+  console.log("OI")
+},[postsData])
+ const postIterate = postsData.map(post => {
     
     return (
       <Post
