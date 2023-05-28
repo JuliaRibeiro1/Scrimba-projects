@@ -5,9 +5,10 @@ import avatarCourbet from "./images/avatar-courbet.jpg"
 import postCourbet from "./images/post-courbet.jpg"
 import avatarDucreux from "./images/avatar-ducreux.jpg"
 import postDucreux from "./images/post-ducreux.jpg"
+import { v4 as uuid} from 'uuid';
 
-console.log(postVanG)
-export default [
+
+const data = [
    
     {
         name: "Vincent van Gogh",
@@ -19,7 +20,7 @@ export default [
         likes: 21,
         isLiked:false,
         comments: [],
-        id:"7294334c-b2d2-11ed-afa1-0242ac120002"
+        id:uuid()
     },
     {
         name: "Gustave Courbet",
@@ -31,7 +32,7 @@ export default [
         likes: 4,
         isLiked:false,
         comments: [],
-        id:"88e7ede6-b2d2-11ed-afa1-0242ac120002",
+        id:uuid(),
 
     },
         {
@@ -44,7 +45,8 @@ export default [
         likes: 152,
         isLiked:false,
         comments: [],
-        id:"959ed07c-b2d2-11ed-afa1-0242ac120002 "
+        id:uuid()
     }
 ]
 
+export default data

@@ -18,18 +18,23 @@ export default function App() {
       })
   }
   console.log(postsData)
- 
+  function addComment(data) {
+    setData(prev => {
+      
+
+    })}
 
 React.useEffect(() => {
   localStorage.setItem("postsData",JSON.stringify(postsData))
   console.log("OI")
 },[postsData])
  const postIterate = postsData.map(post => {
-    
+    console.log(post)
     return (
       <Post
        key={post.id}
        toggleLike={() => toggleLike(post.id)}
+       addComment={addComment}
      
        
        {...post}

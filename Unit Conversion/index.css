@@ -37,8 +37,9 @@ input {
 .converter-display-container  {
     background-color: #6943FF;
     height: 70%;
-    padding: 20px;
+    padding: 3em;
     color: white;
+
 }
 .converter-display-container > * {
     display: block;
@@ -74,7 +75,8 @@ input {
 .conversion-result-container  {
     background-color: #F4F4F4;
    box-sizing: border-box;
-   padding: 50px 25px  
+   padding: 50px 25px  ;
+   height: 60vh;
 }
 .result {
     margin-top: 1em
@@ -84,6 +86,7 @@ input {
     display: block;
     margin: 0 auto;
     padding: 30px;
+    
     border-radius: 2px;
     min-height: 60px;
     max-width: 800px;
