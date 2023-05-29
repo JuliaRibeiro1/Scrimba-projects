@@ -11,7 +11,7 @@ import { v4 as uuid} from 'uuid';
  
 
 export default function PostFooter(props) {
-console.log(props.username)
+console.log(props.name)
  //   let [postComment,setComment] = React.useState(props.comments)
 
     let [commentText, setcommentText] = React.useState('');
@@ -37,22 +37,30 @@ console.log(props.username)
           }]
 
     })}*/
-    
+    /* 
+    {props.comments.length > 0 ? props.comments.map(user => (  
+        <PostComment
+           key={uuid()}
+           {...user}
+        />
+       )): ""}*/
+       console.log(props.comments)
    let userComment = //showComments? 
     <section className="comment-section">
-        <ul className="comments-list">  {/*IRÁ RENDERIZAR OS COMENTÁRIOS ANTERIORES(OBJETOS)*/}
-        {props.comments.length > 0 ? props.comments.map(user => (  
-         <PostComment
-            key={uuid()}
-            {...user}
-         />
-        )): ""}
-       
+        <ul className="comments-list">  
+      {/*IRÁ RENDERIZAR OS COMENTÁRIOS ANTERIORES(OBJETOS)*/}
+        {props.comments && props.comments.length > 0 ? props.comments.map(user => (  
+        
+        <PostComment
+           key={uuid()}
+           {...user}
+        />
+       )): ""}
         </ul>
         <div className="flex"> {/*ONDE O USUÁRIO IRÁ DIGITAR SEU COMENTÁRIO*/}
             <img className="main-user-comment-img" alt="user" src={userData.profileImg}/>
             <textarea placeholder="Add a comment..." className="textarea" value={commentText} onChange={handleChange}  ></textarea>
-            <button className="submit-comment" onClick={() => props.addComment()} >Publish</button>
+            <button className="submit-comment" onClick={() => props.addComment(commentText)} >Publish</button>
 
         </div>
     </section>

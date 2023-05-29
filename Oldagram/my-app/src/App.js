@@ -5,6 +5,7 @@ import React from "react"
 import  Header from "./components/Header.js"
 import Post from "./components/Post.js"
 import posts from "./data.js"
+import userData from "./userData.js"
 
 
 export default function App() {
@@ -18,26 +19,31 @@ export default function App() {
       })
   }
   console.log(postsData)
-  function addComment(data) {
-    setData(prev => {
-      
-
-    })}
+  function addComment(id) {
+   
+      setData(prev => {
+        return prev.map(
+          prev => {
+            return {...prev, comments: {...prev.comments, userPic: userData.profileImg,text:"oi",username:userData.username}}
+          })})/*post => {
+          return post.id === id ? {...post, comments: {...post.comments, userPic: userData.profileImg,text:"oi",username:userData.username}} : prev
+        }*/
+      console.log(postsData)
+     
+    }
 
 React.useEffect(() => {
   localStorage.setItem("postsData",JSON.stringify(postsData))
-  console.log("OI")
+  console.log('Mudou')
 },[postsData])
- const postIterate = postsData.map(post => {
-    console.log(post)
+
+ const postIterate = postsData.map(item => {
     return (
       <Post
-       key={post.id}
-       toggleLike={() => toggleLike(post.id)}
-       addComment={addComment}
-     
-       
-       {...post}
+       key={item.id}
+       toggleLike={() => toggleLike(item.id)}
+       addComment={() => addComment(item.id)}
+       {...item}
         />
    )
          

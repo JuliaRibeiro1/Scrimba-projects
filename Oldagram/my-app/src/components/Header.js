@@ -4,7 +4,7 @@ import logo from '../images/logo.png'
 
 
 export default function Header(){
-    console.log(userData) // IRÁ CONTER APENAS O LOGO E A FOTO DE PERFIL DO "USUÁRIO"
+ // IRÁ CONTER APENAS O LOGO E A FOTO DE PERFIL DO "USUÁRIO"
     return(
     <header className='header'>
         <ul className='ul-header flex'>
