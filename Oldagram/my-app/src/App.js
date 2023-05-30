@@ -7,6 +7,9 @@ import Post from "./components/Post.js"
 import posts from "./data.js"
 import userData from "./userData.js"
 
+import {Routes, Route} from "react-router-dom"
+
+
 
 export default function App() {
 
@@ -39,6 +42,7 @@ React.useEffect(() => {
 
  const postIterate = postsData.map(item => {
     return (
+    
       <Post
        key={item.id}
        toggleLike={() => toggleLike(item.id)}
@@ -52,12 +56,22 @@ React.useEffect(() => {
   return (
     <>
       <Header/>
+     
       <main>
+      
         <section className="main-section">
+        <Routes>
+          <Route path="/home">
+         
           {postIterate}
+         
+          </Route>
+          </Routes>
         </section>
       </main>
+    
     </>
+   
   );
 
   }

@@ -1,5 +1,6 @@
 import React from "react"
 import PostFooter from "../components/Post-footer.js"
+import {Switch, Route,Link} from "react-router-dom"
 
 export default function Post(props) {
  //O POST EM SI COM A FOTO, NOME, LOCAL E POST DO USUÁRIO
