@@ -19,12 +19,12 @@ export default function App() {
       })
   }
   console.log(postsData)
-  function addComment(id) {
+  function addComment(id,data) {
    
       setData(prev => {
         return prev.map(
-          prev => {
-            return {...prev, comments: {...prev.comments, userPic: userData.profileImg,text:"oi",username:userData.username}}
+          post => {
+            return post.id === id ? {...post, comments: [...post.comments, {userPic: userData.profileImg,text:data,username:userData.username}]} : post
           })})/*post => {
           return post.id === id ? {...post, comments: {...post.comments, userPic: userData.profileImg,text:"oi",username:userData.username}} : prev
         }*/
@@ -42,7 +42,7 @@ React.useEffect(() => {
       <Post
        key={item.id}
        toggleLike={() => toggleLike(item.id)}
-       addComment={() => addComment(item.id)}
+       addComment={addComment}
        {...item}
         />
    )
