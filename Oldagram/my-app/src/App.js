@@ -6,7 +6,7 @@ import  Header from "./components/Header.js"
 import Post from "./components/Post.js"
 import posts from "./data.js"
 import userData from "./userData.js"
-
+import Profile from "./components/Profile.js"
 import {Routes, Route} from "react-router-dom"
 
 
@@ -61,12 +61,10 @@ React.useEffect(() => {
       
         <section className="main-section">
         <Routes>
-          <Route path="/home">
-         
-          {postIterate}
-         
+          <Route path="/" element={postIterate}>
           </Route>
-          </Routes>
+          <Route path="/profile" element={<Profile/>}></Route>
+         </Routes>
         </section>
       </main>
     

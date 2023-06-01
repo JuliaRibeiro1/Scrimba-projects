@@ -44,7 +44,6 @@ export default function PostFooter(props) {
             <button className="submit-comment" onClick={() => {
                 props.addComment(props.id,commentText) 
                 setcommentText("")
-
             }} >Publish</button>
 
         </div>
