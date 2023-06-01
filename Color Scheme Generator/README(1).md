@@ -4,7 +4,7 @@
 
 ## Aprendizados
 * ✨Primeiro projeto usando API✨
-* Neste projeto consegui me familiarizar com o uso de APIs e como usá-la com async/await.
+* Neste projeto consegui me familiarizar com o uso de APIs e como usar FETCH com async/await.
 * Provocar animações de css por eventos onClick.
 * Uso de funções importadas.
 
@@ -17,11 +17,11 @@
 
 ## What I learned
 * ✨This is my first project using an API✨
-* In this project I was able to 
+* In this project I was able to practice my APIs skills and use API FETCH with async/await.
 * Trigger css animations by onClick events.
 * Importing functions.
 
 ## Stretch goals 
 * Copy color hexadecimal code by clicking on it.
 * I decided to turn the get color scheme into a get random color scheme button so everytime the user pick a new seed color or a new mode a new color scheme is automatically generated.
-* I decided to set the text color based on the background color instead of placing it inside a div with a specific background and text color like the original project prototype from Scrimba.
+* I decided to set the text color based on the background color instead of placing it inside a div with a specific background and text color like the original project design prototype from Scrimba.
