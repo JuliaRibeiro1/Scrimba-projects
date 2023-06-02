@@ -5,6 +5,12 @@ import avatarCourbet from "./images/avatar-courbet.jpg"
 import postCourbet from "./images/post-courbet.jpg"
 import avatarDucreux from "./images/avatar-ducreux.jpg"
 import postDucreux from "./images/post-ducreux.jpg"
+import post2VanG from "./images/vangogh-post2.webp"
+import post3VanG from "./images/vangogh-post3.jpg"
+import post2Courbet from "./images/courbet-post2.jpg"
+import post3Courbet from "./images/courbet-post3.jpg"
+import post2Ducreux from "./images/ducreux-post2.jpg"
+
 import { v4 as uuid} from 'uuid';
 
 
@@ -16,6 +22,7 @@ const data = [
         location: "Zundert, Netherlands",
         avatar:avatarVanG,
         post: postVanG,
+        posts:[postVanG,post2VanG,post3VanG],
         quote: "just took a few mushrooms lol",
         likes: 21,
         isLiked:false,
@@ -28,6 +35,7 @@ const data = [
         location: "Ornans, France",
         avatar: avatarCourbet,
         post: postCourbet,
+        posts: [postCourbet,post2Courbet,post3Courbet],
         quote: "i'm feelin a bit stressed tbh",
         likes: 4,
         isLiked:false,
@@ -41,6 +49,7 @@ const data = [
         location: "Paris, France",
         avatar: avatarDucreux,
         post: postDucreux,
+        posts: [postDucreux,post2Ducreux],
         quote: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152,
         isLiked:false,

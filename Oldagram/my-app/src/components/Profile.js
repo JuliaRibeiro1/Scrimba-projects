@@ -1,8 +1,18 @@
 import React from "react"
 import avatarDucreux from "../images/avatar-ducreux.jpg"
+import { useParams } from "react-router-dom"
 
-export default function Profile() {
+export default function Profile(props) {
+   
+    const {id} = useParams()
+    console.log(props)
+    const thisProfile = props.props.find(profile => profile.id === id)
+    thisProfile.posts.map(ittem => {
+        console.log("OI")
+    })
+
     return (
+
         <header className="header-profile">
             <div className="header-profile-container">
                 <img src={avatarDucreux} className="profile-img"></img>
@@ -21,6 +31,15 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
+            <section className="posts-section">
+            {thisProfile.posts.map(image => {
+               return ( 
+               <>
+                <div>oii</div>
+                    <img src={image}/>
+                    </>
+                )})}
+            </section>
         </header>
     )
 }

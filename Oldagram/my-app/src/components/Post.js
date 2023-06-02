@@ -2,7 +2,9 @@ import React from "react"
 import PostFooter from "../components/Post-footer.js"
 import {Link} from "react-router-dom"
 
+
 export default function Post(props) {
+    console.log(props.id)
  //O POST EM SI COM A FOTO, NOME, LOCAL E POST DO USUÁRIO
     return(
         <article>
@@ -10,10 +12,10 @@ export default function Post(props) {
                 <ul className="ul-post">
               
                     <li className="span">
-                    <Link to="/profile"><img src={props.avatar} alt="profile"/></Link>
+                    <Link to={`/${props.id}`}><img src={props.avatar} alt="profile"/></Link>
                     </li> 
                     <li>
-                    <Link style={{textDecoration: 'none', color:"black"}} to="/profile"> 
+                    <Link style={{textDecoration: 'none', color:"black"}} to={`/${props.id}`}> 
                         <h1>{props.name}</h1>
                     </Link>
                     </li>
@@ -28,6 +30,7 @@ export default function Post(props) {
             <PostFooter 
          {...props} //POSTFOOTER IRÁ COMPARTILHAR DA MESMAS PROPS DE POST
        />
+         
         </article>
          
     )

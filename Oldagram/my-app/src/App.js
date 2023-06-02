@@ -10,7 +10,6 @@ import Profile from "./components/Profile.js"
 import {Routes, Route} from "react-router-dom"
 
 
-
 export default function App() {
 
   const [postsData,setData] = React.useState(JSON.parse( localStorage.getItem("postsData")) || posts)
@@ -31,7 +30,7 @@ export default function App() {
           })})/*post => {
           return post.id === id ? {...post, comments: {...post.comments, userPic: userData.profileImg,text:"oi",username:userData.username}} : prev
         }*/
-      console.log(postsData)
+
      
     }
 
@@ -61,17 +60,17 @@ React.useEffect(() => {
       
         <section className="main-section">
         <Routes>
-          <Route path="/" element={postIterate}>
+          <Route exact path="/" element={postIterate}>
           </Route>
-          <Route path="/profile" element={<Profile/>}></Route>
+          
+            <Route path="/:id" element={<Profile props={postsData}/>}></Route>
+         
          </Routes>
         </section>
       </main>
     
     </>
-   
   );
 
   }
  
-
