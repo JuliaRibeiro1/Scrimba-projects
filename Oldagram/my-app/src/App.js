@@ -11,7 +11,6 @@ import {Routes, Route} from "react-router-dom"
 
 
 export default function App() {
-
   const [postsData,setData] = React.useState(JSON.parse( localStorage.getItem("postsData")) || posts)
   function toggleLike(id) {
       setData(prev => {

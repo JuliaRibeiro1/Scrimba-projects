@@ -3,17 +3,18 @@ import avatarDucreux from "../images/avatar-ducreux.jpg"
 import { useParams } from "react-router-dom"
 
 export default function Profile(props) {
-   
+   console.log(props)
     const {id} = useParams()
     console.log(props)
     const thisProfile = props.props.find(profile => profile.id === id)
-    thisProfile.posts.map(ittem => {
-        console.log("OI")
-    })
+  
 
     return (
-
+        <>
         <header className="header-profile">
+         
+            <h3>{thisProfile.username}</h3>
+           
             <div className="header-profile-container">
                 <img src={avatarDucreux} className="profile-img"></img>
                 <div className="profile-info">
@@ -30,16 +31,19 @@ export default function Profile(props) {
                         <div>Following</div>
                     </div>
                 </div>
+                <p>{thisProfile.profileDescription}</p>
+                
             </div>
+            <button>Following</button>
+            </header>
             <section className="posts-section">
             {thisProfile.posts.map(image => {
                return ( 
-               <>
-                <div>oii</div>
-                    <img src={image}/>
+                    <>
+                        <img className="profile-posts-img" src={image}/>
                     </>
                 )})}
             </section>
-        </header>
+            </>
     )
 }
