@@ -34,7 +34,7 @@ export default function Profile(props) {
                 <p>{thisProfile.profileDescription}</p>
                 
             </div>
-            <button>Following</button>
+            <button className="followBtn">Following</button>
             </header>
             <section className="posts-section">
             {thisProfile.posts.map(image => {
