@@ -1,5 +1,4 @@
 import React from "react"
-import avatarDucreux from "../images/avatar-ducreux.jpg"
 import { useParams } from "react-router-dom"
 
 export default function Profile(props) {
@@ -16,7 +15,7 @@ export default function Profile(props) {
             <h3>{thisProfile.username}</h3>
            
             <div className="header-profile-container">
-                <img src={avatarDucreux} className="profile-img"></img>
+                <img src={thisProfile.avatar} className="profile-img"></img>
                 <div className="profile-info">
                     <div id="posts-info" >
                         <div className="info-numbers">213</div>
@@ -31,18 +30,22 @@ export default function Profile(props) {
                         <div>Following</div>
                     </div>
                 </div>
+                <h4>{thisProfile.name}</h4>
+                <button className="followBtn">Following</button>
                 <p>{thisProfile.profileDescription}</p>
                 
             </div>
-            <button className="followBtn">Following</button>
+           
             </header>
             <section className="posts-section">
-            {thisProfile.posts.map(image => {
+
+           <div className="posts"> {thisProfile.posts.map(image => {
                return ( 
                     <>
                         <img className="profile-posts-img" src={image}/>
                     </>
                 )})}
+                </div>
             </section>
             </>
     )

@@ -7,7 +7,14 @@
     align-items: stretch;
 }
 
-
+header h4,.followBtn {
+    margin-top: -.5em;
+  
+    
+  }
+header h4 {
+    width: 100%;
+}
 .profile-img {
     width: 90px;
     border-radius: 50%;
@@ -20,9 +27,9 @@
     display: grid;
     grid-template-columns: repeat(2,auto);
     align-items: center;
-    padding: 1.5em;
-    gap:1em
-    
+    padding: .5em 1em;
+    gap:1em;
+
 }
 
 .header-profile-container  div {
@@ -36,11 +43,19 @@
    
 }
 .profile-posts-img {
-    width: 100%;
-    width: 125px;
+    
+    width: 140px;
     height:200px;
 }
-.posts-section {
+/*.posts:before {
+    content: "posts";
+    width: 100vw;
+    height: 2px;
+    text-align: center;
+    background-color: rgb(235, 235, 235);
+    margin-bottom: 1em;
+}*/
+.posts {
     display: grid;
     gap:.1em;
     grid-template-columns: repeat(3,auto);
@@ -49,23 +64,24 @@
     margin-bottom: 1em;
     padding: 0 1em;
     align-self: self-start;
+    
 }
-.header-profile-container p {
+.header-profile-container p  {
     width: 100%;
     grid-column: span 2;
+    margin-bottom: .5em;
 }
 
 .followBtn {
-    background-color: rgb(63, 172, 0);
-    padding: 1em;
+    background-color: rgb(179, 179, 179);
+    padding: .6em;
     border-radius: .5em;
-    width: 90%;
+    width: 60%;
     margin-bottom: 1em;
     color:white;
     max-width: 400px;
-    align-self: center;
+    justify-self: center;
     
-
 }
 
 @media (min-width:800px) {
@@ -85,5 +101,12 @@
     }
     .header-profile-container {
         gap:2em;
+        padding: 1em;
+    }
+    .header-profile h3{
+        padding: 0; 
+    }
+    header h4,.followBtn {
+        margin-top: -1em;
     }
 }
