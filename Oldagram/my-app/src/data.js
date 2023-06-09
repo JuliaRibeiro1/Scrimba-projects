@@ -24,11 +24,14 @@ const data = [
         post: postVanG,
         posts:[postVanG,post2VanG,post3VanG],
         quote: "just took a few mushrooms lol",
-        profileDescription: "I would rather die of passion than of boredom.",
+        profileDescription: "I would rather die of passion than of boredom.🔅",
+        profileTitle:"Post-Impressionist painter",
         likes: 21,
+        following:156,
+        followers:1260,
         isLiked:false,
         comments: [],
-        id:uuid()
+        id:"788bf494-f15d-469e-ae04-f306b29f1942"
     },
     {
         name: "Gustave Courbet",
@@ -40,9 +43,11 @@ const data = [
         quote: "i'm feelin a bit stressed tbh",
         profileDescription: "When I am no longer controversial, I will no longer be important",
         likes: 4,
+        following:0,
+        followers:1231,
         isLiked:false,
         comments: [],
-        id:uuid(),
+        id:"42aa4c02-9599-4dcd-b6b3-405b60dd04f2"
 
     },
         {
@@ -54,9 +59,11 @@ const data = [
         posts: [postDucreux,post2Ducreux],
         quote: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152,
+        following:76,
+        followers:4195,
         isLiked:false,
         comments: [],
-        id:uuid()
+        id:"3c819a2b-b687-41fc-ac9b-6c0cfbde86a2",
     }
 ]
 
