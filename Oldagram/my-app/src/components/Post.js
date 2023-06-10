@@ -4,7 +4,8 @@ import {Link} from "react-router-dom"
 
 
 export default function Post(props) {
-    console.log(props.id)
+    console.log(props)
+    console.log("Kk")
  //O POST EM SI COM A FOTO, NOME, LOCAL E POST DO USUÁRIO
     return(
         <article>

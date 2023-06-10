@@ -1,36 +1,51 @@
 
-
+body {
+   
+    
+}
 .header-profile {
     width: 100%;
+    min-width: 250px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    padding: 0 1em;
+    font-size: .95rem;
+    
 }
-
+header {
+    margin: 0 auto;
+}
 
 header h4 {
     width: 100%;
+    font-size: .7rem;
+    margin-bottom: 1em;
+   
 }
 .profile-img {
-    width: 90px;
+    width: 70px;
     border-radius: 50%;
+    margin-right: 10px;
 }
 .profile-info{
     display: flex;
-   
+}
+p {
+   max-width: 90%;
+   margin-bottom: .5em;
 }
 .header-profile-container {
     display: grid;
     grid-template-columns: repeat(2,auto);
     align-items: center;
     padding: .5em 1em;
-
-    grid-template-rows:100px 20px 
-
+    grid-template-rows:100px 50px;
 }
 
 .header-profile-container  div {
-    gap:2em;
+    gap:1.5em;
     font-size: 1em;
     text-align: center;
 }
@@ -40,24 +55,25 @@ header h4 {
    
 }
 .profile-posts-img {
-    width: 140px;
+    width: 100%;
     height:200px;
+
 }
 .posts-section {
     position: relative;
+    margin-top: 1em;
 }
 .posts-section:before {
     content: "";
     width: 100%;
     height: 1px;
-   
     background-color: rgb(214, 214, 214);
     margin-top: -.5em;
     position: absolute;
 }
 .posts {
     display: grid;
-    gap:.1em;
+    gap:2px;
     margin-top: .5em;
     grid-template-columns: repeat(3,auto);
     
@@ -66,27 +82,21 @@ header h4 {
     margin-bottom: 1em;
     padding: 0 1em;
     
-   
-    
-    
 }
 .title {
     color:rgb(168,168,168);
     font-weight: 300;
     grid-column: span 2;
-   
     font-size: .9rem;
   
 }
 .header-profile-container p,.title  {
     width: 100%;
-    grid-column: span 2;
-    
-    
+    grid-column: span 2; 
  
 }
 .header-profile-container p {
-    margin: .2em 0;
+    font-weight: 400;
 }
 
 .followBtn {
@@ -98,6 +108,7 @@ header h4 {
     color:white;
     justify-self: center;
     
+    
 }
 .posts-section span {
     font-weight: 300;
@@ -106,30 +117,38 @@ header h4 {
     justify-content: center;
 }
 
-@media (min-width:800px) {
-    body {
-        font-size: 1.2em;
+@media (min-width:500px) {
+    header {
+        margin: 0 ;
     }
     .header-profile {
-        width: 540px;
+        font-size: 1.2em;
+        width: 100vw;
         
     }
     .profile-posts-img {
         width: 180px;
         
     }
+    p {
+        margin-bottom: -1em;
+    }
     .profile-img {
         width: 130px;
     }
     .header-profile-container {
-        
         padding: 1em;
-       gap:1.5em;
+        gap:1.5em;
     }
-    .header-profile h3{
-        padding: 0; 
+    .header-profile h4{
+       font-size: 1em;
+       margin-top: .5em;
     }
+
     header h4,.followBtn {
         margin-top: -1em;
+    }
+    .header-profile-container  div {
+        gap:2em;
     }
 }
