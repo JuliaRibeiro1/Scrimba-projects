@@ -1,7 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import {Link,Routes, Route,useMatch} from "react-router-dom"
-import Post from "../components/Post.js"
+import Pot from "../components/pot.js"
 
 export default function Profile(props) {
    console.log(props)
@@ -10,12 +10,18 @@ export default function Profile(props) {
     console.log(props)
     const thisProfile = props.props.find(profile => profile.id === id)
     const match = useMatch(`/${thisProfile}`)
+   
+   
     return (
         <>
+        
+        <Routes>
+        <Route path={`/profile/${id}/pot`} element={<Pot {...thisProfile}/>}></Route>
+        </Routes>
         <header className="header-profile">
-            <h3>{thisProfile.username}</h3>
+        <Link to={`/profile/${id}/pot/*`}><h3>{thisProfile.username}</h3></Link> 
             <div className="header-profile-container">
-                <img src={thisProfile.avatar} className="profile-img"></img>
+                <img src={thisProfile.avatar} className="profile-img" alt="profile"></img>
                 <div className="profile-info">
                     <div id="posts-info" >
                         <div className="info-numbers">{thisProfile.posts.length}</div>
@@ -40,16 +46,13 @@ export default function Profile(props) {
             </div>
             </header>
 
-            <Routes>
-                <Route path={`/${match}/posts`} element={<Post {...thisProfile}/>}></Route>
-            </Routes>
-
+           
             <section className="posts-section">
             <span>POSTS</span>
            <div className="posts"> {thisProfile.posts.map(image => {
                return ( 
                     <>
-                       <Link to={`/${match}/posts`}><img className="profile-posts-img" src={image}/></Link> 
+                       <img className="profile-posts-img" src={image} alt="post"/>
                     </>
                 )})}
                 </div>

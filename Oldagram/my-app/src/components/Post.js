@@ -16,7 +16,7 @@ export default function Post(props) {
                     <Link to={`/${props.id}`}><img src={props.avatar} alt="profile"/></Link>
                     </li> 
                     <li>
-                    <Link style={{textDecoration: 'none', color:"black"}} to={`/${props.id}`}> 
+                    <Link style={{textDecoration: 'none', color:"black"}} to={`/profile/${props.id}`}> 
                         <h1>{props.name}</h1>
                     </Link>
                     </li>
@@ -27,7 +27,7 @@ export default function Post(props) {
                 </ul>
             </header>
             <img className="post-img" alt="post"src={props.post}/>
-
+           
             <PostFooter 
          {...props} //POSTFOOTER IRÁ COMPARTILHAR DA MESMAS PROPS DE POST
        />

@@ -60,12 +60,15 @@ React.useEffect(() => {
       
         <section className="main-section">
         <Routes>
-          <Route path="/" element={postIterate}>
+          <Route path="/*" element={postIterate}>
           </Route>
           
-            <Route path="/:id" element={<Profile props={postsData}/>}></Route>
-         
+            <Route path="/profile/:id/*" element={<Profile props={postsData}/>}></Route>
+            
+             
+              
          </Routes>
+
         </section>
       </main>
     

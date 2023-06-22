@@ -8,27 +8,27 @@ body,html {
     overflow-x: hidden;
 }
 body {
-   
+   padding: 1em;
     background-color: #1F2937;
     color:white;
-    width: 90vw;
+    width: 100vw;
+
 }
-h1,h2,.setUp-container,.generateBtn {
-    margin: 45px 0px 0px 50px;
-    width: 80%;
-}
+
 
 .setUp-container > * {
     display: block;
 }
-.container,.password-container,.passwords{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    max-width: 500px;
-    margin: 0 auto;
+.container {
+width: 90%;
+display: flex;
+gap:1em;
+justify-content: center;
+flex-direction: column;
+max-width: 900px;
+margin: 0 auto;
 }
+
 
 input {
     width: 180px;
@@ -57,7 +57,6 @@ span {
     max-width: 90%;
 }
 .generateBtn,input {
-  
     border: none;
     padding: 12px;
     border-radius: 0.2em;
@@ -69,37 +68,36 @@ span {
     min-width: 250px;
     background-color: #32be5c;
     color:white;
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: bolder;
     margin-top: 1.3em;
     padding: 1.4em;
     border-radius: 20%/80%;
     color:#ffffff;
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
+    
+ 
+    
 }
 .password-container {
-   margin-left: 30px;
-   margin-top: 1em;
-   width: 100vw;
+    margin-top: 1em;;
+    text-align: center;
+   
 }
-
 .passwords {
-    margin-right: 0;
-    width: 90vw;
     border-top: #2F3E53 1px solid ;
     display: inline-block;
     vertical-align: middle;
     margin: 0 auto;
+    width: 100%;
+
 }
 .password {
     color:#4ae282;
     background-color: #273549;
     border: none;
-    padding: 0.5em .7em;
+    width:45%;
+    padding:1.5em;
     border-radius: 5px;
-    width:30%;
     min-height: 35px;
     word-break: break-all;
     margin: 1.5em 1em 2em 0;
@@ -107,11 +105,10 @@ span {
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
-    min-width: 100px;
     text-align: center;
-    margin-right: 2em;
+    margin-right:1.5em;
     max-width: 420px;
-    float:left
+    float:left;
 }
 
 #div-password,#div-digit {
@@ -150,13 +147,8 @@ span {
     max-width: 200px;
     background-color: #4ee680;
 }
+
 @media (max-width:550px) {
-    body {
-        margin: 0;
-    }
-    .container {
-        width:75%
-    }
     .container h1 {
         font-size: 2.6em;
         width: 100%;
@@ -168,26 +160,10 @@ span {
     .setUp-container {
         margin-top:1em;
     }
-    .passwords {
-        width: 85vw;
-        margin-left:10px;
-    }
     #div-digit {
         width: 100px;
     }
-    .password  {
-        width: 78%;
-       padding: .7em;
-       margin-right: 2em;
-       display: inline-block;
-       vertical-align: middle;
-       margin-bottom: .5em;
-       margin-left: 20px;
-       font-size: 1.3rem;
-
-    }
-    input {
-        
+    input { 
        padding: 1em;
     }
     .digits-quantity-input {
@@ -195,59 +171,21 @@ span {
         margin-top:5px;
         width: 100px;
     }
-
-    .passwords-quantity-input{
-        width: 200px;
+    .password {
+        width: 100%;   
+        
     }
     .generateBtn {
-        margin-top: 1em;
-        display: block;
-        margin-top: 1em;
-        display: flex;
-        width: 270px;
-        
+        font-size: 1em;
     }
-    
 }
 
-@media (min-width:550px) and (max-width:930px) {
-    .container h1 {
-        font-size: 3em;
-        margin-top: 2em;
-        
-    }
-    .container h2 {
-        font-size:2em;
-        margin-bottom:.1em
-        
-    }
-    .setUp-container  {
-        display: flex;
-   
-    }
-    input {
-        padding: 1.5em;
-        margin-right: 1em;
-    }
-    .password-container {
-        margin-top: 1em;
-        margin-left: 50px;
-    }
-    .password {
-        font-size: 1.3em;
-        width: 40%;
-        
-        padding: 1em;
-    }
-
-}
-@media (min-width:930px) {
+@media (min-width:730px) {
     .container h1,.container h2 {
         margin-bottom: 0.6em;
     }
     .generateBtn,input {
         margin-bottom: 3em;
-
     }
     .generateBtn {
         border-radius: 20%/100%;
@@ -258,16 +196,9 @@ span {
         padding: 1.5em;
         margin-right: 1em;
     }
-    .password-container {
-       margin-left: 50px;
-    }
-    .password {
-        padding: 1.2em;
-        width: 45%;
-
-    }
     .setUp-container  {
         display: flex;
    
     }
+
 }
