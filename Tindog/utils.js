@@ -65,7 +65,6 @@ function renderProfile(profile,i) {
         <p>${bio}</p>
         <span class="user-location"><img id=location-icon src=images/icons8-location-50.png>${checkDistance}</span>
     </div>`
-   // profilesHtml.append(currentProfileHtml)
    
     return currentProfileHtml.innerHTML
     

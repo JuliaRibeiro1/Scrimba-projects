@@ -3,7 +3,6 @@
 
 
 ## Aprendizados
-* ✨Primeiro projeto usando API✨
 * Neste projeto consegui me familiarizar com o uso de APIs e como usar FETCH com async/await.
 * Provocar animações de css por eventos onClick.
 * Uso de funções importadas.
@@ -16,7 +15,6 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## What I learned
-* ✨This is my first project using an API✨
 * In this project I was able to practice my APIs skills and use API FETCH with async/await.
 * Trigger css animations by onClick events.
 * Importing functions.

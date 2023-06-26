@@ -83,32 +83,4 @@
    
 ]
 
- /*let dogs2 = [
-    {
-        name: "Bruno",
-        avatar: ["images/pastor-alemao1.jpg","images/pastor-alemao2.jpg"],
-        age: 22,
-        bio: "I would love to take you to the movies, but they don’t allow snacks.",
-        hasBeenSwiped: false,
-        hasBeenLiked: false
-    },
-    {
-        name: "Buddy",
-        avatar: ["images/poodle.jpg"],
-        age: 20,
-        bio: "What’s your fav meme?",
-        hasBeenSwiped: false,
-        hasBeenLiked: false
-    },
-    {
-        name: "Theo",
-        avatar: ["images/caramelo1.jpg","images/caramelo2.jpg"],
-        age: 37,
-        bio: "I believe in following my dreams. Can I have your Instagram?",
-        hasBeenSwiped: false,
-        hasBeenLiked: false
-    }
-]*/
-
-//export{dogs,dogs2}
 
