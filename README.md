@@ -5,11 +5,11 @@
 
 
 
-Olá, seja bem vindo! 
+Olá! Seja bem-vindo!
 
-Esse repositório contém os desafios realizados no curso The Frontend Developer Career Path da plataforma Scrimba, cada projeto é uma forma de por em pratica meus conhecimentos adquiridos durante o curso sozinha.
+Este repositório contém os desafios que realizei no curso The Frontend Developer Career Path da plataforma Scrimba. Cada projeto é uma oportunidade de colocar em prática os conhecimentos adquiridos durante o curso por conta própria.
 
-A maioria dos projetos possui um stretch goal e alguns eu adicionei novas funcionalidades além daquelas sugeridas nas aulas. 
+A maioria dos projetos possui um objetivo adicional (stretch goal) e em alguns deles adicionei novas funcionalidades além das sugeridas nas aulas. 
 
 
 
