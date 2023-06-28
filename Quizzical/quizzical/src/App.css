@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #293264;
+  font-family: 'Karla', sans-serif;
+  background-color: #F5F7FB;
+}
+
+.App {
+  text-align: center;
+  height: 90vh;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  
+}
+
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 1em;
+}
+button {
+  background-color: #4D5B9E;
+  border: 0;
+  color:white;
+  padding: 1em;
+  width: 80%;
+  min-width: 80px;
+  border-radius: 1em; 
+  font-size: 1.3rem;
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 4.5em;
+  }
+}
