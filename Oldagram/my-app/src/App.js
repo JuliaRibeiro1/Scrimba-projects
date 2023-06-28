@@ -20,23 +20,19 @@ export default function App() {
           })
       })
   }
-  console.log(postsData)
+
   function addComment(id,data) {
    
       setData(prev => {
         return prev.map(
           post => {
             return post.id === id ? {...post, comments: [...post.comments, {userPic: userData.profileImg,text:data,username:userData.username}]} : post
-          })})/*post => {
-          return post.id === id ? {...post, comments: {...post.comments, userPic: userData.profileImg,text:"oi",username:userData.username}} : prev
-        }*/
-
+          })})
      
     }
 
 React.useEffect(() => {
   localStorage.setItem("postsData",JSON.stringify(postsData))
-  console.log('Mudou')
 },[postsData])
 
  const postIterate = postsData.map(item => {
@@ -61,12 +57,8 @@ React.useEffect(() => {
         <section className="main-section">
         <Routes>
           <Route path="/*" element={postIterate}>
-          </Route>
-          
+          </Route>   
             <Route path="/profile/:id/*" element={<Profile props={postsData}/>}></Route>
-            
-             
-              
          </Routes>
 
         </section>

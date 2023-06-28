@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 export default function Post(props) {
     console.log(props)
-    console.log("Kk")
+ 
  //O POST EM SI COM A FOTO, NOME, LOCAL E POST DO USUÁRIO
     return(
         <article>
@@ -13,7 +13,7 @@ export default function Post(props) {
                 <ul className="ul-post">
               
                     <li className="span">
-                    <Link to={`/${props.id}`}><img src={props.avatar} alt="profile"/></Link>
+                    <Link to={`/profile/${props.id}`}><img src={props.avatar} alt="profile"/></Link>
                     </li> 
                     <li>
                     <Link style={{textDecoration: 'none', color:"black"}} to={`/profile/${props.id}`}> 

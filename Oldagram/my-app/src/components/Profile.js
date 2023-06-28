@@ -1,25 +1,14 @@
 import React from "react"
 import { useParams } from "react-router-dom"
-import {Link,Routes, Route,useMatch} from "react-router-dom"
-import Pot from "../components/pot.js"
 
 export default function Profile(props) {
-   console.log(props)
     const {id} = useParams()
-    
-    console.log(props)
     const thisProfile = props.props.find(profile => profile.id === id)
-    const match = useMatch(`/${thisProfile}`)
-   
-   
+
     return (
         <>
-        
-        <Routes>
-        <Route path={`/profile/${id}/pot`} element={<Pot {...thisProfile}/>}></Route>
-        </Routes>
         <header className="header-profile">
-        <Link to={`/profile/${id}/pot/*`}><h3>{thisProfile.username}</h3></Link> 
+        <h3>{thisProfile.username}</h3>
             <div className="header-profile-container">
                 <img src={thisProfile.avatar} className="profile-img" alt="profile"></img>
                 <div className="profile-info">
@@ -45,7 +34,6 @@ export default function Profile(props) {
                 
             </div>
             </header>
-
            
             <section className="posts-section">
             <span>POSTS</span>
