@@ -15,7 +15,7 @@ A maioria dos projetos possui um objetivo adicional (stretch goal) e em alguns d
 
 Hello! Welcome!
 
-This repository contains the challenges I completed in The Frontend Developer Career Path course on the Scrimba platform. Each project is an opportunity to apply the knowledge gained during the course on my own.
+This repository contains the challenges I completed in The Frontend Developer Career Path course on Scrimba. Each project is an opportunity to apply the knowledge gained during the course on my own.
 
 Most projects have a stretch goal, and in some of them, I added new functionalities beyond those suggested in the lessons.
 
