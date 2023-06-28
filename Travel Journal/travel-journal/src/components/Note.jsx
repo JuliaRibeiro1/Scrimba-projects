@@ -12,7 +12,7 @@ export default function Note(props) {
             <section className="note-header">
                 <header>
                     <div className="note-location"><img className="locationIcon" src={locationIcon}/>{location}</div>
-                    <div><a className="google-maps-link"href={googleMapsUrl}>View on Google Maps</a></div>
+                    <div><a className="google-maps-link"href={googleMapsUrl} target="_blank">View on Google Maps</a></div>
                 </header>
             </section>
             <section className="note">
