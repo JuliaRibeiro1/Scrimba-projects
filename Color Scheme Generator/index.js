@@ -1,6 +1,7 @@
 import { setRandomColor , lightOrDark } from "./utils.js"
 
-let colors = []
+let colors ;
+let colorsPlaceholder;
 let colorHtml;
 let seedValue;
 let num = 0;
@@ -43,19 +44,20 @@ function renderOptions() {
   return optionsHtml
 }
 
-function RenderColors() { //IRÁ CRIAR UMA DIV PARA "ABRIGAR" A COR, VALOR E NOME DE CADA COR RETORNADA PELA API
-  let checkSpanColor = lightOrDark(colors[0].value)?"#000":"#fff" // IRÁ CHECAR QUAL A COR DO TEXTO DEVE SER BASEADA NA COR DE FUNDO 
+function RenderColors(array, skeleton) { //IRÁ CRIAR UMA DIV PARA "ABRIGAR" A COR, VALOR E NOME DE CADA COR RETORNADA PELA API
+ let checkSpanColor = skeleton ? "" : lightOrDark(colors[0].value)?"#000":"#fff" // IRÁ CHECAR QUAL A COR DO TEXTO DEVE SER BASEADA NA COR DE FUNDO 
   colorHtml = ""
-  colors.map((element) => {
+  num = 0
+  array.map(({value,name}) => {
     colorHtml += 
-      `<div class="color" id=color${num}>
-        <span class="color-hex">${element.value}</span>
-        <span class="color-name">${element.name}</span>
+      `<div class="color ${skeleton? "skeleton" : ""}" id=color${num}>
+        <span class="${skeleton? "hide" : "color-hex"}">${value}</span>
+        <span class="color-name">${name}</span>
       </div>
       <style>
         #color${num}  {
-          background-color:${element.value};
-          color:${checkSpanColor};
+          background-color:${value};
+          color:${checkSpanColor
         }
       </style>`
 
@@ -65,8 +67,9 @@ function RenderColors() { //IRÁ CRIAR UMA DIV PARA "ABRIGAR" A COR, VALOR E NOM
 }
 
 async function scheme(url) {
-  seedValue = seedColor.value.substring(1)
   colors = []
+  seedValue = seedColor.value.substring(1)
+  colorsPlaceholder = new Array(5).fill({value:"#e6e6e6", name:""})
   try{
   const res = await fetch(url) 
   if(!res.ok) {
@@ -75,19 +78,24 @@ async function scheme(url) {
 
   }
   const data = await res.json()
+  colorsSection.innerHTML = RenderColors(colorsPlaceholder,true)
+  colorsSection.classList.add("skeleton")
+  
   return data.colors.forEach(item => {
     colors.push({value:item.hex.value,name:item.name.value}) //CRIEI UM OBJETO COM O VALOR E O NOME DA COR
-    colorsSection.innerHTML = RenderColors()
-  })
+    colorsSection.innerHTML = RenderColors(colors,false)
+   })
 }catch(err) {alert(err.message)}
   
 }
-console.log(scheme(`https://www.thecolorapi.com/scheme?hex=${seedColor.value.substring(1)}&mode=${selectedOption.value}&count=5`))
+
 document.querySelector("article").addEventListener("click",(e) => {
+  console.log("cliqueeeee")
   const root = document.querySelector(":root");
   let target = e.target
   if(target.className == "color-hex") {
     let colorHex =  e.target.textContent
+    console.log(colorHex)
     navigator.clipboard.writeText(`${colorHex}`);
     root.style.setProperty("--pseudo-opacity", 0.8); //ANIMAÇÕES COM O INTUITO DE AVISAR O USUÁRIO CADA VEZ QUE UMA COR FOR COPIADA
     root.style.setProperty("--pseudo-animation", 'fade 3s');

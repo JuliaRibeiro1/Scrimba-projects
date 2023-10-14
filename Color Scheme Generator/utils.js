@@ -12,15 +12,15 @@ function lightOrDark(color) { //https://gist.github.com/krabs-github/ec56e4f1c12
       r = color >> 16;
       g = color >> 8 & 255;
       b = color & 255;
-   // }
-    // HSP equation from http://alienryderflex.com/hsp.html
+
+
     hsp = Math.sqrt(
       0.299 * (r * r) +
       0.587 * (g * g) +
       0.114 * (b * b)
     );
   
-    // Using the HSP value, determine whether the color is light or dark
+
     if (hsp>127.5) {
   
       return true;
@@ -31,7 +31,7 @@ function lightOrDark(color) { //https://gist.github.com/krabs-github/ec56e4f1c12
     }
   }
 
-function setRandomColor() { // IRÁ RETOPRNAR UMA COR ALEATÓRIA COM "#" NA FRENTE
+function setRandomColor() { // IRÁ RETORNAR UMA COR ALEATÓRIA COM "#" NA FRENTE
     let colorCharacters = '0123456789ABCDEF'
     let color = "#"
     for (let i = 0; i < 6; i++) {
